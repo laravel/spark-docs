@@ -136,7 +136,7 @@ If you are using user billing and want to limit the amount of teams a given user
 <a name="team-billing"></a>
 ## Team Billing
 
-Team billing allows your Spark applications to provide billing plans on a per-team basis, meaning users may subscribe to different billing plans for each team they own. For more information on configuring team billing, please refer to the [billing documentation](/docs/1.0/billing#configuring-team-billing-plans)
+Team billing allows your Spark applications to provide billing plans on a per-team basis, meaning users may subscribe to different billing plans for each team they own. For more information on configuring team billing, please refer to the [billing documentation](/docs/2.0/billing#configuring-team-billing-plans)
 
 <a name="team-events"></a>
 ## Team Events
