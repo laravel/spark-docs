@@ -1,0 +1,158 @@
+# Teams
+
+- [Introduction](#introduction)
+- [Accessing The User's Teams](#accessing-the-users-teams)
+- [Team Roles](#team-roles)
+- [Using Teams Without Team Billing](#using-teams-without-team-billing)
+- [Team Billing](#team-billing)
+- [Team Events](#team-events)
+
+<a name="introduction"></a>
+## Introduction
+
+Spark includes support for allowing your users to create and join teams. Teams provide a great way for users to share access to resources with other users of your application. Once a team has been created, users may invite other users to their team as well assign them roles.
+
+To use teams, initialize your Spark project using the `--team-billing` flag:
+
+    spark new project-name --team-billing
+
+If you installed your application without the `--team-billing` flag but still want to enable teams later, you may simply add the `Laravel\Spark\CanJoinTeams` trait to your `User` model:
+
+    <?php
+
+    namespace App;
+
+    use Laravel\Spark\CanJoinTeams;
+    use Laravel\Spark\User as SparkUser;
+
+    class User extends SparkUser
+    {
+        use CanJoinTeams;
+    }
+
+<a name="accessing-the-users-teams"></a>
+## Accessing The User's Teams
+
+The `CanJoinTeams` trait provides several methods to assist you in accessing a given user's teams. The trait defines a `teams` relation to the `App\Team` model which will allow you to iterate over all of the user's teams:
+
+    foreach ($user->teams as $team) {
+        echo $team->name;
+    }
+
+The trait also provides several other helper methods that are useful when developing team based applications:
+
+    if ($user->hasTeams()) {
+        // This user belongs to at least one team...
+    }
+
+    if ($user->onTeam($team)) {
+        // The user belongs to the given team...
+    }
+
+    if ($user->ownsTeam($team)) {
+        // The user owns the given team...
+    }
+
+    foreach ($user->ownedTeams as $team) {
+        // Iterate through all of the user's owned teams...
+    }
+
+    foreach ($team->invitations as $invitation) {
+        // Iterate through all active invitations for the team...
+    }
+
+### The Current Team
+
+When building team based applications in Spark, users will almost always belong to a "current team". This is the team that is currently selected from the team selection list from the user profile drop-down menu at the top right of the screen.
+
+The team listing allows users to switch between team contexts in your application. So, for example, if you are building a helpdesk application, switching teams allows users to switch between team inboxes.
+
+You may access the user's "current team" using the `currentTeam` property on a `App\User` instance:
+
+    echo $user->currentTeam->name;
+
+If the user does not belong to any team, the `currentTeam` property will be `null`, so you may wish to check that the property is not null before accessing it:
+
+    if ($user->currentTeam) {
+        //
+    }
+
+However, by default, when a user does not belong to any teams, they will be redirected to a warning notice informing them that they should create a team to continue using the application. To view this notice, simply register a test user, delete all of their teams, and then attempt to access the application `/home` URI. This redirection is provided by the `VerifyUserHasTeam` middleware.
+
+<a name="team-roles"></a>
+## Team Roles
+
+Spark allows you to define roles for your team's members. By default, Spark only has two roles: `owner` and `member`. However, you may define additional roles which the owner of a team can then assign to users from the team membership screen.
+
+To define roles, use the `useRoles` method in the `booted` method of your `SparkServiceProvider`. The `useRoles` method accepts an array where the keys are the role "slugs" that will be stored in the database, while the values are the displayable name of the role:
+
+    Spark::useRoles([
+        'member' => 'Member',
+        'vip' => 'VIP',
+    ]);
+
+If you would like to get the role that a user has for a given team, you may use the `roleOn` method on a user instance:
+
+    if ($user->roleOn($team) === 'vip') {
+        // This user is a VIP...
+    }
+
+You may also use the `ownsTeam` method to determine if a user owns a given team:
+
+    if ($user->ownsTeam($team)) {
+        // This user owns the team...
+    }
+
+The `ownedTeams` method returns all of the user's owned teams:
+
+    foreach ($user->ownedTeams as $team) {
+        echo $team->name;
+    }
+
+<a name="using-teams-without-team-billing"></a>
+## Using Teams Without Team Billing
+
+If you would like to offer teams in your application but do not want to use team billing, Spark makes it a breeze. Just use the `Laravel\Spark\CanJoinTeams` trait on your `User` model:
+
+    <?php
+
+    namespace App;
+
+    use Laravel\Spark\CanJoinTeams;
+    use Laravel\Spark\User as SparkUser;
+
+    class User extends SparkUser
+    {
+        use CanJoinTeams;
+    }
+
+If you are using user billing and want to limit the amount of teams a given user can create while on a given plan, you can use the `maxTeams` method when defining the plan in your `SparkServiceProvider`:
+
+    Spark::plan('Pro', 'yearly-pro')
+        ->price(100);
+        ->yearly()
+        ->maxTeams(5);
+
+<a name="team-billing"></a>
+## Team Billing
+
+Team billing allows your Spark applications to provide billing plans on a per-team basis, meaning users may subscribe to different billing plans for each team they own. For more information on configuring team billing, please refer to the [billing documentation](/docs/1.0/billing#configuring-team-billing-plans)
+
+<a name="team-events"></a>
+## Team Events
+
+Spark fires several team related events. These may be used to perform various actions when a user joins or leaves a team, such as a incrementing the subscription "quantity" if you are using Stripe to implement "per-user" pricing.
+
+**All events listed in the following table are relative to the `Laravel\Spark\Events` namespace:**
+
+Event  | Description
+------------- | -------------
+`Teams\DeletingTeam`  |  A team is about to be deleted. You may use this to remove all of the team's data.
+`Teams\TeamCreated`  |  A team has been created.
+`Teams\TeamDeleted`  |  A team has been deleted.
+`Teams\TeamMemberAdded`  |  A new user has joined a team.
+`Teams\TeamMemberRemoved`  |  A user has left or been removed from a team.
+`Teams\UserInvitedToTeam`  |  A user has been invited to join a team.
+`Teams\Subscription\SubscriptionCancelled`  |  A team's subscription has been cancelled.
+`Teams\Subscription\SubscriptionUpdated`  |  A team's subscription has been updated.
+`Teams\Subscription\TeamSubscribed`  |  A team has begun a new subscription.
