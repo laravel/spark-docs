@@ -108,10 +108,10 @@ Once Spark is installed, you should link the `public/storage` directory to your 
 <a name="installation-types"></a>
 ## Installation Types
 
-The default `spark:install` command will generate a project that supports individual user plans and Stripe for credit card processing. However, you may also create projects that use team billing or Braintree as your payment processor.
+The default `spark` command will generate a project that supports individual user plans and Stripe for credit card processing. However, you may also create projects that use team billing or Braintree as your payment processor.
 
-    php artisan spark:install project-name --braintree
+    spark new project-name --braintree
 
-    php artisan spark:install project-name --team-billing
+    spark new project-name --team-billing
 
-    php artisan spark:install project-name --team-billing --braintree
+    spark new project-name --team-billing --braintree
