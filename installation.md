@@ -17,6 +17,9 @@ Laravel Spark has a few requirements you should be aware of before installing:
 - Laravel Framework 5.3+
 - Laravel Elixir
 - Bootstrap 3 (LESS)
+- Node.js & npm
+
+Make sure you have the latest version of node and npm installed before attempting to run the installer.
 
 The [Vue.js](http://vuejs.org) JavaScript framework is utilized on the registration and settings pages; however, you are free to build the "bulk" of your application using the JavaScript framework of your choice, or no JavaScript framework at all.
 
@@ -78,9 +81,16 @@ Next, add the following repository to your `composer.json` file:
         }
     ],
 
-You should also add the following dependencies to your `composer.json` file's `require` section:
+You should also add the following dependency to your `composer.json` file's `require` section:
 
     "laravel/spark": "~2.0",
+    
+In case you'll be using Braintree, you need to add laravel/cashier-braintree:
+
+    "laravel/cashier-braintree": "~2.0"
+    
+Or if you'll use Stripe, you need to add laravel/cashier:
+
     "laravel/cashier": "~7.0"
 
 Next, run the `composer update` command. You may be prompted for a GitHub token in order to install the private Spark repository. Composer will provide a link where you can create this token. Once the dependencies are installed, add the following service providers to your `app.php` configuration file:
