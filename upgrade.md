@@ -15,8 +15,6 @@ If you installed Spark via the `spark` CLI tool, you may run the `spark:update` 
 
     php artisan spark:update
 
-> If you installed Spark via the `spark` CLI tool, you should consider switching to a Composer based Spark installation, which provides a more fine-tuned approach to managing Spark versions.
-
 #### Via Composer
 
 If you installed Spark via Composer, you may simply upgrade your dependency in your `composer.json` file and run the `composer update` command:
