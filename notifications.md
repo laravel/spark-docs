@@ -70,18 +70,18 @@ public function toSpark($notifiable)
 }
 ```
 
-### Sending notifications
+### Sending Notifications
 
-Notifications may be sent in two ways: using the notify method of the Notifiable trait or using the Notification facade. You may take a look at the [notifications documentation](https://laravel.com/docs/5.3/notifications#sending-notifications) to get more details using the different methods of sending notifications.
+Notifications may be sent in two ways: using the `notify` method of the `Notifiable` trait or by using the `Notification` facade. You may take a look at the Laravel [notification documentation](https://laravel.com/docs/5.3/notifications#sending-notifications) to get more details regarding these two approaches to sending notifications.
 
-However, here's an example on sending notifications to a spark user:
+Here's an example of sending notifications to a Spark user using the `notify` method:
 
 ```php
-$user->notify(new TaskCompleted());
+$user->notify(new TaskCompleted);
 ```
 
-When sending to a team, all members of that team will be notified:
+When sending a notification to a team, all members of that team will be notified:
 
 ```php
-$team->notify(new TaskCompleted());
+$team->notify(new TaskCompleted);
 ```
