@@ -33,6 +33,15 @@ If you installed your application without the `--team-billing` flag but still wa
 After registration, your users will be able to create additional teams from their account dashboard; however, you can disable the creation of additional teams by adding the following to the `booted` method of your `SparkServiceProvicer`:
 
     Spark::noAdditionalTeams();
+  
+  
+### Changing how Spark refers to Teams
+  
+By default Spark uses the term "Team" to refer to Spark Teams, you can easily customize that by calling the following method in the `register` method of you `SparkServiceProvicer`:
+
+    Spark::referToTeamAs('band');
+    
+Make sure you pass the singular lowercase form of the team reference.
 
 <a name="accessing-the-users-teams"></a>
 ## Accessing The User's Teams
