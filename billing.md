@@ -134,7 +134,7 @@ If you would like to provide a specific reason the user is not allowed to switch
 
     Spark::checkPlanEligibilityUsing(function ($user, $plan) {
         if ($plan->name == 'pro' && $user->todos->count() > 20) {
-            throw IneligibleForPlan::because('You have too many to-dos.'):
+            throw IneligibleForPlan::because('You have too many to-dos.');
         }
     });
 
