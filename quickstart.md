@@ -37,7 +37,7 @@ By default, Spark is configured to require no credit-card up front and to grant 
 <a name="building-your-application"></a>
 ## Building Your Application
 
-Once Spark has been installed and your billing plans are configured, you're ready to start building your application. By default, Spark installs a `/home` route in your `app\Http\routes.php` file which displays the `home` Blade template. You are free to edit the `home.blade.php` template as needed to build your application.
+Once Spark has been installed and your billing plans are configured, you're ready to start building your application. By default, Spark installs a `/home` route in your `routes\web.php` file which displays the `home` Blade template. You are free to edit the `home.blade.php` template as needed to build your application.
 
 The `home.blade.php` file also represents the `home` [Vue component](https://vuejs.org), which is defined at `resources/assets/js/components/home.js`. You may add your own JavaScript code to this component as needed. Of course, if you change this code, don't forget to run `gulp` to re-compile your application's JavaScript.
 
