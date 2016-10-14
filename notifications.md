@@ -7,7 +7,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Notifications are a great way to inform your users of things that are happening in your application. For example, you might use a notification to let a user know when a team member has completed a given to-do list task. These notifications are viewable by clicking on the "notification bell" icon in the application's navigation bar. The notification bell will have a red activity indicator when their are unread announcements or notifications.
+Notifications are a great way to inform your users of things that are happening in your application. For example, you might use a notification to let a user know when a team member has completed a given to-do list task. These notifications are viewable by clicking on the "notification bell" icon in the application's navigation bar. The notification bell will have a red activity indicator when there are unread announcements or notifications.
 
 <a name="creating-notifications"></a>
 ## Creating Notifications

@@ -139,7 +139,7 @@ If you would like to offer teams in your application but do not want to use team
         use CanJoinTeams;
     }
 
-If you are using user billing and want to limit the amount of teams a given user can create while on a given plan, you can use the `maxTeams` method when defining the plan in your `SparkServiceProvider`:
+If you are using user billing and want to limit the number of teams a given user can create while on a given plan, you can use the `maxTeams` method when defining the plan in your `SparkServiceProvider`:
 
     Spark::plan('Pro', 'yearly-pro')
         ->price(100);
@@ -154,7 +154,7 @@ Team billing allows your Spark applications to provide billing plans on a per-te
 <a name="team-events"></a>
 ## Team Events
 
-Spark fires several team related events. These may be used to perform various actions when a user joins or leaves a team, such as a incrementing the subscription "quantity" if you are using Stripe to implement "per-user" pricing.
+Spark fires several team related events. These may be used to perform various actions when a user joins or leaves a team, such as  incrementing the subscription "quantity" if you are using Stripe to implement "per-user" pricing.
 
 **All events listed in the following table are relative to the `Laravel\Spark\Events` namespace:**
 
