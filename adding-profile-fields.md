@@ -114,7 +114,7 @@ When you define a new Vue component, you also need to instruct Spark to compile 
 <a name="validation-and-storage"></a>
 ## Validation & Storage
 
-Next, we need to define a route and controller to handle updating the `age` for an existing user. First, let's add a route to our `app/Http/routes.php` file:
+Next, we need to define a route and controller to handle updating the `age` for an existing user. First, let's add a route to our `routes/web.php` file:
 
     Route::put('/settings/profile/details', 'ProfileDetailsController@update');
 
