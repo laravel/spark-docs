@@ -85,7 +85,7 @@ This will generate a `SparkServiceProvider` stub that defines team plans instead
 
 ### Limiting Team Members Per Plan
 
-Since it's common to limit the amount of team members a given team may have for a given plan, Spark makes configuring these constraints a breeze. Simply use the `maxTeamMembers` method when defining your team plan. Once this is configured, Spark will automatically validate that attempted plan changes are valid based on the number of team members allowed for the plan:
+Since it's common to limit the number of team members a given team may have for a given plan, Spark makes configuring these constraints a breeze. Simply use the `maxTeamMembers` method when defining your team plan. Once this is configured, Spark will automatically validate that attempted plan changes are valid based on the number of team members allowed for the plan:
 
     Spark::teamPlan('Basic', 'team-basic')
         ->price(10)
