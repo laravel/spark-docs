@@ -139,7 +139,7 @@ If you would like to offer teams in your application but do not want to use team
         use CanJoinTeams;
     }
 
-If you are using user billing and want to limit the amount of teams a given user can create while on a given plan, you can use the `maxTeams` method when defining the plan in your `SparkServiceProvider`:
+If you are using user billing and want to limit the number of teams a given user can create while on a given plan, you can use the `maxTeams` method when defining the plan in your `SparkServiceProvider`:
 
     Spark::plan('Pro', 'yearly-pro')
         ->price(100);
