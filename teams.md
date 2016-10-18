@@ -2,6 +2,7 @@
 
 - [Introduction](#introduction)
 - [Accessing The User's Teams](#accessing-the-users-teams)
+- [Accessing Teams By Path (GitHub Style)](#accessing-teams-by-path)
 - [Team Roles](#team-roles)
 - [Using Teams Without Team Billing](#using-teams-without-team-billing)
 - [Team Billing](#team-billing)
@@ -92,15 +93,16 @@ If the user does not belong to any team, the `currentTeam` property will be `nul
 
 However, by default, when a user does not belong to any teams, they will be redirected to a warning notice informing them that they should create a team to continue using the application. To view this notice, simply register a test user, delete all of their teams, and then attempt to access the application `/home` URI. This redirection is provided by the `VerifyUserHasTeam` middleware.
 
-### Identifying teams by path
+<a name="accessing-teams-by-path"></a>
+## Accessing Teams By Path
 
-If you'd like to handle switching between teams in a GitHub-like manner using a team handle in the URL you may use the following option:
+Spark also supports disabling the "team switcher" located in the top-right navigation menu and allowing you to have full customization of determining which team a user is currently viewing. To enable this option, call the `Spark::identifyTeamsByPath()` option in the `boot` method of your `SparkServiceProvider`:
 
     Spark::identifyTeamsByPath();
 
-This option will add a new field while creating teams for the slug, you can use this slug to have a unique URL for each team in which users can visit to move between teams.
+Once this option has been enabled, the team creation screen will include a new field where the user may choose a team "slug" that can be used in your application's route URIs to identify the team resources the user wishes to view. The team slug must be unique across your entire application for each time. Validation rules to ensure this uniqueness are already included in Spark. Once this option has been enabled you might define application routes like so in order to determine which team a user wishes to view:
 
-
+    Route::get('/{team_slug}/projects', 'ProjectController@index');
 
 <a name="team-roles"></a>
 ## Team Roles

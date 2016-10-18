@@ -6,7 +6,9 @@
 <a name="upgrade-spark-2.0.11"></a>
 ## Upgrading To Spark 2.0.11
 
-Spark 2.0.11 is shipped with a new option for GitHub-style teams that are path based, to enable this option you need to run the following migration:
+Spark 2.0.11 ships with a new option for GitHub-style teams that are path based. This feature is optional and if you are free to totally ignore it without any consequences in your Spark applications.
+
+Before enabling this option on an existing Spark application you will need to add a "slug" field to your teams database table. An example migration for performing this action is included below; however, you are free to write your own migration and customize the slug creation however you like. Team slugs must be unique per team across the entire application:
 
 ```php
 <?php
@@ -68,7 +70,10 @@ class AddSlugToTeams extends Migration
      */
     private function makeSureSlugsAreUnique()
     {
-        $duplicates = DB::table('teams')->select('slug')->groupBy('slug')->havingRaw('COUNT(*) > 1')->pluck('slug');
+        $duplicates = DB::table('teams')->select('slug')
+                        ->groupBy('slug')
+                        ->havingRaw('COUNT(*) > 1')
+                        ->pluck('slug');
 
         App\Team::whereIn('slug', $duplicates->toArray())->each(function($team, $key){
             $team->update([
