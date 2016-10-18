@@ -92,6 +92,16 @@ If the user does not belong to any team, the `currentTeam` property will be `nul
 
 However, by default, when a user does not belong to any teams, they will be redirected to a warning notice informing them that they should create a team to continue using the application. To view this notice, simply register a test user, delete all of their teams, and then attempt to access the application `/home` URI. This redirection is provided by the `VerifyUserHasTeam` middleware.
 
+### Identifying teams by path
+
+If you'd like to handle switching between teams in a GitHub-like manner using a team handle in the URL you may use the following option:
+
+    Spark::identifyTeamsByPath();
+
+This option will add a new field while creating teams for the slug, you can use this slug to have a unique URL for each team in which users can visit to move between teams.
+
+
+
 <a name="team-roles"></a>
 ## Team Roles
 
