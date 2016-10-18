@@ -1,6 +1,6 @@
 # Upgrade Guide
 
-- [Upgrading To Spark 2.0.11 ](#upgrade-spark-2.0.11 )
+- [Upgrading To Spark 2.0.11 ](#upgrade-spark-2.0.11)
 - [Upgrading To Spark 2.0](#upgrade-spark-2.0)
 
 <a name="upgrade-spark-2.0.11"></a>
