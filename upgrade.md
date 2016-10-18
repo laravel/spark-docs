@@ -1,6 +1,89 @@
 # Upgrade Guide
 
+- [Upgrading To Spark 2.0.11 ](#upgrade-spark-2.0.11 )
 - [Upgrading To Spark 2.0](#upgrade-spark-2.0)
+
+<a name="upgrade-spark-2.0.11"></a>
+## Upgrading To Spark 2.0.11
+
+Spark 2.0.11 is shipped with a new option for GitHub-style teams that are path based, to enable this option you need to run the following migration:
+
+```php
+<?php
+
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddSlugToTeams extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('teams', function (Blueprint $table) {
+            $table->string('slug')->after('name')->nullable();
+        });
+
+        $this->generateSlugForExistingTeams();
+
+        $this->makeSureSlugsAreUnique();
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('teams', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
+    }
+
+    /**
+     *  Generates a slug for existing teams.
+     *
+     *  $return void
+     */
+    private function generateSlugForExistingTeams()
+    {
+        App\Team::each(function($team){
+            $team->update([
+                'slug' => Str::slug($team->name)
+            ]);
+        });
+    }
+
+    /**
+     * Ensure that all teams have a unique slug.
+     *
+     * @return void
+     */
+    private function makeSureSlugsAreUnique()
+    {
+        $duplicates = DB::table('teams')->select('slug')->groupBy('slug')->havingRaw('COUNT(*) > 1')->pluck('slug');
+
+        App\Team::whereIn('slug', $duplicates->toArray())->each(function($team, $key){
+            $team->update([
+                'slug' => $team->slug.$key
+            ]);
+        });
+
+        Schema::table('teams', function (Blueprint $table) {
+            $table->unique('slug');
+        });
+    }
+}
+```
+
+This migration will add a slug field to the teams table and generate a unique slug for each of the existing teams.
 
 <a name="upgrade-spark-2.0"></a>
 ## Upgrading To Spark 2.0
