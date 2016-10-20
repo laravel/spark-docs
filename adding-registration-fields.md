@@ -48,7 +48,7 @@ The contents of `Spark.form.register` will automatically be merged with the base
 <a name="validation-and-storage"></a>
 ## Validation & Storage
 
-Next, we need to customize Spark's new user validation and storage methods to handle our new `age` field. Within our `SparkServiceProvider` boot method, we'll call the `validateUsersWith` and `createUsersWith` methods to customize this logic. First, let's call `validateUsersWith` and define the validation rules for our new `age` field:
+Next, we need to customize Spark's new user validation and storage methods to handle our new `age` field. Within the `boot` method of our `SparkServiceProvider`, we'll call the `validateUsersWith` and `createUsersWith` methods to customize this logic. First, let's call `validateUsersWith` and define the validation rules for our new `age` field:
 
     Spark::validateUsersWith(function () {
         return [
