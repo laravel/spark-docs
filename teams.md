@@ -100,7 +100,7 @@ Spark also supports disabling the "team switcher" located in the top-right navig
 
     Spark::identifyTeamsByPath();
 
-Once this option has been enabled, the team creation screen will include a new field where the user may choose a team "slug" that can be used in your application's route URIs to identify the team resources the user wishes to view. The team slug must be unique across your entire application for each time. Validation rules to ensure this uniqueness are already included in Spark. Once this option has been enabled you might define application routes like so in order to determine which team a user wishes to view:
+Once this option has been enabled, the team creation screen will include a new field where the user may choose a team "slug" that can be used in your application's route URIs to identify the team resources the user wishes to view. The team slug must be unique across your entire application for each team. Validation rules to ensure this uniqueness are already included in Spark. Once this option has been enabled you might define application routes like so in order to determine which team a user wishes to view:
 
     Route::get('/{team_slug}/projects', 'ProjectController@index');
 
