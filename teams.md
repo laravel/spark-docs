@@ -96,7 +96,7 @@ However, by default, when a user does not belong to any teams, they will be redi
 <a name="accessing-teams-by-path"></a>
 ## Accessing Teams By Path
 
-Spark also supports disabling the "team switcher" located in the top-right navigation menu and allowing you to have full customization of determining which team a user is currently viewing. To enable this option, call the `Spark::identifyTeamsByPath()` option in the `boot` method of your `SparkServiceProvider`:
+Spark also supports disabling the "team switcher" located in the top-right navigation menu and allowing you to have full customization of determining which team a user is currently viewing. To enable this option, call the `Spark::identifyTeamsByPath()` option in the `booted` method of your `SparkServiceProvider`:
 
     Spark::identifyTeamsByPath();
 
