@@ -61,7 +61,7 @@ This command will create a new Laravel project in a directory matching the given
 
 > **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command.
 
-Once Spark is installed, you are ready to [configure your application](/docs/2.0/billing).
+Once Spark is installed, you are ready to [configure your application](/docs/3.0/billing).
 
 <a name="installation-via-composer"></a>
 ### Installation Via Composer
