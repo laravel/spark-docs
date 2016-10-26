@@ -1,7 +1,37 @@
 # Upgrade Guide
 
+- [Upgrading To Spark 3.0 ](#upgrade-spark-3.0)
 - [Upgrading To Spark 2.0.11 ](#upgrade-spark-2.0.11)
 - [Upgrading To Spark 2.0](#upgrade-spark-2.0)
+
+<a name="upgrade-spark-3.0"></a>
+## Upgrading To Spark 3.0
+
+Spark 3.0 is a free upgrade for your Spark applications and provides compatibility with Vue 2.0.
+
+Before upgrading to Spark 3.0 you need to review Vue's [migration guide](https://vuejs.org/guide/migration.html) and make sure your custom Vue Components are compatible with Vue 2.0.
+
+#### Via Spark CLI
+
+If you installed Spark via the `spark` CLI tool, you may run the `spark:update` Artisan command:
+
+    php artisan spark:update
+
+#### Via Composer
+
+If you installed Spark via Composer, you may simply upgrade your dependency in your `composer.json` file and run the `composer update` command:
+
+    "laravel/spark": "~3.0"
+
+After upgrading Spark, you need to update the following packages in your `package.json` file:
+
+	"laravel-elixir": "^6.0.0-11",
+	"laravel-elixir-vue-2": "^0.2.0",
+	"vue": "~2.0.1",
+
+You also need to update your `gulpfile.js` to require `laravel-elixir-vue-2`:
+
+	require('laravel-elixir-vue-2');
 
 <a name="upgrade-spark-2.0.11"></a>
 ## Upgrading To Spark 2.0.11
