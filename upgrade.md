@@ -33,6 +33,10 @@ You should also update your `gulpfile.js` to require `laravel-elixir-vue-2`:
 
 	require('laravel-elixir-vue-2');
 
+If you are using Webpack to compile your assets in your `gulpfile.js`, you should make sure to add the `laravel-elixir-webpack-official` package to your `package.json` file:
+
+    npm install --save laravel-elixir-webpack-official
+
 <a name="upgrade-spark-2.0.11"></a>
 ## Upgrading To Spark 2.0.11
 
