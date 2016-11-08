@@ -6,13 +6,13 @@
     - [Configuring Team Billing Plans](#configuring-team-billing-plans)
     - [Archiving Plans](#archiving-plans)
 - [Constraining Access To Plans](#constraining-access-to-plans)
-- [Proration](#proration)
 - [Collecting Billing Addresses](#collecting-billing-addresses)
 - [Checking Subscription Status Via Middleware](#checking-subscription-status-via-middleware)
 - [No Credit Card Up Front](#no-credit-card-up-front)
 - [Requiring Credit Cards Up Front](#requiring-credit-cards-up-front)
 - [Site Wide Promotions](#site-wide-promotions)
 - [Currency Customization](#currency-customization)
+- [Proration](#proration)
 - [Billing Events](#billing-events)
 
 <a name="provider-configuration"></a>
@@ -138,16 +138,6 @@ If you would like to provide a specific reason the user is not allowed to switch
             throw IneligibleForPlan::because('You have too many to-dos.');
         }
     });
-    
-<a name="proration"></a>
-## Proration
-
-By default Spark is configured to charge a customer if a subscription was changed in the middle of a billing cycle, the price is adjusted based on when the change took place.
-
-However, you can disable proration so that no changes are made to the use subscription until the beginning of the next billing cycle, simply call this method in the `booted` method of your `App\Providers\SparkServiceProvider`:
-
-    Spark::noProrate();
-   
 
 <a name="collecting-billing-addresses"></a>
 ## Collecting Billing Addresses
@@ -229,6 +219,13 @@ Laravel Cashier, which Spark uses to provide subscription billing, supports cust
 You may call this method from the `booted` method of your `App\Providers\SparkServiceProvider` class.
 
 > **Note:** The given currency must be supported by Stripe or Braintree.
+
+<a name="proration"></a>
+## Proration
+
+By default Spark is configured to charge a prorated amount to the customer if a subscription was changed in the middle of a billing cycle. However, you can disable proration so that no changes are made to the subscription until the beginning of the next billing cycle, simply call the `noProrate` method in the `booted` method of your `App\Providers\SparkServiceProvider`:
+
+    Spark::noProrate();
 
 <a name="billing-events"></a>
 ## Billing Events
