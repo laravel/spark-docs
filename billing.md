@@ -6,6 +6,7 @@
     - [Configuring Team Billing Plans](#configuring-team-billing-plans)
     - [Archiving Plans](#archiving-plans)
 - [Constraining Access To Plans](#constraining-access-to-plans)
+- [Proration](#proration)
 - [Collecting Billing Addresses](#collecting-billing-addresses)
 - [Checking Subscription Status Via Middleware](#checking-subscription-status-via-middleware)
 - [No Credit Card Up Front](#no-credit-card-up-front)
@@ -137,6 +138,16 @@ If you would like to provide a specific reason the user is not allowed to switch
             throw IneligibleForPlan::because('You have too many to-dos.');
         }
     });
+    
+<a name="proration"></a>
+## Proration
+
+By default Spark is configured to charge a customer if a subscription was changed in the middle of a billing cycle, the price is adjusted based on when the change took place.
+
+However, you can disable proration so that no changes are made to the use subscription until the beginning of the next billing cycle, simply call this method in the `booted` method of your `App\Providers\SparkServiceProvider`:
+
+    Spark::noProrate();
+   
 
 <a name="collecting-billing-addresses"></a>
 ## Collecting Billing Addresses
