@@ -7,7 +7,7 @@
 <a name="3.0.0"></a>
 ## 3.0.0
 
-The 3.0 release of Spark upgraded the front-end Vue.js code to Vue 2.0. To learn more about upgrading your application to Spark 3.0, please consult the [upgrade guide](/docs/3.0/upgrade).
+The 3.0 release of Spark upgraded the front-end Vue.js dependencies to Vue 2.0. To learn more about upgrading your application to Spark 3.0, please consult the [upgrade guide](/docs/3.0/upgrade).
 
 <a name="2.0.0"></a>
 ## 2.0.0
