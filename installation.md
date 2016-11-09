@@ -37,7 +37,7 @@ Laravel Spark offers a convenient installer that will create a new Laravel appli
 
 > **Note:** The Spark installer is only recommended for those on Mac or Linux systems. If you are using Windows, please install via Composer. Before using the Spark installer, make sure you have installed the [Laravel installer](https://laravel.com/docs/installation#installing-laravel).
 
-First, clone the `laravel/spark-installer` repository from GitHub into any location on your machine. Once you have cloned the installer, be sure to run the `composer install` command within the cloned directory so the installer's dependencies will be installed.
+First, clone the `laravel/spark-installer` repository [from GitHub](https://github.com/laravel/spark-installer) into any location on your machine. Once you have cloned the installer, be sure to run the `composer install` command within the cloned directory so the installer's dependencies will be installed.
 
 Next, make sure the `spark-installer` directory is added to your systems `$PATH` variable, so that your machine will be able to locate the `spark` executable when you issue Spark commands.
 
@@ -59,7 +59,7 @@ Once you have installed the Spark installer and registered your API token, you m
 
 This command will create a new Laravel project in a directory matching the given `project-name`. Spark will then be installed into the project and configured automatically.
 
-> **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command.
+> **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead you will need to edit your `.env` file before doing so.
 
 Once Spark is installed, you are ready to [configure your application](/docs/3.0/billing).
 
