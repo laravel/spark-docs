@@ -59,7 +59,7 @@ Once you have installed the Spark installer and registered your API token, you m
 
 This command will create a new Laravel project in a directory matching the given `project-name`. Spark will then be installed into the project and configured automatically.
 
-> **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead you will need to edit your `.env` file before doing so.
+> **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead, you will also need to update your `.env` file with your database credentials.
 
 Once Spark is installed, you are ready to [configure your application](/docs/3.0/billing).
 
