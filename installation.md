@@ -106,7 +106,7 @@ Once Spark is installed, add the following provider to your `app.php` configurat
 
     App\Providers\SparkServiceProvider::class,
 
-Finally, you are ready to run the `npm install`, `gulp`, and `php artisan migrate` commands. Once these commands have completed, your ready to enjoy Spark!
+Finally, you are ready to run the `npm install`, `gulp`, and `php artisan migrate` commands. Once these commands have completed, you are ready to enjoy Spark!
 
 <a name="linking-the-storage-directory"></a>
 ### Linking The Storage Directory
