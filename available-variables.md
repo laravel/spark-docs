@@ -19,7 +19,7 @@ You may ask for the `user`, `teams`, or `currentTeam` properties in your Vue com
     Vue.component('home', {
         props: ['user', 'teams', 'currentTeam'],
 
-        ready() {
+        mounted() {
             //
         }
     });
@@ -38,7 +38,7 @@ You may also access data using the `Spark.state` object. For example, let's do t
     Vue.component('home', {
         props: ['user'],
 
-        ready() {
+        mounted() {
             console.log(Spark.state.user);
             console.log(Spark.state.teams);
             console.log(Spark.state.currentTeam);
