@@ -94,7 +94,7 @@ Next, we will define the new `update-profile-details` Vue component which will m
             update() {
                 Spark.put('/settings/profile/details', this.form)
                     .then(response => {
-                        this.$emit('updateUser');
+                        Bus.$emit('updateUser');
                     });
             }
         }
