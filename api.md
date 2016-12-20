@@ -46,7 +46,7 @@ Of course, you need an easy method of determining if a token authenticated user'
 <a name="routes"></a>
 ## Routes
 
-Spark automatically generates a `app/Http/api.php` file to contain all of your API routes. This file is automatically loaded by the `RouteServiceProvider` and that provider also applies the `auth:api` middleware by default. You are free to modify these settings as necessary for your own application. However, the default configuration should be suitable for most applications.
+Spark automatically generates a `routes/api.php` file to contain all of your API routes. This file is automatically loaded by the `RouteServiceProvider` and that provider also applies the `api` middleware by default. You are free to modify these settings as necessary for your own application. However, the default configuration should be suitable for most applications.
 
 <a name="api-driven-applications"></a>
 ## API Driven Applications
