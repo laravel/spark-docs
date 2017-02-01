@@ -6,7 +6,6 @@
     - [Installation Via Composer](#installation-via-composer)
     - [Linking The Storage Directory](#linking-the-storage-directory)
 - [Installation Types](#installation-types)
-- [Using Browserify](#using-browserify)
 
 <a name="requirements"></a>
 ## Requirements
@@ -125,31 +124,4 @@ The default `spark` command will generate a project that supports individual use
     spark new project-name --team-billing
 
     spark new project-name --team-billing --braintree
-
-<a name="using-browserify"></a>
-## Using Browserify
-
-By default, Spark ships with support for Webpack. If you prefer using Browserify you should update your package.json with the following dependencies:
-
-    "laravel-elixir-browserify-official": "^0.1.3",
-    "aliasify": "^2.1.0",
-
-The [Aliasify](https://github.com/benbria/aliasify) package instructs Browserify to load the standalone build of Vue 2.0, which includes the compiler needed to render Spark's templates. Once these dependencies have been added to your project, you should add the following additional entries to your `package.json` file:
-
-	"aliasify": {
-		"aliases": {
-		    "vue": "vue/dist/vue.js"
-		}
-	}
-
-Finally, update your `gulpfile.js` and replace `webpack` with `browserify`:
-
-```javascript
-elixir(function(mix) {
-    mix.less('app.less')
-        .browserify('app.js', null, null, { paths: ['vendor/laravel/spark/resources/assets/js'], transform: ["aliasify"]})
-        .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
-        .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css');
-});
-```
 
