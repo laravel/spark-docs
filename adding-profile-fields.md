@@ -100,7 +100,7 @@ Next, we will define the new `update-profile-details` Vue component which will m
         }
     });
 
-Note that this component uses the `Spark.put` helper, which adds some convenient features on top of the `vue-resource` library. The `Spark` HTTP helpers accept a form object and will automatically the form's `busy` attribute to `true` when the form is submitted. The helper will also automatically handle any validation errors that are returned from the server.
+Note that this component uses the `Spark.put` helper, which adds some convenient features on top of the `axios` library. The `Spark` HTTP helpers accept a form object and will automatically the form's `busy` attribute to `true` when the form is submitted. The helper will also automatically handle any validation errors that are returned from the server.
 
 When you define a new Vue component, you also need to instruct Spark to compile the component into your main `app.js` file. You can do this by adding a line to your `/resources/assets/js/components/bootstrap.js` file:
 
