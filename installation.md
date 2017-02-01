@@ -61,7 +61,7 @@ This command will create a new Laravel project in a directory matching the given
 
 > **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead, you will also need to update your `.env` file with your database credentials.
 
-Once Spark is installed, you are ready to [configure your application](/docs/3.0/billing).
+Once Spark is installed, you are ready to [configure your application](/docs/4.0/billing).
 
 <a name="installation-via-composer"></a>
 ### Installation Via Composer
@@ -83,7 +83,7 @@ Next, add the following repository to your `composer.json` file:
 
 You should also add the following dependency to your `composer.json` file's `require` section:
 
-    "laravel/spark": "~3.0",
+    "laravel/spark": "~4.0",
 
 Next, you should add Cashier to your project. If you are using Stripe, you should use the `laravel/cashier` package. If you are using Braintree, you should use the `laravel/cashier-braintree` package:
 

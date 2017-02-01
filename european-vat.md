@@ -28,7 +28,7 @@ Calling this method is all you need to do to enable European VAT collection. You
 
 When a customer updates their billing information or VAT ID in your application, Spark will automatically call Stripe to update the subscription with the new correct tax rate percentage, so you do not have to do this manually.
 
-For more information on customizing the currency used by your application, check out the [billing documentation](/docs/3.0/billing#currency-customization).
+For more information on customizing the currency used by your application, check out the [billing documentation](/docs/4.0/billing#currency-customization).
 
 > **Note:** You should be sure to configure a webhook in your Stripe control panel to point to the `webhook/stripe` URI of your application. Otherwise, invoice information will not be gathered for customer payments.
 

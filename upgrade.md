@@ -1,8 +1,48 @@
 # Upgrade Guide
 
+- [Upgrading To Spark 4.0](#upgrade-spark-4.0)
 - [Upgrading To Spark 3.0](#upgrade-spark-3.0)
 - [Upgrading To Spark 2.0.11](#upgrade-spark-2.0.11)
 - [Upgrading To Spark 2.0](#upgrade-spark-2.0)
+
+<a name="upgrade-spark-4.0"></a>
+## Upgrading To Spark 4.0
+
+Spark 4.0 is a free upgrade for your Spark applications and provides compatibility with Laravel 5.4. In addition, new Spark 4.0 applications are configured to use [Laravel Mix](https://laravel.com/docs/mix) and Webpack instead of Laravel Elixir.
+
+#### Via Spark CLI
+
+If you installed Spark via the `spark` CLI tool, you may run the `spark:update` Artisan command:
+
+    php artisan spark:update --major
+
+#### Via Composer
+
+If you installed Spark via Composer, you may simply upgrade your dependency in your `composer.json` file and run the `composer update` command:
+
+    "laravel/spark": "~4.0"
+
+### Updating NPM Packages / Elixir
+
+In order to upgrade to Laravel Mix, you need to update the following packages in your `package.json` file:
+
+- Replace `laravel-elixir` dependency with `laravel-mix: ^0.6.0`.
+- Replace `vue-resource` dependency with `axios: ^0.15.2`.
+
+You may also remove any other Elixir related dependencies from your `package.json` file. Next, add the following NPM scripts to your `package.json` file:
+
+    "scripts": {
+        "dev": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+
+Next, Remove your `gulpfile.js` and replace it with the `webpack.mix.js` file available in the [Spark repository](https://github.com/laravel/spark/blob/4.0/install-stubs/webpack.mix.js).
+
+Once you have created your `webpack.mix.js` file, update the first line of your `resources/assets/less/app.less` file to reference the full path to the Bootstrap Less file, as can be [seen in the Spark repository](https://github.com/laravel/spark/blob/4.0/install-stubs/resources/assets/less/app.less#L1).
+
+Once you have made these changes, you can run `npm install` and `npm run dev` to compile your assets using Mix.
 
 <a name="upgrade-spark-3.0"></a>
 ## Upgrading To Spark 3.0
