@@ -40,26 +40,24 @@ You may also remove any other Elixir related dependencies from your `package.jso
 
 Next, Remove your `gulpfile.js` and replace it with a `webpack.mix.js` file with the following content:
 
-```javascript
-let mix = require('laravel-mix');
-let path = require('path');
-
-mix.less('resources/assets/less/app.less', 'public/css')
-   .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
-   .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css')
-   .js('resources/assets/js/app.js', 'public/js')
-   .webpackConfig({
-        resolve: {
-            modules: [
-                path.resolve(__dirname, 'vendor/laravel/spark/resources/assets/js'),
-                'node_modules'
-            ],
-            alias: {
-                'vue$': 'vue/dist/vue.js'
+    let mix = require('laravel-mix');
+    let path = require('path');
+    
+    mix.less('resources/assets/less/app.less', 'public/css')
+       .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
+       .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css')
+       .js('resources/assets/js/app.js', 'public/js')
+       .webpackConfig({
+            resolve: {
+                modules: [
+                    path.resolve(__dirname, 'vendor/laravel/spark/resources/assets/js'),
+                    'node_modules'
+                ],
+                alias: {
+                    'vue$': 'vue/dist/vue.js'
+                }
             }
-        }
-   });
-```
+       });
 
 Once you have created your `webpack.mix.js` file, update the first line of your `resources/assets/less/app.less` file to reference the full path to the Bootstrap Less file:
 
