@@ -38,9 +38,32 @@ You may also remove any other Elixir related dependencies from your `package.jso
         "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
 
-Next, Remove your `gulpfile.js` and replace it with the `webpack.mix.js` file available in the [Spark repository](https://github.com/laravel/spark/blob/4.0/install-stubs/webpack.mix.js).
+Next, Remove your `gulpfile.js` and replace it with a `webpack.mix.js` file with the following content:
 
-Once you have created your `webpack.mix.js` file, update the first line of your `resources/assets/less/app.less` file to reference the full path to the Bootstrap Less file, as can be [seen in the Spark repository](https://github.com/laravel/spark/blob/4.0/install-stubs/resources/assets/less/app.less#L1).
+```javascript
+let mix = require('laravel-mix');
+let path = require('path');
+
+mix.less('resources/assets/less/app.less', 'public/css')
+   .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
+   .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css')
+   .js('resources/assets/js/app.js', 'public/js')
+   .webpackConfig({
+        resolve: {
+            modules: [
+                path.resolve(__dirname, 'vendor/laravel/spark/resources/assets/js'),
+                'node_modules'
+            ],
+            alias: {
+                'vue$': 'vue/dist/vue.js'
+            }
+        }
+   });
+```
+
+Once you have created your `webpack.mix.js` file, update the first line of your `resources/assets/less/app.less` file to reference the full path to the Bootstrap Less file:
+
+    @import "./../../../node_modules/bootstrap/less/bootstrap";
 
 Once you have made these changes, you can run `npm install` and `npm run dev` to compile your assets using Mix.
 
