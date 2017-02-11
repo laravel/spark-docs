@@ -21,7 +21,7 @@ To install Spark, follow the instructions in the [installation guide](/docs/4.0/
 
 #### Post Installation Setup
 
-Once Spark is installed, make sure the NPM dependencies have been installed via the `npm install` command, the `gulp` command has been executed, and the database migrations have ran. You should also configure your e-mail address as a "developer" so that you have access to the [Kiosk](/docs/4.0/kiosk). Simply add your e-mail address to the `$developers` property in the `App\Providers\SparkServiceProvider`.
+Once Spark is installed, make sure the NPM dependencies have been installed via the `npm install` command, the `npm run dev` command has been executed, and the database migrations have ran. You should also configure your e-mail address as a "developer" so that you have access to the [Kiosk](/docs/4.0/kiosk). Simply add your e-mail address to the `$developers` property in the `App\Providers\SparkServiceProvider`.
 
 > **Note:** If you need a development environment for your Spark project, be sure to check out [Homestead](https://laravel.com/docs/homestead).
 
