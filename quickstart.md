@@ -39,7 +39,7 @@ By default, Spark is configured to require no credit-card up front and to grant 
 
 Once Spark has been installed and your billing plans are configured, you're ready to start building your application. By default, Spark installs a `/home` route in your `routes\web.php` file which displays the `home` Blade template. You are free to edit the `home.blade.php` template as needed to build your application.
 
-The `home.blade.php` file also represents the `home` [Vue component](https://vuejs.org), which is defined at `resources/assets/js/components/home.js`. You may add your own JavaScript code to this component as needed. Of course, if you change this code, don't forget to run `gulp` to re-compile your application's JavaScript.
+The `home.blade.php` file also represents the `home` [Vue component](https://vuejs.org), which is defined at `resources/assets/js/components/home.js`. You may add your own JavaScript code to this component as needed. Of course, if you change this code, don't forget to run `npm run dev` to re-compile your application's JavaScript.
 
 Of course, at this point, you may simply build your Laravel application however you wish. Spark has already installed scaffolding for all of the subscription management, authentication, and other settings views. Now  it's time for you to build your dream!
 
