@@ -109,7 +109,7 @@ When you define a new Vue component, you also need to instruct Spark to compile 
     // Load the new Vue component...
     require('./settings/profile/update-profile-details');
 
-> **Note:** After defining the new Vue component, remember to run the `gulp` command in your terminal to re-compile your JavaScript.
+> **Note:** After defining the new Vue component, remember to run the `npm run dev` command in your terminal to re-compile your JavaScript.
 
 <a name="validation-and-storage"></a>
 ## Validation & Storage

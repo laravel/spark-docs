@@ -50,7 +50,7 @@ For example, if you wish to override the `update-contact-information` component'
         }
     });
 
-Of course, once you customize a component, don't forget to run the `gulp` command to re-compile your JavaScript. Otherwise, your changes will not take effect.
+Of course, once you customize a component, don't forget to run the `npm run dev` command to re-compile your JavaScript. Otherwise, your changes will not take effect.
 
 <a name="other-than-vue"></a>
 ## Using Something Other Than Vue
