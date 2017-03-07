@@ -42,7 +42,7 @@ Next, Remove your `gulpfile.js` and replace it with a `webpack.mix.js` file with
 
     let mix = require('laravel-mix');
     let path = require('path');
-    
+
     mix.less('resources/assets/less/app.less', 'public/css')
        .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
        .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css')
@@ -62,8 +62,6 @@ Next, Remove your `gulpfile.js` and replace it with a `webpack.mix.js` file with
 Once you have created your `webpack.mix.js` file, update the first line of your `resources/assets/less/app.less` file to reference the full path to the Bootstrap Less file:
 
     @import "./../../../node_modules/bootstrap/less/bootstrap";
-
-Replace any usage of `this.$http` with `axios` if you are doing any calls where you expect the CSRF token to be passed to an internally used API.
 
 Once you have made these changes, you can run `npm install` and `npm run dev` to compile your assets using Mix.
 
