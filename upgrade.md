@@ -63,9 +63,9 @@ Once you have created your `webpack.mix.js` file, update the first line of your 
 
     @import "./../../../node_modules/bootstrap/less/bootstrap";
 
-Once you have made these changes, you can run `npm install` and `npm run dev` to compile your assets using Mix.
-
 Replace any usage of `this.$http` with `axios` if you are doing any calls where you expect the CSRF token to be passed to an internally used API.
+
+Once you have made these changes, you can run `npm install` and `npm run dev` to compile your assets using Mix.
 
 <a name="upgrade-spark-3.0"></a>
 ## Upgrading To Spark 3.0
