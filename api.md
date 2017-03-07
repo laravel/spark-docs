@@ -68,7 +68,7 @@ Spark makes it entirely painless to consume your API in this way. Simply make re
 
 So, if you are using Vue, you may simply call your API routes like normal. No additional configuration is necessary to start consuming your API:
 
-    this.$http.get('/api/users')
+    axios.get('/api/users')
         .then(response => {
             this.users = response.data;
         });
