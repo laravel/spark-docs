@@ -7,6 +7,7 @@
 - [Does Spark support limiting the resources for a given plan?](#limiting-resources)
 - [Does Spark support collecting European VAT?](#vat)
 - [Can Spark be integrated into an existing application?](#existing)
+- [How to move from a satis-based installation to composer path repository?](#move-from-satis-to-path)
 
 <a name="billing-providers"></a>
 ### Which billing providers does Spark support?
@@ -42,3 +43,25 @@ Yes, Spark [supports collecting European VAT](/docs/4.0/european-vat).
 ### Can Spark be integrated into an existing application?
 
 Spark is not designed to be integrated into existing applications. Spark is designed for new applications.
+
+<a name="move-from-satis-to-path"></a>
+### How to move from a satis-based installation to composer path repository?
+
+First you need to follow the [installation instructions](https://spark.laravel.com/docs/4.0/installation) for the "Spark Installer" package, once you're done register a new token using the `register` command:
+
+    spark register token-value
+
+Next you need to copy the spark directory from `vendor/laravel/spark` to `/spark`, so it resides in the root directory of your project.
+
+Now you need to change Spark version in your composer.json:
+
+    "laravel/spark": "@dev",
+
+And also update composer.json to find the package using the path repository:
+
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./spark"
+        }
+    ],
