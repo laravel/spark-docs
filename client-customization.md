@@ -27,8 +27,6 @@ For an example of an application with custom Vue components, check out the Spark
 
 > **Note:** When you add additional components to your application, don't forget to `require` them in your `resources/assets/js/app.js` file.
 
-For example,
-
 <a name="customizing-existing-vue-components"></a>
 ## Customizing Existing Vue Components
 
