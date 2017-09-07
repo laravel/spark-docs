@@ -13,7 +13,7 @@
 Laravel Spark has a few requirements you should be aware of before installing:
 
 - Composer
-- Laravel Framework 5.4+
+- Laravel Framework 5.5+
 - Laravel Mix
 - Bootstrap 3 (LESS)
 - Node.js & NPM
