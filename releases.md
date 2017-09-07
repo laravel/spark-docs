@@ -1,9 +1,15 @@
 # Release Notes
 
+- [5.0.0](#5.0.0)
 - [4.0.0](#4.0.0)
 - [3.0.0](#3.0.0)
 - [2.0.0](#2.0.0)
 - [1.0.0](#1.0.0)
+
+<a name="5.0.0"></a>
+## 5.0.0
+
+The 5.0 release of Spark provides Laravel 5.5 compatibility.
 
 <a name="4.0.0"></a>
 ## 4.0.0

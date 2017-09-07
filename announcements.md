@@ -8,7 +8,7 @@
 
 From the Spark Kiosk, you may create announcements to be displayed to your users. These announcements may be viewed by users by clicking on the "notification bell" icon in the application's navigation bar. The notification bell will have a red activity indicator when there are unread announcements or notifications.
 
-To create an announcement, simply [configure your user as a developer](/docs/4.0/kiosk) and enter the Kiosk via the user profile drop-down menu, then click the "Announcements" tab.
+To create an announcement, simply [configure your user as a developer](/docs/5.0/kiosk) and enter the Kiosk via the user profile drop-down menu, then click the "Announcements" tab.
 
 The announcement text supports Markdown, so feel free to use Markdown syntax within your announcement body. You may optionally attach an "Action Button" to the announcement. Adding an action button gives users a chance to view more information about the announcement, such as a blog post.
 

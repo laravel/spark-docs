@@ -17,7 +17,7 @@ In this guide, we'll walk through installing Spark and writing the first view fo
 <a name="installing-spark"></a>
 ## Installing Spark
 
-To install Spark, follow the instructions in the [installation guide](/docs/4.0/installation).
+To install Spark, follow the instructions in the [installation guide](/docs/5.0/installation).
 
 #### Post Installation Setup
 

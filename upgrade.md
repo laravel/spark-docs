@@ -11,6 +11,10 @@
 
 Spark 5.0 is a free upgrade for your Spark applications and provides compatibility with Laravel 5.5.
 
+#### Updating Laravel
+
+First, you should read through the entire [Laravel 5.5 upgrade guide](https://laravel.com/docs/5.5/upgrade) and make any necessary modifications to your application.
+
 #### Via Spark CLI
 
 If you installed Spark via the `spark` CLI tool, you may run the `spark:update` Artisan command:
