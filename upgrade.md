@@ -1,9 +1,29 @@
 # Upgrade Guide
 
+- [Upgrading To Spark 5.0](#upgrade-spark-5.0)
 - [Upgrading To Spark 4.0](#upgrade-spark-4.0)
 - [Upgrading To Spark 3.0](#upgrade-spark-3.0)
 - [Upgrading To Spark 2.0.11](#upgrade-spark-2.0.11)
 - [Upgrading To Spark 2.0](#upgrade-spark-2.0)
+
+<a name="upgrade-spark-5.0"></a>
+## Upgrading To Spark 5.0
+
+Spark 5.0 is a free upgrade for your Spark applications and provides compatibility with Laravel 5.5.
+
+#### Via Spark CLI
+
+If you installed Spark via the `spark` CLI tool, you may run the `spark:update` Artisan command:
+
+    php artisan spark:update --major
+
+#### Via Composer
+
+If you installed Spark via Composer, you may simply upgrade your dependency in your `composer.json` file and run the `composer update` command:
+
+    "laravel/spark": "~5.0"
+
+Once you have made these changes, you can run `npm run dev` to compile your assets.
 
 <a name="upgrade-spark-4.0"></a>
 ## Upgrading To Spark 4.0
