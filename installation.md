@@ -4,6 +4,7 @@
 - [Installation](#installation)
     - [Spark Installer](#spark-installer)
     - [Installation Via Composer](#installation-via-composer)
+    - [Finishing Up Installation](#finishing-up-installation)
     - [Linking The Storage Directory](#linking-the-storage-directory)
 - [Installation Types](#installation-types)
 
@@ -60,7 +61,6 @@ This command will create a new Laravel project in a directory matching the given
 
 > **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead, you will also need to update your `.env` file with your database credentials.
 
-Once Spark is installed, you are ready to [configure your application](/docs/5.0/billing).
 
 <a name="installation-via-composer"></a>
 ### Installation Via Composer
@@ -105,7 +105,12 @@ Once Spark is installed, add the following provider to your `app.php` configurat
 
     App\Providers\SparkServiceProvider::class,
 
-Finally, you are ready to run the `npm install`, `npm run dev`, and `php artisan migrate` commands. Once these commands have completed, you are ready to enjoy Spark!
+<a name="finishing-up-installation"></a>
+### Finishing Up Installation
+
+Finally, after Spark is installed, you are ready to run the `npm install`, `npm run dev`, and `php artisan migrate` commands. Once these commands have completed, you are ready to enjoy Spark!
+
+Once Spark is installed, you are ready to [configure your application](/docs/5.0/billing).
 
 <a name="linking-the-storage-directory"></a>
 ### Linking The Storage Directory
