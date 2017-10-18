@@ -77,6 +77,6 @@ So, if you are using Vue, you may simply call your API routes like normal. No ad
 <a name="using-passport"></a>
 ## Using Passport
 
-In addition to the built-in API authentication driver, Spark supports [Laravel Passport](https://laravel.com/docs/5.3/passport) out of the box. You may install Passport by following the [Passport installation documentation](https://laravel.com/docs/5.5/passport).
+In addition to the built-in API authentication driver, Spark supports [Laravel Passport](https://laravel.com/docs/5.5/passport) out of the box. You may install Passport by following the [Passport installation documentation](https://laravel.com/docs/5.5/passport).
 
 After installing Passport, you can almost always use Passport as you would in any other Laravel application. However, instead of calling the `Passport::tokensCan()` method, you should use the `Spark::tokensCan()` method.
