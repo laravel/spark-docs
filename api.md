@@ -55,7 +55,7 @@ Once a user has an API token, they can access your API by passing the token in a
 
     Route::get('/api/users', ['middleware' => 'auth:api', function () {
         //
-    ]);
+    }]);
 
 <a name="sharing-your-api"></a>
 ### Sharing Your API With Your JavaScript Application
