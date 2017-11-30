@@ -174,7 +174,7 @@ By default, Spark is configured to allow users to register without providing the
 
     Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
-When a customer registers, they will be placed on a "generic trial", meaning they will not actually be subscribed to one of your plans; however, `$user->subscribed()` and `$user->onTrial()` will both return `true` until the customer's trial expires.
+When a customer registers, they will be placed on a "generic trial", meaning they will not actually be subscribed to one of your plans.
 
 If you would like to know if a customer is on a "no card up front", generic trial, you may use the `onGenericTrial` method on the user (or team if using team billing) instance:
 
