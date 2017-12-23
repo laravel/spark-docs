@@ -2,7 +2,7 @@
 
 - [Introduction](#introduction)
 - [Creating Notifications](#creating-notifications)
-- [Sending Laravel 5.3 Notifications](#sending-laravel-53-notifications)
+- [Sending Laravel 5 Notifications](#sending-laravel-5-notifications)
 
 <a name="introduction"></a>
 ## Introduction
@@ -35,9 +35,9 @@ The `action_text` and `action_url` attributes are optional so you do not need to
 When a notification is created, Spark will fire the `Laravel\Spark\Events\NotificationCreated` event, which your application can listen for to do work after a notification is created.
 
 <a name="sending-laravel-53-notifications"></a>
-## Sending Laravel 5.3 Notifications
+## Sending Laravel 5 Notifications
 
-Spark also allows you to send notifications using the Laravel 5.3 notification system. To create a notification, you may use the following Artisan command:
+Spark also allows you to send notifications using the Laravel 5 notification system. To create a notification, you may use the following Artisan command:
 
 ```
 php artisan make:notification TaskCompleted
