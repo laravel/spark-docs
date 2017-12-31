@@ -73,7 +73,6 @@ So, if you are using Vue, you may simply call your API routes like normal. No ad
             this.users = response.data;
         });
 
-
 <a name="using-passport"></a>
 ## Using Passport
 

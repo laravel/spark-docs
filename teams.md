@@ -35,7 +35,6 @@ After registration, your users will be able to create additional teams from thei
 
     Spark::noAdditionalTeams();
 
-
 ### Changing How Spark Refers To Teams
 
 By default, Spark uses the term "Team" to refer to Spark Teams. However, you may easily customize this using the `referToTeamAs` method in the `register` method of your `SparkServiceProvider`:

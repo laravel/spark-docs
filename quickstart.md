@@ -6,7 +6,6 @@
 - [Building Your Application](#building-your-application)
 - [Demo Application](#demo-application)
 
-
 <a name="introduction"></a>
 ## Introduction
 
