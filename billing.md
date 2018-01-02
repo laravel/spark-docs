@@ -5,6 +5,7 @@
     - [Configuring User Billing Plans](#configuring-billing-plans)
     - [Configuring Team Billing Plans](#configuring-team-billing-plans)
     - [Archiving Plans](#archiving-plans)
+- [Charging per-seat](#charging-per-seat)
 - [Constraining Access To Plans](#constraining-access-to-plans)
 - [Collecting Billing Addresses](#collecting-billing-addresses)
 - [Checking Subscription Status Via Middleware](#checking-subscription-status-via-middleware)
@@ -111,6 +112,54 @@ If you no longer wish to offer a given plan to your customers, you should not de
                 'Feature 2',
                 'Feature 3',
             ]);
+
+<a name="charging-per-seat"></a>
+## Charging customers per seat
+
+Spark makes it easy to charge your customers per seat:
+
+```php
+Spark::chargePerSeat('Server');
+```
+
+Adding this line to the `booted` method of your SparkServiceProvider will instruct Spark to charge customers per Server, you can later add or remove seats from the user subscription using the following methods:
+
+```php
+$user->addSeat();
+$user->removeSeat();
+```
+
+You can also update the number of seats a user subscription has:
+
+```php
+$user->updateSeats(5);
+```
+
+To charge teams per seat you can use the following method:
+
+```php
+Spark::chargeTeamsPerSeat('Repositories');
+```
+
+### Charging users per team
+
+If your application uses Teams, you can charge your customers based on how many teams they have:
+
+```php
+Spark::chargePerTeam();
+```
+
+Now every time the user creates or removes a team, Spark will update the subscription quantity on Stripe/Braintree.
+
+
+### Charging teams per member
+
+You can also charge teams per member:
+
+```php
+Spark::chargeTeamsPerMember();
+```
+
 
 <a name="constraining-access-to-plans"></a>
 ## Constraining Access To Plans

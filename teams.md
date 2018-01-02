@@ -38,11 +38,14 @@ After registration, your users will be able to create additional teams from thei
 
 ### Changing How Spark Refers To Teams
 
-By default, Spark uses the term "Team" to refer to Spark Teams. However, you may easily customize this using the `referToTeamAs` method in the `register` method of your `SparkServiceProvider`:
+By default, Spark uses the segment "/teams/" in URIs. However, you may easily customize this using the `prefixTeamsAs` method in the `register` method of your `SparkServiceProvider`:
 
-    Spark::referToTeamAs('band');
+    Spark::prefixTeamsAs('bands');
 
-> Be sure to call this method in the `register` method of your service provider, as Spark will not function correctly if it is called in the `booted` method. Additionally, make sure you pass the singular, lowercase form of the word.
+> Be sure to call this method in the `register` method of your service provider, as Spark will not function correctly if it is called in the `booted` method. Additionally, make sure you pass the plural, lowercase form of the word.
+
+To change how Teams are referred to in views you can update the `resources/lang/en/teams.php` language file.
+
 
 <a name="accessing-the-users-teams"></a>
 ## Accessing The User's Teams
