@@ -86,7 +86,7 @@ Next, we will define the new `update-profile-details` Vue component which will m
             };
         },
 
-        ready() {
+        mounted() {
             this.form.age = this.user.age;
         },
 
@@ -94,13 +94,13 @@ Next, we will define the new `update-profile-details` Vue component which will m
             update() {
                 Spark.put('/settings/profile/details', this.form)
                     .then(response => {
-                        this.$dispatch('updateUser');
+                        Bus.$emit('updateUser');
                     });
             }
         }
     });
 
-Note that this component uses the `Spark.put` helper, which adds some convenient features on top of the `vue-resource` library. The `Spark` HTTP helpers accept a form object and will automatically the form's `busy` attribute to `true` when the form is submitted. The helper will also automatically handle any validation errors that are returned from the server.
+Note that this component uses the `Spark.put` helper, which adds some convenient features on top of the `axios` library. The `Spark` HTTP helpers accept a form object and will automatically the form's `busy` attribute to `true` when the form is submitted. The helper will also automatically handle any validation errors that are returned from the server.
 
 When you define a new Vue component, you also need to instruct Spark to compile the component into your main `app.js` file. You can do this by adding a line to your `/resources/assets/js/components/bootstrap.js` file:
 
@@ -109,7 +109,7 @@ When you define a new Vue component, you also need to instruct Spark to compile 
     // Load the new Vue component...
     require('./settings/profile/update-profile-details');
 
-> **Note:** After defining the new Vue component, remember to run the `gulp` command in your terminal to re-compile your JavaScript.
+> **Note:** After defining the new Vue component, remember to run the `npm run dev` command in your terminal to re-compile your JavaScript.
 
 <a name="validation-and-storage"></a>
 ## Validation & Storage

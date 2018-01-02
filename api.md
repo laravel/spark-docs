@@ -46,7 +46,7 @@ Of course, you need an easy method of determining if a token authenticated user'
 <a name="routes"></a>
 ## Routes
 
-Spark automatically generates a `app/Http/api.php` file to contain all of your API routes. This file is automatically loaded by the `RouteServiceProvider` and that provider also applies the `auth:api` middleware by default. You are free to modify these settings as necessary for your own application. However, the default configuration should be suitable for most applications.
+Spark automatically generates a `routes/api.php` file to contain all of your API routes. This file is automatically loaded by the `RouteServiceProvider` and that provider also applies the `api` middleware by default. You are free to modify these settings as necessary for your own application. However, the default configuration should be suitable for most applications.
 
 <a name="api-driven-applications"></a>
 ## API Driven Applications
@@ -68,7 +68,7 @@ Spark makes it entirely painless to consume your API in this way. Simply make re
 
 So, if you are using Vue, you may simply call your API routes like normal. No additional configuration is necessary to start consuming your API:
 
-    this.$http.get('/api/users')
+    axios.get('/api/users')
         .then(response => {
             this.users = response.data;
         });
@@ -77,6 +77,6 @@ So, if you are using Vue, you may simply call your API routes like normal. No ad
 <a name="using-passport"></a>
 ## Using Passport
 
-In addition to the built-in API authentication driver, Spark supports [Laravel Passport](https://laravel.com/docs/5.3/passport) out of the box. You may install Passport by following the [Passport installation documentation](https://laravel.com/docs/5.3/passport).
+In addition to the built-in API authentication driver, Spark supports [Laravel Passport](https://laravel.com/docs/5.5/passport) out of the box. You may install Passport by following the [Passport installation documentation](https://laravel.com/docs/5.5/passport).
 
 After installing Passport, you can almost always use Passport as you would in any other Laravel application. However, instead of calling the `Passport::tokensCan()` method, you should use the `Spark::tokensCan()` method.

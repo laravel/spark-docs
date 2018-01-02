@@ -6,7 +6,6 @@
     - [Installation Via Composer](#installation-via-composer)
     - [Linking The Storage Directory](#linking-the-storage-directory)
 - [Installation Types](#installation-types)
-- [Updating Spark](#updating-spark)
 
 <a name="requirements"></a>
 ## Requirements
@@ -14,8 +13,8 @@
 Laravel Spark has a few requirements you should be aware of before installing:
 
 - Composer
-- Laravel Framework 5.3+
-- Laravel Elixir
+- Laravel Framework 5.5+
+- Laravel Mix
 - Bootstrap 3 (LESS)
 - Node.js & NPM
 
@@ -37,7 +36,7 @@ Laravel Spark offers a convenient installer that will create a new Laravel appli
 
 > **Note:** The Spark installer is only recommended for those on Mac or Linux systems. If you are using Windows, please install via Composer. Before using the Spark installer, make sure you have installed the [Laravel installer](https://laravel.com/docs/installation#installing-laravel).
 
-First, clone the `laravel/spark-installer` repository from GitHub into any location on your machine. Once you have cloned the installer, be sure to run the `composer install` command within the cloned directory so the installer's dependencies will be installed.
+First, clone the `laravel/spark-installer` repository [from GitHub](https://github.com/laravel/spark-installer) into any location on your machine. Once you have cloned the installer, be sure to run the `composer install` command within the cloned directory so the installer's dependencies will be installed.
 
 Next, make sure the `spark-installer` directory is added to your systems `$PATH` variable, so that your machine will be able to locate the `spark` executable when you issue Spark commands.
 
@@ -59,9 +58,9 @@ Once you have installed the Spark installer and registered your API token, you m
 
 This command will create a new Laravel project in a directory matching the given `project-name`. Spark will then be installed into the project and configured automatically.
 
-> **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command.
+> **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead, you will also need to update your `.env` file with your database credentials.
 
-Once Spark is installed, you are ready to [configure your application](/docs/3.0/billing).
+Once Spark is installed, you are ready to [configure your application](/docs/5.0/billing).
 
 <a name="installation-via-composer"></a>
 ### Installation Via Composer
@@ -83,7 +82,7 @@ Next, add the following repository to your `composer.json` file:
 
 You should also add the following dependency to your `composer.json` file's `require` section:
 
-    "laravel/spark": "~2.0",
+    "laravel/spark": "~5.0",
 
 Next, you should add Cashier to your project. If you are using Stripe, you should use the `laravel/cashier` package. If you are using Braintree, you should use the `laravel/cashier-braintree` package:
 
@@ -106,7 +105,7 @@ Once Spark is installed, add the following provider to your `app.php` configurat
 
     App\Providers\SparkServiceProvider::class,
 
-Finally, you are ready to run the `npm install`, `gulp`, and `php artisan migrate` commands. Once these commands have completed, your ready to enjoy Spark!
+Finally, you are ready to run the `npm install`, `npm run dev`, and `php artisan migrate` commands. Once these commands have completed, you are ready to enjoy Spark!
 
 <a name="linking-the-storage-directory"></a>
 ### Linking The Storage Directory
@@ -125,3 +124,4 @@ The default `spark` command will generate a project that supports individual use
     spark new project-name --team-billing
 
     spark new project-name --team-billing --braintree
+

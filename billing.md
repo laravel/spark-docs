@@ -12,6 +12,7 @@
 - [Requiring Credit Cards Up Front](#requiring-credit-cards-up-front)
 - [Site Wide Promotions](#site-wide-promotions)
 - [Currency Customization](#currency-customization)
+- [Proration](#proration)
 - [Billing Events](#billing-events)
 
 <a name="provider-configuration"></a>
@@ -173,7 +174,7 @@ By default, Spark is configured to allow users to register without providing the
 
     Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
-When a customer registers, they will be placed on a "generic trial", meaning they will not actually be subscribed to one of your plans; however, `$user->subscribed()` and `$user->onTrial()` will both return `true` until the customer's trial expires.
+When a customer registers, they will be placed on a "generic trial", meaning they will not actually be subscribed to one of your plans.
 
 If you would like to know if a customer is on a "no card up front", generic trial, you may use the `onGenericTrial` method on the user (or team if using team billing) instance:
 
@@ -218,6 +219,13 @@ Laravel Cashier, which Spark uses to provide subscription billing, supports cust
 You may call this method from the `booted` method of your `App\Providers\SparkServiceProvider` class.
 
 > **Note:** The given currency must be supported by Stripe or Braintree.
+
+<a name="proration"></a>
+## Proration
+
+By default Spark is configured to charge a prorated amount to the customer if a subscription was changed in the middle of a billing cycle. However, you can disable proration so that no changes are made to the subscription until the beginning of the next billing cycle, simply call the `noProrate` method in the `booted` method of your `App\Providers\SparkServiceProvider`:
+
+    Spark::noProrate();
 
 <a name="billing-events"></a>
 ## Billing Events
