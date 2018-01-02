@@ -5,6 +5,8 @@
 <a name="upgrade-spark-6.0"></a>
 ## Upgrading To Spark 6.0
 
+Spark 6.0 comes with a fresh Bootstrap4 theme, it also uses Lodash instead of Underscore when dealing with JavaScript collections.
+
 #### Via Spark CLI
 
 If you installed Spark via the `spark` CLI tool, you may run the `spark:update` Artisan command:
