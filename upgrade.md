@@ -13,7 +13,7 @@ For this reason, you may wish to reserve usage of Spark 6.0 to new Spark project
 
 ### License Upgrade Requirements
 
-Spark 6.0 is a paid update. As such, you must purchase an upgraded license in order to access the source code. However, if you are an existing Spark customer, you will automatically receive a 50% discount when upgrading your Spark licenses to 6.0.
+Due to the extensive modifications and improvements, Spark 6.0 is the first paid update to Spark since it was originally released in 2016. As such, you must purchase an upgraded license in order to access the source code. **However, if you are an existing Spark customer, you will automatically receive a 50% discount when upgrading your Spark licenses to 6.0.**
 
 After purchasing an upgraded license, you may join the Spark 6.0 repository from your account profile on the Spark website.
 
