@@ -74,16 +74,12 @@ Spark 6.0 allows you to choose the role that will be assigned to a user when inv
 
 ### SendInvitation Interaction Changes
 
-If you override the `SendInvitation` in your app, the `handle()` method now accepts a third argument `$role` which will be used to assign an initial role for the invited user.
+The `handle` method of the `SendInvitation` interaction now accepts a third argument (`$role`) which is used to assign an initial role to the invited user.
 
-### Changes in how you refer to teams
+### Team Localization Changes
 
-In Spark 5.0 you used the `Spark::referToTeamAs()` to change how teams are referred to in your application's views and URIs, in Spark 6.0 this method was removed and replaced with the following:
+In prior releases of Spark, the `Spark::referToTeamAs()` method was used to change how teams are referred to in your application's views and URIs. However, in Spark 6.0, this method has been removed and replaced with the `prefixTeamsAs` method:
 
-```php
-`Spark::prefixTeamsAs('bands')`
-```
+    Spark::prefixTeamsAs('bands')
 
-This will cause all URIs that has the word `teams` to become `bands` instead.
-
-To change how a team is referred to in your views you can update the `resources/lang/en/teams.php` translation file and swap all instances of the word "team" with the word of your choice.
+This method will instruct Spark to use `bands` in all team URLs instead of `teams`. To change the word used to refer to "teams" in your application's views, you should update the `resources/lang/en/teams.php` translation file.
