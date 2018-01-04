@@ -5,7 +5,7 @@
     - [Configuring User Billing Plans](#configuring-billing-plans)
     - [Configuring Team Billing Plans](#configuring-team-billing-plans)
     - [Archiving Plans](#archiving-plans)
-- [Charging per-seat](#charging-per-seat)
+- [Charging "Per Seat"](#charging-per-seat)
 - [Constraining Access To Plans](#constraining-access-to-plans)
 - [Collecting Billing Addresses](#collecting-billing-addresses)
 - [Checking Subscription Status Via Middleware](#checking-subscription-status-via-middleware)
@@ -114,52 +114,53 @@ If you no longer wish to offer a given plan to your customers, you should not de
             ]);
 
 <a name="charging-per-seat"></a>
-## Charging customers per seat
+## Charging "Per Seat"
 
-Spark makes it easy to charge your customers per seat:
+Spark's per-seat pricing makes it easy to charge your customers for each team, for each team member, or by any other custom metric you wish to charge by. For example, if you are building project management software, you may wish to charge per project.
 
-```php
-Spark::chargePerSeat('Server');
-```
+To get started, your application should typically have two subscription plans: a free plan and a plan that specifies the price "per seat".
 
-Adding this line to the `booted` method of your SparkServiceProvider will instruct Spark to charge customers per Server, you can later add or remove seats from the user subscription using the following methods:
+### Charging Teams Per Member
 
-```php
-$user->addSeat();
-$user->removeSeat();
-```
+If your application uses teams, you may charge your users based on how many users they add to a team. Simply add the following line of code to the `booted` method of your `SparkServiceProvider`:
 
-You can also update the number of seats a user subscription has:
+    Spark::chargeTeamsPerMember();
 
-```php
-$user->updateSeats(5);
-```
+When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
 
-To charge teams per seat you can use the following method:
+### Charging Users Per Team
 
-```php
-Spark::chargeTeamsPerSeat('Repositories');
-```
+If your application uses teams, you may charge your users based on how many teams they create. Simply add the following line of code to the `booted` method of your `SparkServiceProvider`:
 
-### Charging users per team
+    Spark::chargePerTeam();
 
-If your application uses Teams, you can charge your customers based on how many teams they have:
+When a team is created or deleted, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
 
-```php
-Spark::chargePerTeam();
-```
+### Custom Per Seat Targets
 
-Now every time the user creates or removes a team, Spark will update the subscription quantity on Stripe/Braintree.
+Next, let's take a look at at charging per a custom target. In this example, let's assume you are building project management software and you would like to charge your customers per project. You can get started by adding the following line to the `booted` method of your `SparkServiceProvider`:
 
+    Spark::chargePerSeat('Projects');
 
-### Charging teams per member
+Next, you will need to call the `addSeat` / `removeSeat` methods from the relevant places in your application. Specifically, you will need to call them when your users create or delete projects. The `addSeat` method will "increment" your subscription plan's "quantity" and the `removeSeat` method will "decrement" the subscription plan's quantity:
 
-You can also charge teams per member:
+    $user->addSeat();
 
-```php
-Spark::chargeTeamsPerMember();
-```
+    $user->removeSeat();
 
+Alternatively, you may directly provide the number of "seats" the user's subscription currently has:
+
+    $user->updateSeats(5);
+
+If your application is using teams and you would like to charge teams per seat, you should use the `chargeTeamsPerSeat` method:
+
+    Spark::chargeTeamsPerSeat('Projects');
+
+    $team->addSeat();
+
+    $team->removeSeat();
+
+    $team->updateSeats(5);
 
 <a name="constraining-access-to-plans"></a>
 ## Constraining Access To Plans

@@ -13,9 +13,9 @@
 Laravel Spark has a few requirements you should be aware of before installing:
 
 - Composer
-- Laravel Framework 5.5+
+- Laravel Framework 5.6+
 - Laravel Mix
-- Bootstrap 3 (LESS)
+- Bootstrap 4 (SASS)
 - Node.js & NPM
 
 Before installing Spark, make sure you have the latest version of Node and NPM. You can download a graphical installer for Node on the [Node website](https://nodejs.org).
@@ -82,7 +82,7 @@ Next, add the following repository to your `composer.json` file:
 
 You should also add the following dependency to your `composer.json` file's `require` section:
 
-    "laravel/spark": "~6.0",
+    "laravel/spark-aurelius": "~6.0",
 
 Next, you should add Cashier to your project. If you are using Stripe, you should use the `laravel/cashier` package. If you are using Braintree, you should use the `laravel/cashier-braintree` package:
 

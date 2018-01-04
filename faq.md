@@ -53,7 +53,7 @@ First, follow the [installation instructions](https://spark.laravel.com/docs/5.0
 
 Next, you should copy the Spark source directory from `vendor/laravel/spark` to `/spark` so that it resides in the root directory of your project. Once you have copied the files, you need to change the Spark dependency version in your `composer.json` file to `@dev`:
 
-    "laravel/spark": "@dev",
+    "laravel/spark-aurelius": "@dev",
 
 Finally, update your `composer.json` file to use a `path` repository for Spark. Once this has been completed, run the `composer update` command:
 
