@@ -5,6 +5,7 @@
     - [Configuring User Billing Plans](#configuring-billing-plans)
     - [Configuring Team Billing Plans](#configuring-team-billing-plans)
     - [Archiving Plans](#archiving-plans)
+- [Charging "Per Seat"](#charging-per-seat)
 - [Constraining Access To Plans](#constraining-access-to-plans)
 - [Collecting Billing Addresses](#collecting-billing-addresses)
 - [Checking Subscription Status Via Middleware](#checking-subscription-status-via-middleware)
@@ -111,6 +112,55 @@ If you no longer wish to offer a given plan to your customers, you should not de
                 'Feature 2',
                 'Feature 3',
             ]);
+
+<a name="charging-per-seat"></a>
+## Charging "Per Seat"
+
+Spark's per-seat pricing makes it easy to charge your customers for each team, for each team member, or by any other custom metric you wish to charge by. For example, if you are building project management software, you may wish to charge per project.
+
+To get started, your application should typically have two subscription plans: a free plan and a plan that specifies the price "per seat".
+
+### Charging Teams Per Member
+
+If your application uses teams, you may charge your users based on how many users they add to a team. Simply add the following line of code to the `booted` method of your `SparkServiceProvider`:
+
+    Spark::chargeTeamsPerMember();
+
+When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
+
+### Charging Users Per Team
+
+If your application uses teams, you may charge your users based on how many teams they create. Simply add the following line of code to the `booted` method of your `SparkServiceProvider`:
+
+    Spark::chargePerTeam();
+
+When a team is created or deleted, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
+
+### Custom Per Seat Targets
+
+Next, let's take a look at at charging per a custom target. In this example, let's assume you are building project management software and you would like to charge your customers per project. You can get started by adding the following line to the `booted` method of your `SparkServiceProvider`:
+
+    Spark::chargePerSeat('Projects');
+
+Next, you will need to call the `addSeat` / `removeSeat` methods from the relevant places in your application. Specifically, you will need to call them when your users create or delete projects. The `addSeat` method will "increment" your subscription plan's "quantity" and the `removeSeat` method will "decrement" the subscription plan's quantity:
+
+    $user->addSeat();
+
+    $user->removeSeat();
+
+Alternatively, you may directly provide the number of "seats" the user's subscription currently has:
+
+    $user->updateSeats(5);
+
+If your application is using teams and you would like to charge teams per seat, you should use the `chargeTeamsPerSeat` method:
+
+    Spark::chargeTeamsPerSeat('Projects');
+
+    $team->addSeat();
+
+    $team->removeSeat();
+
+    $team->updateSeats(5);
 
 <a name="constraining-access-to-plans"></a>
 ## Constraining Access To Plans
