@@ -83,3 +83,17 @@ In prior releases of Spark, the `Spark::referToTeamAs()` method was used to chan
     Spark::prefixTeamsAs('bands')
 
 This method will instruct Spark to use `bands` in all team URLs instead of `teams`. To change the word used to refer to "teams" in your application's views, you should update the `resources/lang/en/teams.php` translation file.
+
+### Upgrading to Bootstrap4
+
+Bootstrap4 is the first upgrade to the famous CSS framework in a long time, it comes with some changes like switching from Less to Sass, Flexbox-based grid system, dropping Glyphicons icon font, and adding many new utility classes.
+
+For a complete guide on how to upgrade your application to Bootstrap4 you can check the [official migration guide](https://getbootstrap.com/docs/4.0/migration/). However, for your modified Spark views or custom components you can easily upgrade your markup and classes by applying the following changes:
+
+- Switch `.panel`, `.panel-header`, and `.panel-body` to `.card`, `.card-header`, and `.card-body`.
+- Remove the `.form-horizontal` class from your forms and add a `.row` class in each of your `.form-group` elements.
+- Replace the `.control-label` class with `col-form-label`.
+- Replace the `.help-block` class with `.invalid-feedback`.
+- For validation errors, instead of adding the `.has-error` class to your `.form-group`, add a `.is-invalid` class to your `.form-control` input.
+- Replace all grid offset classes (e.g. `col-md-offset-4`) to the new class names `.offset-md-4`.
+- Replace `.btn-default` with `.btn-secondary`.
