@@ -109,7 +109,7 @@ Bootstrap 4 is written in SASS instead of Less. So, create a new `sass` director
 
     @import "./../../../vendor/laravel/spark/resources/assets/sass/spark";
 
-    // or, if you've published the Spark source to your project root...
+    // Or, if you've published the Spark source to your project root...
     @import "./spark/spark";
 
 Next, you should move any Less customizations from your old `app.less` file to the new `app.scss` file.
