@@ -1,11 +1,11 @@
 # Localization
 
-- [Introduction](#introduction)
+- [Translating Strings](#translating-strings)
 - [Translating The Terms Of Service](#translating-terms-of-service)
 - [Right-To-Left Theme](#right-to-left-theme)
 
-<a name="introduction"></a>
-## Introduction
+<a name="translating-strings"></a>
+## Translating Strings
 
 Spark utilizes the powerful translation component shipped with Laravel. By default, Spark is shipped with an English interface and a left-to-right theme.
 
