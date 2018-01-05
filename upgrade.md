@@ -102,9 +102,11 @@ For a complete guide on how to upgrade your views to use Bootstrap4 you can chec
 
 In your `resources/assets` folder create a new `sass` directory and add an `app.scss` file with the following content:
 
-```sass
-// @import "./spark/spark";
+```css
 @import "./../../../vendor/laravel/spark/resources/assets/sass/spark";
+
+// OR if you've published your Spark source to project root
+@import "./spark/spark";
 ```
 
 Now you'll need to move any custom LESS customizations from your old `app.less` file to the new `app.scss` file.
