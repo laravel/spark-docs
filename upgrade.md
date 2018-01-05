@@ -9,7 +9,7 @@ Spark 6.0 is the first significant update of Spark since its original release. A
 
 While the back-end changes to from Spark 5.0 to Spark 6.0 are relatively minor, the front-end changes are **extensive**. Unfortunately, this is primarily due to the fact that Bootstrap 4 is radically different than Bootstrap 3 and is not backwards compatible in any way.
 
-For this reason, you may wish to reserve usage of Spark 6.0 to new Spark projects only. Otherwise, your entire application front-end will need to be converted to Bootstrap 4. Spark 5 will continue to be maintained for at least 12 months following the release of Spark 6.
+For this reason, you may wish to reserve usage of Spark 6.0 to new Spark projects only. Otherwise, your entire application front-end will need to be converted to Bootstrap 4. **Spark 5 will continue to be maintained for at least 12 months following the release of Spark 6.**
 
 ### License Upgrade Requirements
 
