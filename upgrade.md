@@ -84,16 +84,68 @@ In prior releases of Spark, the `Spark::referToTeamAs()` method was used to chan
 
 This method will instruct Spark to use `bands` in all team URLs instead of `teams`. To change the word used to refer to "teams" in your application's views, you should update the `resources/lang/en/teams.php` translation file.
 
-### Upgrading to Bootstrap4
+### Upgrading views to Bootstrap4
 
 Bootstrap4 is the first upgrade to the famous CSS framework in a long time, it comes with some changes like switching from Less to Sass, Flexbox-based grid system, dropping Glyphicons icon font, and adding many new utility classes.
 
-For a complete guide on how to upgrade your application to Bootstrap4 you can check the [official migration guide](https://getbootstrap.com/docs/4.0/migration/). However, for your modified Spark views or custom components you can easily upgrade your markup and classes by applying the following changes:
+For a complete guide on how to upgrade your views to use Bootstrap4 you can check the [official migration guide](https://getbootstrap.com/docs/4.0/migration/). However, for your modified Spark views or custom components you can easily upgrade your markup and classes by applying the following changes:
 
-- Switch `.panel`, `.panel-header`, and `.panel-body` to `.card`, `.card-header`, and `.card-body`.
+- Switch `.panel`, `.panel-heading`, and `.panel-body` to `.card`, `.card-header`, and `.card-body`.
 - Remove the `.form-horizontal` class from your forms and add a `.row` class in each of your `.form-group` elements.
 - Replace the `.control-label` class with `col-form-label`.
 - Replace the `.help-block` class with `.invalid-feedback`.
 - For validation errors, instead of adding the `.has-error` class to your `.form-group`, add a `.is-invalid` class to your `.form-control` input.
 - Replace all grid offset classes (e.g. `col-md-offset-4`) to the new class names `.offset-md-4`.
 - Replace `.btn-default` with `.btn-secondary`.
+
+### Updating your assets
+
+In your `resources/assets` folder create a new `sass` directory and add an `app.scss` file with the following content:
+
+```sass
+// @import "./spark/spark";
+@import "./../../../vendor/laravel/spark/resources/assets/sass/spark";
+```
+
+Now you'll need to move any custom LESS customizations from your old `app.less` file to the new `app.scss` file.
+
+### Updating Webpack configurations
+
+In your `sebpack.mix.js` file, replace the `less` compilation line with the `sass` one:
+
+```js
+mix.sass('resources/assets/sass/app.scss', 'public/css')
+```
+
+Also remove the following line:
+
+```js
+.copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css')
+```
+
+### Updating your `package.json` file
+
+Update your bootstrap dependency to pull v4:
+
+```
+"bootstrap": "^4.0.0-beta.2",
+```
+
+Also add the following dependencies:
+
+```
+"popper.js": "^1.12",
+"lodash": "^4.17.4",
+```
+
+And finally, remove the `underscorejs` dependency.
+
+### Publishing language files
+
+To publish the Spark language files for the English language you need to run the following command:
+
+```
+php artisan vendor:publish --tag=spark-lang
+```
+
+This will create `/resources/lang/en/teams.php` and `/resources/lang/en.json` language files that you can customize as per your needs.
