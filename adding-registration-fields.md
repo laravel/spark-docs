@@ -16,13 +16,13 @@ A common Spark extension use case is adding fields to the Spark registration for
 First, let's add a new `age` form field to the `/resources/views/vendor/spark/auth/register-common-form.blade.php` file. We'll place this new field under the existing "e-mail" field:
 
     <!-- Age -->
-    <div class="form-group" :class="{'has-error': registerForm.errors.has('age')}">
-        <label class="col-md-4 control-label">Age</label>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label text-md-right">Age</label>
 
         <div class="col-md-6">
-            <input type="text" class="form-control" name="age" v-model="registerForm.age">
+            <input type="text" class="form-control" name="age" v-model="registerForm.age" :class="{'is-invalid': registerForm.errors.has('age')}">
 
-            <span class="help-block" v-show="registerForm.errors.has('age')">
+            <span class="invalid-feedback" v-show="registerForm.errors.has('age')">
                 @{{ registerForm.errors.get('age') }}
             </span>
         </div>
