@@ -31,24 +31,24 @@ The "profile" tab of the settings dashboard contains several panels to update va
 This `@include` directive will load a new Blade template which contains our custom panel. We can define the new template at `/resources/views/settings/profile/update-profile-details`. This template will contain a simple form where the user can update their age:
 
     <update-profile-details :user="user" inline-template>
-        <div class="panel panel-default">
-            <div class="panel-heading">Profile Details</div>
+        <div class="card">
+            <div class="card-header">Profile Details</div>
 
-            <div class="panel-body">
+            <div class="card-body">
                 <!-- Success Message -->
                 <div class="alert alert-success" v-if="form.successful">
                     Your profile has been updated!
                 </div>
 
-                <form class="form-horizontal" role="form">
+                <form role="form">
                     <!-- Age -->
-                    <div class="form-group" :class="{'has-error': form.errors.has('age')}">
-                        <label class="col-md-4 control-label">Age</label>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">Age</label>
 
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="age" v-model="form.age">
+                            <input type="text" class="form-control" name="age" v-model="form.age" :class="{'is-invalid': form.errors.has('age')}">
 
-                            <span class="help-block" v-show="form.errors.has('age')">
+                            <span class="invalid-feedback" v-show="form.errors.has('age')">
                                 @{{ form.errors.get('age') }}
                             </span>
                         </div>
@@ -56,7 +56,7 @@ This `@include` directive will load a new Blade template which contains our cust
 
                     <!-- Update Button -->
                     <div class="form-group">
-                        <div class="col-md-offset-4 col-md-6">
+                        <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary"
                                     @click.prevent="update"
                                     :disabled="form.busy">

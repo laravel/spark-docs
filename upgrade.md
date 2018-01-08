@@ -9,7 +9,7 @@ Spark 6.0 is the first significant update of Spark since its original release. A
 
 While the back-end changes to from Spark 5.0 to Spark 6.0 are relatively minor, the front-end changes are **extensive**. Unfortunately, this is primarily due to the fact that Bootstrap 4 is radically different than Bootstrap 3 and is not backwards compatible in any way.
 
-For this reason, you may wish to reserve usage of Spark 6.0 to new Spark projects only. Otherwise, your entire application front-end will need to be converted to Bootstrap 4. Spark 5 will continue to be maintained for at least 12 months following the release of Spark 6.
+For this reason, you may wish to reserve usage of Spark 6.0 to new Spark projects only. Otherwise, your entire application front-end will need to be converted to Bootstrap 4. **Spark 5 will continue to be maintained for at least 12 months following the release of Spark 6.**
 
 ### License Upgrade Requirements
 
@@ -76,6 +76,12 @@ Spark 6.0 allows you to choose the role that will be assigned to a user when inv
 
 The `handle` method of the `SendInvitation` interaction now accepts a third argument (`$role`) which is used to assign an initial role to the invited user.
 
+### Publishing Language Files
+
+Spark 6 is fully localizable. To get started, publish the language files to your application using the `vendor:publish` Artisan command. This command will create `/resources/lang/en/teams.php` and `/resources/lang/en.json` language files that you can customize according to your application's needs:
+
+    php artisan vendor:publish --tag=spark-lang
+
 ### Team Localization Changes
 
 In prior releases of Spark, the `Spark::referToTeamAs()` method was used to change how teams are referred to in your application's views and URIs. However, in Spark 6.0, this method has been removed and replaced with the `prefixTeamsAs` method:
@@ -83,3 +89,52 @@ In prior releases of Spark, the `Spark::referToTeamAs()` method was used to chan
     Spark::prefixTeamsAs('bands')
 
 This method will instruct Spark to use `bands` in all team URLs instead of `teams`. To change the word used to refer to "teams" in your application's views, you should update the `resources/lang/en/teams.php` translation file.
+
+### Updating Your `package.json` Dependencies
+
+In your `package.json` file, update your `bootstrap` dependency to the latest version:
+
+    "bootstrap": "^4.0.0-beta.2",
+
+Additionally, add the following dependencies:
+
+    "popper.js": "^1.12",
+    "lodash": "^4.17.4",
+
+Finally, since Spark 6 uses [Lodash](https://lodash.com/), you may remove the `underscorejs` dependency.
+
+### Updating Your Assets
+
+Bootstrap 4 is written in SASS instead of Less. So, create a new `sass` directory within your `resources/assets` directory. Next, add an `app.scss` file in the new `sass` directory with the following content:
+
+    @import "./../../../vendor/laravel/spark/resources/assets/sass/spark";
+
+    // Or, if you've published the Spark source to your project root...
+    @import "./spark/spark";
+
+Next, you should move any Less customizations from your old `app.less` file to the new `app.scss` file.
+
+### Updating The Webpack Configuration
+
+In your `webpack.mix.js` file, replace the `less` compilation line with the following `sass` command:
+
+    mix.sass('resources/assets/sass/app.scss', 'public/css')
+
+Next, you should delete the command below:
+
+    .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css')
+
+### Bootstrap 4
+
+For a complete guide on how to upgrade your application's views to use Bootstrap 4 check out the [official migration guide](https://getbootstrap.com/docs/4.0/migration/).
+
+If you have modified your vendor published Spark views or components, you can upgrade the views by applying the following preliminary changes:
+
+- Change `.panel`, `.panel-heading`, and `.panel-body` to `.card`, `.card-header`, and `.card-body`.
+- Replace the `.btn-default` class with the `.btn-secondary` class.
+- Remove the `.form-horizontal` class from your forms.
+- Add the `.row` class to each of your `.form-group` elements.
+- Replace the `.control-label` class with the `col-form-label` class.
+- Replace the `.help-block` class with `.invalid-feedback` class.
+- For validation errors, remove the `.has-error` class from your `.form-group` elements and add the `.is-invalid` class to your `.form-control` elements.
+- Replace all grid offset classes (`col-md-offset-4`, etc.) with their new class names (`.offset-md-4`, etc.).
