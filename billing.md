@@ -97,7 +97,7 @@ When your application provides team billing, the `booted` method of your `SparkS
             'First', 'Second', 'Third'
         ]);
 
-    Spark::teamPlan('Basic', 'spark-test-1')
+    Spark::teamPlan('Basic', 'team-basic')
         ->price(10)
         ->features([
             'First', 'Second', 'Third'
