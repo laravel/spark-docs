@@ -49,13 +49,13 @@ Then, you may submit the form from your Vue component:
 
 You may use the `errors` property of the form to retrieve and display validation errors:
 
-    <div class="form-group" :class="{'has-error': form.errors.has('name')}">
+    <div class="form-group row">
         <label class="col-md-4 control-label">Name</label>
 
         <div class="col-md-6">
-            <input type="text" class="form-control" name="name" v-model="form.name">
+            <input type="text" class="form-control" name="name" v-model="form.name" :class="{'is-invalid': form.errors.has('name')}">
 
-            <span class="help-block" v-show="form.errors.has('name')">
+            <span class="invalid-feedback" v-show="form.errors.has('name')">
                 @{{ form.errors.get('name') }}
             </span>
         </div>

@@ -21,6 +21,22 @@ After purchasing an upgraded license, you may join the Spark 6.0 repository from
 
 Since multiple versions of Spark are included in a paid upgrade, Spark uses "series" names to refer to a series of releases that include a single paid upgrade. Spark 6.0 begins this convention by using the "Aurelius" series name and the `laravel/spark-aurelius` repository. This repository will continue to be used for future Spark versions until the next paid upgrade. Paid upgrades are always released at least one full year apart from each other.
 
+### Upgrading The Spark Installer
+
+Laravel Spark offers a convenient installer that will create a new Laravel application and install Spark in the directory of your choice. This installer needs to be upgraded in order to create fresh Spark 6.0 applications.
+
+Before getting started, make sure you have the `laravel/installer` package globally installed using Composer. You should make sure your version of the installer is >= `1.3.4`:
+
+    composer global require laravel/installer
+
+> **Note:** The Spark installer is only recommended for those on Mac or Linux systems. If you are using Windows, please install via Composer. Before using the Spark installer, make sure you have installed the [Laravel installer](https://laravel.com/docs/installation#installing-laravel).
+
+Next, clone the `laravel/spark-installer` repository [from GitHub](https://github.com/laravel/spark-installer) into any location on your machine. Once you have cloned the installer, be sure to run the `composer install` command within the cloned directory so the installer's dependencies will be installed.
+
+> **Note:** If you have previously installed the Spark installer, you should run the `git pull origin master` command on the repository to retrieve the latest installer changes.
+
+Next, make sure the `spark-installer` directory is added to your systems `$PATH` variable, so that your machine will be able to locate the `spark` executable when you issue Spark commands.
+
 ### Upgrading Via Spark CLI
 
 If you installed Spark via the `spark` CLI tool, you may run the `spark:update` Artisan command:
@@ -109,7 +125,7 @@ Bootstrap 4 is written in SASS instead of Less. So, create a new `sass` director
 
     @import "./../../../vendor/laravel/spark/resources/assets/sass/spark";
 
-    // or, if you've published the Spark source to your project root...
+    // Or, if you've published the Spark source to your project root...
     @import "./spark/spark";
 
 Next, you should move any Less customizations from your old `app.less` file to the new `app.scss` file.
