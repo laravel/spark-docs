@@ -6,6 +6,9 @@
     - [Configuring Team Billing Plans](#configuring-team-billing-plans)
     - [Archiving Plans](#archiving-plans)
 - [Charging "Per Seat"](#charging-per-seat)
+    - [Charging Teams Per Member](#charging-teams-per-member)
+    - [Charging Users Per Team](#charging-users-per-team)
+    - [Custom Per Seat Targets](#custom-per-seat-targets)
 - [Constraining Access To Plans](#constraining-access-to-plans)
 - [Collecting Billing Addresses](#collecting-billing-addresses)
 - [Checking Subscription Status Via Middleware](#checking-subscription-status-via-middleware)
@@ -83,7 +86,7 @@ If your application offers team plans instead of individual user plans, you shou
 
 This will generate a `SparkServiceProvider` stub that defines team plans instead of individual plans. Of course, team plans may also use methods like `archived`, `features` and `yearly`.
 
-> **Note:** You may even define user and team billing plans in the same application.
+> **Note:** You may define user and team billing plans in the same application.
 
 ### Limiting Team Members Per Plan
 
@@ -120,6 +123,7 @@ Spark's per-seat pricing makes it easy to charge your customers for each team, f
 
 To get started, your application should typically have two subscription plans: a free plan and a plan that specifies the price "per seat".
 
+<a name="charging-teams-per-member"></a>
 ### Charging Teams Per Member
 
 If your application uses teams, you may charge your users based on how many users they add to a team. Simply add the following line of code to the `booted` method of your `SparkServiceProvider`:
@@ -128,6 +132,23 @@ If your application uses teams, you may charge your users based on how many user
 
 When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
 
+To configure this style of billing, the `booted` method of your Spark service provider should look like the following. Note that a "free" plan is required so that collaborators can freely join teams that are paid for by the team owners:
+
+    Spark::useStripe()->chargeTeamsPerMember();
+
+    Spark::freePlan()
+        ->features([
+            'First', 'Second', 'Third'
+        ]);
+
+    Spark::teamPlan('Basic', 'spark-test-1')
+        ->trialDays(10)
+        ->price(10)
+        ->features([
+            'First', 'Second', 'Third'
+        ]);
+
+<a name="charging-users-per-team"></a>
 ### Charging Users Per Team
 
 If your application uses teams, you may charge your users based on how many teams they create. Simply add the following line of code to the `booted` method of your `SparkServiceProvider`:
@@ -136,6 +157,7 @@ If your application uses teams, you may charge your users based on how many team
 
 When a team is created or deleted, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
 
+<a name="custom-per-seat-targets"></a>
 ### Custom Per Seat Targets
 
 Next, let's take a look at at charging per a custom target. In this example, let's assume you are building project management software and you would like to charge your customers per project. You can get started by adding the following line to the `booted` method of your `SparkServiceProvider`:
