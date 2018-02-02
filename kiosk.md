@@ -9,20 +9,20 @@
 <a name="introduction"></a>
 ## Introduction
 
-The Spark developer Kiosk is a special area of your Spark application that is only accessible to developers and provides unique developer-only features such as [creating announcements](/docs/3.0/announcements), viewing application revenue, impersonating other users, etc.
+The Spark developer Kiosk is a special area of your Spark application that is only accessible to developers and provides unique, developer-only features such as [creating announcements](/docs/6.0/announcements), viewing application revenue, impersonating other users, and more.
 
 #### Developer Middleware
 
 Any routes that should only be accessible by developers may use the `dev` middleware. All of the default Kiosk routes included with Spark are automatically configured to use this middleware:
 
-    Route::get('/dev', ['middleware' => 'dev', function () {
+    Route::get('/dev', function () {
         //
-    }]);
+    })->middleware('dev');
 
 <a name="configuration"></a>
 ## Configuration
 
-The user accounts which have access to the Kiosk are defined in the `$developers` property of the `App\Providers\SparkServiceProvider` class. Simply add the e-mail addresses of the accounts you wish to be considered as "developers".
+The user accounts which have access to the Kiosk are defined in the `$developers` property of the `App\Providers\SparkServiceProvider` class. You should add the e-mail addresses of the accounts you wish to be considered as "developers" to this property.
 
 If you would like to dynamically set your developer list, you may use the `Spark::developers` method which accepts an array of developer e-mail addresses:
 
@@ -50,13 +50,11 @@ You may click the view / magnifying glass icon on a user search result to view t
 <a name="metrics"></a>
 ## Metrics
 
-This component displays a variety of performance / revenue metrics for your application, such as monthly recurring revenue, total revenue, new registrations, as well as the number of user subscriptions per plan. This component may be used to get a basic overview of the growth of your application.
-
-To capture nightly metrics, make sure to schedule the `spark:kpi` Artisan command to run nightly in your application's `app/Console/Kernel.php` file. Of course, you'll also need to schedule a "Cron" job to run the `schedule:run` Artisan command every minute. For more information on scheduled commands, check out the [relevant Laravel documentation](https://laravel.com/docs/scheduling):
+To capture nightly revenue metrics for your application, make sure to schedule the `spark:kpi` Artisan command to run nightly in your application's `app/Console/Kernel.php` file. Of course, you'll also need to schedule a "Cron" job to run the `schedule:run` Artisan command every minute. For more information on scheduled commands, check out the [relevant Laravel documentation](https://laravel.com/docs/scheduling):
 
     $schedule->command('spark:kpi')->dailyAt('23:55');
 
 <a name="customization"></a>
 ## Customization
 
-Adding your own panels to the Kiosk is a breeze. Simply customize the `resources/views/vendor/spark/kiosk.blade.php` view to include an additional tab link and tab panel. You are free to check out the included views as an example of how to write your own Kiosk components. However, you are not required to make your Kiosk panel a Vue component.
+Adding your own panels to the Kiosk is a breeze. To get started, customize the `resources/views/vendor/spark/kiosk.blade.php` view to include an additional tab link and tab panel. You are free to check out the included views as an example of how to write your own Kiosk components. However, you are not required to make your Kiosk panel a Vue component.
