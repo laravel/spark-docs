@@ -20,9 +20,7 @@ To install Spark, follow the instructions in the [installation guide](/docs/6.0/
 
 #### Post Installation Setup
 
-Once Spark is installed, make sure the NPM dependencies have been installed via the `npm install` command, the `npm run dev` command has been executed, and the database migrations have ran. You should also configure your e-mail address as a "developer" so that you have access to the [Kiosk](/docs/6.0/kiosk). Simply add your e-mail address to the `$developers` property in the `App\Providers\SparkServiceProvider`.
-
-> **Note:** If you need a development environment for your Spark project, be sure to check out [Homestead](https://laravel.com/docs/homestead).
+Once Spark is installed, make sure the NPM dependencies have been installed via the `npm install` command, the `npm run dev` command has been executed, and the database migrations have run. You should also configure your e-mail address as a "developer" so that you have access to the [Kiosk](/docs/6.0/kiosk). To do this, add your e-mail address to the `$developers` property in the `App\Providers\SparkServiceProvider`.
 
 <a name="configuring-billing-plans"></a>
 ## Configuring Billing Plans
@@ -36,7 +34,7 @@ By default, Spark is configured to require no credit-card up front and to grant 
 <a name="building-your-application"></a>
 ## Building Your Application
 
-Once Spark has been installed and your billing plans are configured, you're ready to start building your application. By default, Spark installs a `/home` route in your `routes\web.php` file which displays the `home` Blade template. You are free to edit the `home.blade.php` template as needed to build your application.
+Once Spark has been installed and your billing plans are configured, you're ready to start building your application. By default, Spark installs a `/home` route in your `routes/web.php` file which displays the `home` Blade template. You are free to edit the `home.blade.php` template as needed to build your application.
 
 The `home.blade.php` file also represents the `home` [Vue component](https://vuejs.org), which is defined at `resources/assets/js/components/home.js`. You may add your own JavaScript code to this component as needed. Of course, if you change this code, don't forget to run `npm run dev` to re-compile your application's JavaScript.
 
