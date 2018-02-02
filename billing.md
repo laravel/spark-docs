@@ -205,23 +205,17 @@ To get started, your application should typically have **two** subscription plan
 <a name="charging-teams-per-member"></a>
 ### Charging Teams Per Member
 
-If your application uses teams, you may charge your users based on how many users they add to a team. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following. Note that a "free" plan is required so that collaborators can freely join teams that are paid for by team owners:
+If your application uses teams, you may charge your users based on how many users they add to a team. When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
 
-    Spark::useStripe()->chargeTeamsPerMember();
+    Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
-    Spark::freePlan()
-        ->features([
-            'First', 'Second', 'Third'
-        ]);
+    Spark::chargeTeamsPerMember();
 
     Spark::teamPlan('Basic', 'team-basic')
-        ->trialDays(10)
         ->price(10)
         ->features([
             'First', 'Second', 'Third'
         ]);
-
-When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
 
 <a name="charging-users-per-team"></a>
 ### Charging Users Per Team
