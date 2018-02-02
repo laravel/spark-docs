@@ -2,7 +2,7 @@
 
 - [Introduction](#introduction)
 - [Creating Notifications](#creating-notifications)
-- [Sending Laravel 5.3 Notifications](#sending-laravel-53-notifications)
+- [Sending Laravel Notifications](#sending-laravel-notifications)
 
 <a name="introduction"></a>
 ## Introduction
@@ -34,10 +34,12 @@ The `action_text` and `action_url` attributes are optional so you do not need to
 
 When a notification is created, Spark will fire the `Laravel\Spark\Events\NotificationCreated` event, which your application can listen for to do work after a notification is created.
 
-<a name="sending-laravel-53-notifications"></a>
-## Sending Laravel 5.3 Notifications
+<a name="sending-laravel-notifications"></a>
+## Sending Laravel Notifications
 
-Spark also allows you to send notifications using the Laravel 5.3 notification system. To create a notification, you may use the following Artisan command:
+> **Note:** Before using this feature, check out the [Laravel notification documentation](https://laravel.com/docs/notifications).
+
+Spark also allows you to send notifications using the Laravel \notification system. To create a notification, you may use the following Artisan command:
 
 ```
 php artisan make:notification TaskCompleted
@@ -72,7 +74,7 @@ public function toSpark($notifiable)
 
 ### Sending Notifications
 
-Notifications may be sent in two ways: using the `notify` method of the `Notifiable` trait or by using the `Notification` facade. You may take a look at the Laravel [notification documentation](https://laravel.com/docs/5.3/notifications#sending-notifications) to get more details regarding these two approaches to sending notifications.
+Notifications may be sent in two ways: using the `notify` method of the `Notifiable` trait or by using the `Notification` facade. You may take a look at the Laravel [notification documentation](https://laravel.com/docs/notifications#sending-notifications) to get more details regarding these two approaches to sending notifications.
 
 Here's an example of sending notifications to a Spark user using the `notify` method:
 
