@@ -2,8 +2,8 @@
 
 - [Introduction](#introduction)
 - [Configuration](#configuration)
-- [Abilities](#abilities)
 - [Routes](#routes)
+- [Abilities](#abilities)
 - [API Driven Applications](#api-driven-applications)
     - [Sharing Your API With Your JavaScript Application](#sharing-your-api)
 - [Using Passport](#using-passport)
@@ -11,14 +11,19 @@
 <a name="introduction"></a>
 ## Introduction
 
-Spark makes it simple for your users to generate API tokens for your application. You may even allow users to grant abilities to tokens to limit the scope of actions a given token can perform.
+Spark makes it simple for your users to generate API tokens that can be used to consume your application's API. You may even allow users to grant abilities to tokens to limit the scope of actions a given token can perform.
 
 In addition, Spark ships with a custom Laravel authentication guard to authenticate requests that are made using these tokens, allowing you to easily share the same back-end API for your main web application and your API SDKs you provide to your users and third parties.
 
 <a name="configuration"></a>
 ## Configuration
 
-To enable API support, make sure that the `$usesApi` property of your `SparkServiceProvider` is set to `true`. When API support is enabled, an "API" tab will be available to your users via their settings dashboard. From this dashboard users may generate and revoke API tokens.
+To enable API support, verify that the `$usesApi` property of your `SparkServiceProvider` is set to `true`. When API support is enabled, an "API" tab will be available to your users via their settings dashboard. From this dashboard users may generate and revoke API tokens.
+
+<a name="routes"></a>
+## Routes
+
+Spark automatically generates a `routes/api.php` file to contain all of your API routes. This file is automatically loaded by the `RouteServiceProvider` and that provider also applies the `api` middleware by default. You are free to modify these settings as necessary for your own application. However, the default configuration should be suitable for most applications.
 
 <a name="abilities"></a>
 ## Abilities
@@ -31,22 +36,17 @@ If you would like to give users the ability to grant "abilities" to tokens and c
         'delete-servers' => 'Delete Servers',
     ]);
 
-The keys of the given array should be unique "slugs" that represent the ability while the values are the displayable, human-readable versions of the abilities. Once you have defined these abilities, they will automatically be displayed on the API settings dashboard.
+The keys of the array given to this method should be unique "slugs" while the values are the displayable, human-readable versions of the abilities. Once you have defined these abilities, they will automatically be displayed on the API settings dashboard.
 
 ### Checking Abilities On Active Tokens
 
-Of course, you need an easy method of determining if a token authenticated user's token can perform a given action. Spark makes it a cinch. When a user is authenticated via the `api` guard, you may access the `token` property on the user instance. The `token` property contains a `can` method which can be used to verify if a token has a given ability:
+Of course, you will need an easy method of determining if a token authenticated user's token can perform a given action. Spark makes it a cinch. When a user is authenticated via the `api` guard, you may access the `token` property on the user instance. The `token` property contains a `can` method which can be used to verify if a token has a given ability:
 
     Route::get('/api/servers', ['middleware' => 'auth:api', function () {
         if (Auth::user()->token()->can('read-servers')) {
             //
         }
     }]);
-
-<a name="routes"></a>
-## Routes
-
-Spark automatically generates a `routes/api.php` file to contain all of your API routes. This file is automatically loaded by the `RouteServiceProvider` and that provider also applies the `api` middleware by default. You are free to modify these settings as necessary for your own application. However, the default configuration should be suitable for most applications.
 
 <a name="api-driven-applications"></a>
 ## API Driven Applications
