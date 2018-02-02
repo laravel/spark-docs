@@ -42,20 +42,20 @@ The keys of the array given to this method should be unique "slugs" while the va
 
 Of course, you will need an easy method of determining if a token authenticated user's token can perform a given action. Spark makes it a cinch. When a user is authenticated via the `api` guard, you may access the `token` property on the user instance. The `token` property contains a `can` method which can be used to verify if a token has a given ability:
 
-    Route::get('/api/servers', ['middleware' => 'auth:api', function () {
+    Route::get('/api/servers', function () {
         if (Auth::user()->token()->can('read-servers')) {
             //
         }
-    }]);
+    })->middleware('auth:api');
 
 <a name="api-driven-applications"></a>
 ## API Driven Applications
 
-Once a user has an API token, they can access your API by passing the token in an `api_token` query string parameter when making requests. You should assign the `auth:api` middleware to all of your API routes you wish to authenticate:
+Once a user has an API token, they can access your API by passing the token in the `api_token` query string parameter when making requests. You should assign the `auth:api` middleware to all of the API routes you wish to authenticate:
 
-    Route::get('/api/users', ['middleware' => 'auth:api', function () {
+    Route::get('/api/users', function () {
         //
-    ]);
+    })->middleware('auth:api');
 
 <a name="sharing-your-api"></a>
 ### Sharing Your API With Your JavaScript Application
