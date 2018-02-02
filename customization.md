@@ -10,7 +10,7 @@
 
 Spark allows you to customize certain aspects of the system to better suit your needs. For example, you may wish to tweak how the current user is retrieved from the database, or how two-factor authentication is implemented.
 
-When customizing the backend, you will typically be using the `Spark::swap` method, which will allow to swap out method implementations on various Spark core classes. Generally, you should rarely be required to extend a Spark class.
+When customizing the backend, you will typically use the `Spark::swap` method, which will allow you to swap out method implementations of various Spark core classes. Generally, you should rarely be required to extend a Spark class directly.
 
 <a name="model-classes"></a>
 ## Model Classes
@@ -62,4 +62,4 @@ If you are using Vue, All of the teams for the currently authenticated user are 
 
 When you create a new application using `spark new`, all of the Spark views are automatically exported to your application's `resources/views/vendor/spark` directory. You may customize any of these views as needed.
 
-When you upgrade your application using `php artisan spark:update`, any views that have been modified will not be updated.
+> **Note:** When you upgrade your application using `php artisan spark:update`, any views that have been modified will not be updated.
