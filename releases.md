@@ -1,15 +1,16 @@
 # Release Notes
 
+- [6.0.0](#6.0.0)
 - [5.0.0](#5.0.0)
 - [4.0.0](#4.0.0)
 - [3.0.0](#3.0.0)
 - [2.0.0](#2.0.0)
 - [1.0.0](#1.0.0)
 
-<a name="5.0.0"></a>
-## 5.0.0
+<a name="6.0.0"></a>
+## 6.0.0
 
-The 5.0 release of Spark provides Laravel 5.5 compatibility.
+The 6.0 release of Spark provides Laravel 5.6 compatibility. In addition, Spark 6.0 introduces Bootstrap 4, localization, per-seat pricing, Stripe Elements, and UI enhancements.
 
 <a name="4.0.0"></a>
 ## 4.0.0
