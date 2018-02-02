@@ -6,7 +6,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Spark includes a helper class for working with form errors in your JavaScript application. You are not required to use these helpers but may find them useful when building the forms for your application.
+Spark includes a helper class for working with forms and form errors in your JavaScript application. You are not required to use these helpers but may find them useful when building the forms for your application.
 
 <a name="usage"></a>
 ## Usage
@@ -53,7 +53,9 @@ You may use the `errors` property of the form to retrieve and display validation
         <label class="col-md-4 control-label">Name</label>
 
         <div class="col-md-6">
-            <input type="text" class="form-control" name="name" v-model="form.name" :class="{'is-invalid': form.errors.has('name')}">
+            <input type="text" class="form-control" name="name"
+                   v-model="form.name"
+                   :class="{'is-invalid': form.errors.has('name')}">
 
             <span class="invalid-feedback" v-show="form.errors.has('name')">
                 @{{ form.errors.get('name') }}

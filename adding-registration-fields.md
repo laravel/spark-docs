@@ -20,7 +20,9 @@ First, let's add a new `age` form field to the `/resources/views/vendor/spark/au
         <label class="col-md-4 col-form-label text-md-right">Age</label>
 
         <div class="col-md-6">
-            <input type="text" class="form-control" name="age" v-model="registerForm.age" :class="{'is-invalid': registerForm.errors.has('age')}">
+            <input type="text" class="form-control" name="age"
+                   v-model="registerForm.age"
+                   :class="{'is-invalid': registerForm.errors.has('age')}">
 
             <span class="invalid-feedback" v-show="registerForm.errors.has('age')">
                 @{{ registerForm.errors.get('age') }}
