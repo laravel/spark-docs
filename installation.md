@@ -13,7 +13,7 @@
 Laravel Spark has a few requirements you should be aware of before installing:
 
 - Composer
-- Laravel Framework 5.5+
+- Laravel Framework 5.6+
 - Laravel Mix
 - Bootstrap 4 (SASS)
 - Node.js & NPM
@@ -30,7 +30,7 @@ The [Vue.js](http://vuejs.org) JavaScript framework is utilized on the registrat
 
 #### Downloading The Installer
 
-Laravel Spark offers a convenient installer that will create a new Laravel application and install Spark in the directory of your choice. Before getting started, make sure you have the `laravel/installer` package globally installed using Composer. You should make sure your version of the installer is >= `1.3.4`:
+Laravel Spark offers a convenient installer that will create a new Laravel application and install Spark in the directory of your choice. Before getting started, make sure you have the `laravel/installer` package globally installed using Composer. You should make sure your version of the installer is >= `2.0.0`:
 
     composer global require laravel/installer
 
@@ -56,7 +56,7 @@ Once you have installed the Spark installer and registered your API token, you m
 
     spark new project-name
 
-This command will create a new Laravel project in a directory matching the given `project-name`. Spark will then be installed into the project and configured automatically.
+This command will create a new Laravel project in a directory matching the given `project-name`. Spark will then be automatically installed into the project and configured.
 
 > **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead, you will also need to update your `.env` file with your database credentials.
 

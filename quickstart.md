@@ -4,7 +4,6 @@
 - [Installing Spark](#installing-spark)
 - [Configuring Billing Plans](#configuring-billing-plans)
 - [Building Your Application](#building-your-application)
-- [Demo Application](#demo-application)
 
 
 <a name="introduction"></a>
@@ -46,18 +45,3 @@ Of course, at this point, you may simply build your Laravel application however 
 ### Read The Documentation
 
 For more information on using Spark, check out the rest of this documentation, which includes information on [back-end customization](/docs/6.0/customization) and [front-end customization](/docs/4.0/client-customization), as well as documentation pages covering many other areas of Spark. **It's very important that you read through this documentation in its entirety.**
-
-<a name="demo-application"></a>
-## Demo Application
-
-You may download a sample to-do list application built on Spark to learn more about building Spark applications. This demo application can be used to get a basic idea of how to get started building your own application after installing and configuring Spark. The to-do list contains a basic task list and an activity log of completed tasks.
-
-<div markdown="0">
-<a href="/sample/download">
-<button class="btn btn-info" style="margin-top: 20px;">
-    <i class="fa fa-btn fa-cloud-download"></i>Download Sample Application
-</button>
-</a>
-</div>
-
-**In order to download the demo application, you must have a valid Spark license.**
