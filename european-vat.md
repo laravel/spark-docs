@@ -20,11 +20,11 @@ Before enabling European VAT collection, you will need to install the `mpociot/v
 
     composer require mpociot/vat-calculator
 
-You can enable collection of European VAT by calling the `collectEuropeanVat` method from the `booted` method of your application's `SparkServiceProvider`. The `collectEuropeanVat` method accepts one argument, which is the home country of your business:
+You can enable collection of European VAT by calling the `collectEuropeanVat` method from the `booted` method of your application's `SparkServiceProvider`. The `collectEuropeanVat` method accepts the home country of your business as its only argument:
 
     Spark::collectEuropeanVat('GB');
 
-Calling this method is all you need to do to enable European VAT collection. Your customers will automatically be prompted for their billing address on registration, and their billing address will be compared to their credit card's bank country of origin to gather two form of location proofs. The customer will not be able to register or subscribe if these two pieces of information do not match. Spark will also allow customers to supply a VAT ID if they are registering on behalf of a VAT registered company.
+Calling this method is all you need to do to enable European VAT collection. Your customers will automatically be prompted for their billing address on registration, and their billing address will be compared to their credit card's country of origin in order to gather two form of location proofs. The customer will not be able to register or subscribe if these two pieces of information do not match. Spark will also allow customers to supply a VAT ID if they are registering on behalf of a VAT registered company.
 
 When a customer updates their billing information or VAT ID in your application, Spark will automatically call Stripe to update the subscription with the new correct tax rate percentage, so you do not have to do this manually.
 
@@ -39,10 +39,10 @@ By default, Spark uses the [mpociot/vat-calculator](https://github.com/mpociot/v
 
     public function taxPercentage()
     {
-        return 20; // Customers should be charged 20% tax
+        return 20; // Customers should be charged 20% tax...
     }
 
-Note that within the `taxPercentage` method you may access the customer's billing address, VAT ID, and billing card country of origin:
+Within the `taxPercentage` method you may access the customer's billing address, VAT ID, and billing card country of origin:
 
     public function taxPercentage()
     {
