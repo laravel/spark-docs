@@ -220,11 +220,17 @@ If your application uses teams, you may charge your users based on how many user
 <a name="charging-users-per-team"></a>
 ### Charging Users Per Team
 
-If your application uses teams, you may charge your users based on how many teams they create. Simply add the following line of code to the `booted` method of your `SparkServiceProvider`:
+If your application uses teams, you may charge your users based on how many teams they manage. When a team is created or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
+
+    Spark::useStripe()->noCardUpFront()->trialDays(10);
 
     Spark::chargePerTeam();
 
-When a team is created or deleted, Spark will automatically update the subscription's "quantity" on Stripe or Braintree.
+    Spark::plan('Basic', 'monthly-basic')
+        ->price(10)
+        ->features([
+            'First', 'Second', 'Third'
+        ]);
 
 <a name="custom-per-seat-targets"></a>
 ### Custom Per Seat Targets
