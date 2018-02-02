@@ -16,13 +16,13 @@ Before enabling two-factor authentication, you should populate the `AUTHY_SECRET
 <a name="usage"></a>
 ## Usage
 
-After configuring your `AUTHY_SECRET` environment variable, you should call the `useTwoFactorAuth` method in the `booted` method of your `SparkServiceProvider`:
+After configuring your `AUTHY_SECRET` environment variable, you should call the `useTwoFactorAuth` method from the `booted` method of your `SparkServiceProvider`:
 
     Spark::useTwoFactorAuth();
 
 Calling this method will add the proper two-factor authentication views to the "Security" tab of your user's account profiles. From these views, your users may configure, enable, and disable two-factor authentication for their account.
 
-When two-factor authentication is initially enabled on an account, an emergency login token will be displayed to the user which they should store in a secure password manager. This token may be used to login to the application in the event that the user loses their cellphone.
+When two-factor authentication is initially enabled on an account, an emergency login token will be displayed to the user which they should store in a secure password manager. This token may be used to log into the application in the event that the user loses their phone.
 
 <a name="customization"></a>
 ## Customization

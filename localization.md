@@ -7,9 +7,9 @@
 <a name="translating-strings"></a>
 ## Translating Strings
 
-Spark utilizes the powerful translation component shipped with Laravel. By default, Spark is shipped with an English interface and a left-to-right theme.
+Spark utilizes the powerful [translation component shipped with Laravel](https://laravel.com/docs/localization). By default, Spark is shipped with an English interface and a left-to-right theme.
 
-You may easily support another language in your application by copying the `resources/lang/en.json` file into a new file named after the language you prefer (such as `sp.json`). You'll also need to copy the `resources/lang/en/teams.php` file, which contains team-related string translations, into a translation folder corresponding to your desired language.
+You may easily support another language in your application by copying the `resources/lang/en.json` file into a new file named after the language you prefer (such as `sp.json`). You'll also need to copy the `resources/lang/en/teams.php` file, which contains team-related string translations, into a translation folder corresponding to your desired language (such as `resources/lang/sp/teams.php`).
 
 <a name="translating-terms-of-service"></a>
 ## Translating The Terms Of Service
@@ -25,4 +25,4 @@ If you would like your application to use a "right-to-left" theme, you should ca
 
     Spark::useRightToLeftTheme();
 
-You may further customize how the right-to-left theme appears by modifying the `resources/assets/sass/app-rtl.scss` file and re-compiling your assets.
+You may further customize how the right-to-left theme appears by modifying the `resources/assets/sass/app-rtl.scss` file and re-compiling your assets using `npm run dev` in your terminal.

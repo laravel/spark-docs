@@ -78,7 +78,7 @@ You may access these properties in your templates or in your JavaScript:
 <a name="adding-custom-properties"></a>
 ### Adding Custom Properties
 
-You can add your own properties to the `spark` computed property by adding them to your `resources/views/vendor/spark/layouts/app.blade.php` file. They will be merged with the default properties that are usually available on the object.
+You can add your own properties to the `spark` computed property by adding them to your `resources/views/vendor/spark/layouts/app.blade.php` file. They will be merged with the default properties that are available on the object:
 
     window.Spark = <?php echo json_encode(array_merge(
         Spark::scriptVariables(), [
