@@ -13,7 +13,7 @@ Once you've added extra fields to the Spark registration form, you will most lik
 <a name="modifying-the-view"></a>
 ## Modifying The View
 
-The "profile" tab of the settings dashboard contains several panels to update various information. We will add a new panel to this screen which will allow our users to update their age. First, let's add a Blade `@include` directive to the `/resources/views/vendor/spark/settings/profile.blade.php` file to load a new `update-profile-details` template:
+The "profile" tab of the settings dashboard contains several panels that allow the user to update various information. We will add a new panel to this screen which will allow our users to update their age. First, let's add a Blade `@include` directive to the `/resources/views/vendor/spark/settings/profile.blade.php` file to load a new `update-profile-details` template:
 
     <spark-profile :user="user" inline-template>
         <div>
@@ -46,7 +46,9 @@ This `@include` directive will load a new Blade template which contains our cust
                         <label class="col-md-4 col-form-label text-md-right">Age</label>
 
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="age" v-model="form.age" :class="{'is-invalid': form.errors.has('age')}">
+                            <input type="text" class="form-control" name="age"
+                                   v-model="form.age"
+                                   :class="{'is-invalid': form.errors.has('age')}">
 
                             <span class="invalid-feedback" v-show="form.errors.has('age')">
                                 @{{ form.errors.get('age') }}
@@ -100,7 +102,7 @@ Next, we will define the new `update-profile-details` Vue component which will m
         }
     });
 
-Note that this component uses the `Spark.put` helper, which adds some convenient features on top of the `axios` library. The `Spark` HTTP helpers accept a form object and will automatically the form's `busy` attribute to `true` when the form is submitted. The helper will also automatically handle any validation errors that are returned from the server.
+Note that this component uses the `Spark.put` helper, which adds some convenient features on top of the `axios` library. The `Spark` HTTP helpers accept a form object and will automatically set the form's `busy` attribute to `true` when the form is submitted.
 
 When you define a new Vue component, you also need to instruct Spark to compile the component into your main `app.js` file. You can do this by adding a line to your `/resources/assets/js/components/bootstrap.js` file:
 
@@ -109,7 +111,7 @@ When you define a new Vue component, you also need to instruct Spark to compile 
     // Load the new Vue component...
     require('./settings/profile/update-profile-details');
 
-> **Note:** After defining the new Vue component, remember to run the `npm run dev` command in your terminal to re-compile your JavaScript.
+> **Note:** After defining the new Vue component, remember to run the `npm run dev` command in your terminal to compile your JavaScript.
 
 <a name="validation-and-storage"></a>
 ## Validation & Storage
