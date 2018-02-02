@@ -1,11 +1,12 @@
 # Teams
 
 - [Introduction](#introduction)
+    - [Changing How Spark Refers To Teams](#changing-how-spark-refers-to-teams)
 - [Accessing The User's Teams](#accessing-the-users-teams)
-- [Accessing Teams By Path (GitHub Style)](#accessing-teams-by-path)
+- [Accessing Teams By Path](#accessing-teams-by-path)
 - [Team Roles](#team-roles)
-- [Using Teams Without Team Billing](#using-teams-without-team-billing)
 - [Team Billing](#team-billing)
+- [Using Teams Without Team Billing](#using-teams-without-team-billing)
 - [Team Events](#team-events)
 
 <a name="introduction"></a>
@@ -17,7 +18,7 @@ To use teams, initialize your Spark project using the `--team-billing` flag:
 
     spark new project-name --team-billing
 
-If you installed your application without the `--team-billing` flag but still want to enable teams later, you may simply add the `Laravel\Spark\CanJoinTeams` trait to your `User` model:
+If you installed your application without the `--team-billing` flag but still want to enable teams later, you may simply add the `Laravel\Spark\CanJoinTeams` trait to your `User` model. In addition, you may wish to review the documentation on [team billing](/docs/6.0/billing#configuring-team-billing-plans):
 
     <?php
 
@@ -35,21 +36,21 @@ After registration, your users will be able to create additional teams from thei
 
     Spark::noAdditionalTeams();
 
-
+<a name="changing-how-spark-refers-to-teams"></a>
 ### Changing How Spark Refers To Teams
 
-By default, Spark uses the "/teams/" segment in URIs to refer to teams. However, you may easily customize this using the `prefixTeamsAs` method in the `register` method of your `SparkServiceProvider`:
+By default, Spark uses the "/teams/" segment in URIs to refer to teams. However, you may customize this using the `prefixTeamsAs` method in the `register` method of your `SparkServiceProvider`:
 
     Spark::prefixTeamsAs('bands');
 
 > Be sure to call this method in the `register` method of your service provider, as Spark will not function correctly if it is called in the `booted` method. Additionally, make sure you pass the plural, lowercase form of the word.
 
-To change the word used to refer to "teams" in views, you should update the `resources/lang/en/teams.php` language file.
+To change the word used to refer to "teams" in views, you should update the `resources/lang/en/teams.php` [language file](/docs/6.0/localization).
 
 <a name="accessing-the-users-teams"></a>
 ## Accessing The User's Teams
 
-The `CanJoinTeams` trait provides several methods to assist you in accessing a given user's teams. The trait defines a `teams` relation to the `App\Team` model which will allow you to iterate over all of the user's teams:
+The `CanJoinTeams` trait provides several methods to assist you in accessing a given user's teams. The trait defines a `teams` relation to the `App\Team` model allows you to iterate over all of the user's teams:
 
     foreach ($user->teams as $team) {
         echo $team->name;
@@ -109,9 +110,9 @@ Once this option has been enabled, the team creation screen will include a new f
 <a name="team-roles"></a>
 ## Team Roles
 
-Spark allows you to define roles for your team's members. By default, Spark only has two roles: `owner` and `member`. However, you may define additional roles which the owner of a team can then assign to users from the team membership screen.
+Spark allows you to define roles for your team's members. By default, Spark has two roles: `owner` and `member`. However, you may define additional roles which the owner of a team can then assign to users from the team membership screen.
 
-To define roles, use the `useRoles` method in the `booted` method of your `SparkServiceProvider`. The `useRoles` method accepts an array where the keys are the role "slugs" that will be stored in the database, while the values are the displayable name of the role:
+To define roles, call the `useRoles` method from the `booted` method of your `SparkServiceProvider`. The `useRoles` method accepts an array where the keys are the role "slugs" that will be stored in the database, while the values are the displayable name of the role:
 
     Spark::useRoles([
         'member' => 'Member',
@@ -136,10 +137,15 @@ The `ownedTeams` method returns all of the user's owned teams:
         echo $team->name;
     }
 
+<a name="team-billing"></a>
+## Team Billing
+
+Team billing allows your Spark applications to provide billing plans on a per-team basis, meaning users may subscribe to different billing plans for each team they own. For more information on configuring team billing, please refer to the [billing documentation](/docs/6.0/billing#configuring-team-billing-plans)
+
 <a name="using-teams-without-team-billing"></a>
 ## Using Teams Without Team Billing
 
-If you would like to offer teams in your application but do not want to use team billing, Spark makes it a breeze. Just use the `Laravel\Spark\CanJoinTeams` trait on your `User` model:
+If you would like to offer teams in your application but do not want to use team billing, Spark makes it a breeze. First, use the `Laravel\Spark\CanJoinTeams` trait on your `User` model:
 
     <?php
 
@@ -153,17 +159,12 @@ If you would like to offer teams in your application but do not want to use team
         use CanJoinTeams;
     }
 
-If you are using user billing and want to limit the number of teams a given user can create while on a given plan, you can use the `maxTeams` method when defining the plan in your `SparkServiceProvider`:
+If your application uses user billing and you want to limit the number of teams a given user can create while on a given plan, you can use the `maxTeams` method when defining the plan in your `SparkServiceProvider`:
 
     Spark::plan('Pro', 'yearly-pro')
-        ->price(100);
+        ->price(100)
         ->yearly()
         ->maxTeams(5);
-
-<a name="team-billing"></a>
-## Team Billing
-
-Team billing allows your Spark applications to provide billing plans on a per-team basis, meaning users may subscribe to different billing plans for each team they own. For more information on configuring team billing, please refer to the [billing documentation](/docs/6.0/billing#configuring-team-billing-plans)
 
 <a name="team-events"></a>
 ## Team Events
