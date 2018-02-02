@@ -1,4 +1,4 @@
-# Developer Kiosk
+# Kiosk
 
 - [Introduction](#introduction)
 - [Configuration](#configuration)
