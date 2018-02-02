@@ -7,7 +7,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Notifications are a great way to inform your users of things that are happening in your application. For example, you might use a notification to let a user know when a team member has completed a given to-do list task. These notifications are viewable by clicking on the "notification bell" icon in the application's navigation bar. The notification bell will have a red activity indicator when there are unread announcements or notifications.
+Notifications are a great way to inform your users of things that are happening in your application. For example, you might use a notification to let a user know when a team member has completed a given to-do list task. These notifications are viewable by clicking on the "notification bell" icon in the application's navigation bar. The notification bell will have an unread count indicator when there are unread announcements or notifications.
 
 <a name="creating-notifications"></a>
 ## Creating Notifications
@@ -30,7 +30,7 @@ Then, you may use the `create` method to create the notification:
         'action_url' => '/link/to/task',
     ]);
 
-The `action_text` and `action_url` attributes are optional so you do not need to pass them in order to create a notification. However, providing these attributes will create a button on the notification where the user can be directed to some other location with information relevant to the notification.
+The `action_text` and `action_url` attributes are optional so you do not need to pass them in order to create a notification. However, providing these attributes will create a button on the notification where the user can be directed to some other location for information relevant to the notification.
 
 When a notification is created, Spark will fire the `Laravel\Spark\Events\NotificationCreated` event, which your application can listen for to do work after a notification is created.
 
