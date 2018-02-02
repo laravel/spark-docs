@@ -32,12 +32,12 @@ Yes, you can have both user and team plans at the same time.
 <a name="limiting-resources"></a>
 ### Does Spark support limiting the resources for a given plan?
 
-Yes, you can limit [team plans](/docs/5.0/billing#configuring-team-billing-plans) by team members. You can also limit plans by [your own arbitrary conditions](/docs/5.0/billing#constraining-access-to-plans).
+Yes, you can limit [team plans](/docs/6.0/billing#configuring-team-billing-plans) by team members. You can also limit plans by [your own arbitrary conditions](/docs/6.0/billing#constraining-access-to-plans).
 
 <a name="vat"></a>
 ### Does Spark support collecting European VAT?
 
-Yes, Spark [supports collecting European VAT](/docs/5.0/european-vat).
+Yes, Spark [supports collecting European VAT](/docs/6.0/european-vat).
 
 <a name="existing"></a>
 ### Can Spark be integrated into an existing application?
@@ -47,7 +47,7 @@ Spark is not designed to be integrated into existing applications. Spark is desi
 <a name="move-from-satis-to-path"></a>
 ### How do I transition from a Satis-based installation to a local installation?
 
-First, follow the [installation instructions](https://spark.laravel.com/docs/5.0/installation) for the "Spark Installer" package. Once the package has been installed, register your API token using the `register` command. If you do not have an API token, it can be generated from your Spark account dashboard on this website:
+First, follow the [installation instructions](https://spark.laravel.com/docs/6.0/installation) for the "Spark Installer" package. Once the package has been installed, register your API token using the `register` command. If you do not have an API token, it can be generated from your Spark account dashboard on this website:
 
     spark register token-value
 
