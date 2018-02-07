@@ -32,6 +32,8 @@ If you are using Braintree, you will need to populate the `BRAINTREE_ENV`, `BRAI
 
 In order to display a list of your customer's invoices, you must configure the appropriate webhooks on Stripe or Braintree. Stripe webhooks should be configured to point to the `/webhook/stripe` URI. The Braintree `subscription_canceled`, `subscription_charged_successfully`, and `subscription_expired` webhook events should be configured to point to the `/webhook/braintree` URI.
 
+> Note: In order to test stripe webhooks set `CASHIER_ENV=testing` 
+
 <a name="configuring-billing-plans"></a>
 ## Configuring Billing Plans
 
