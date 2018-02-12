@@ -110,7 +110,7 @@ This method will instruct Spark to use `bands` in all team URLs instead of `team
 
 In your `package.json` file, update your `bootstrap` dependency to the latest version:
 
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^4.0",
 
 Additionally, add the following dependencies:
 
