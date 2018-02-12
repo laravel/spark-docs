@@ -43,7 +43,7 @@ If you installed Spark via the `spark` CLI tool, you may run the `spark:update` 
 
     php artisan spark:update --major
 
-### Upgarding Via Composer
+### Upgrading Via Composer
 
 If you installed Spark via Composer, you may simply upgrade your dependency name and version in your `composer.json` file and run the `composer update` command. Of course, in order for your GitHub user to access the repository, you should first join this repository in the Spark dashboard:
 
