@@ -92,6 +92,10 @@ Spark 6.0 allows you to choose the role that will be assigned to a user when inv
 
 The `handle` method of the `SendInvitation` interaction now accepts a third argument (`$role`) which is used to assign an initial role to the invited user.
 
+### EventServiceProvider Changes
+
+In your `App\Providers\EventServiceProvider` remove the `CreateTrialEndingNotification` listener from the `UserRegistered` and `TeamCreated` events.
+
 ### Publishing Language Files
 
 Spark 6 is fully localizable. To get started, publish the language files to your application using the `vendor:publish` Artisan command. This command will create `/resources/lang/en/teams.php` and `/resources/lang/en.json` language files that you can customize according to your application's needs:
