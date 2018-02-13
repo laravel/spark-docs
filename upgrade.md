@@ -49,8 +49,6 @@ If you installed Spark via Composer, you may simply upgrade your dependency name
 
     "laravel/spark-aurelius": "~6.0"
 
-Once you have made these changes, you can run `npm run dev` to compile your assets.
-
 ### Database Schema Changes
 
 Spark 6.0 allows you to choose the role that will be assigned to a user when inviting them to a team. In order to support this feature, you should run the following database migration within your Spark application. You may create the `add_role_to_invitiations` migration manually and paste the following code into the file:
@@ -143,6 +141,8 @@ In your `webpack.mix.js` file, replace the `less` compilation line with the foll
 Next, you should delete the command below:
 
     .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css')
+
+Once you have made these changes, you can run `npm install` to install the new dependencies and then `npm run dev` to compile your assets.
 
 ### Bootstrap 4
 
