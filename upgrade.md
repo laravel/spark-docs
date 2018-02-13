@@ -51,7 +51,7 @@ If you installed Spark via Composer, you may simply upgrade your dependency name
 
 ### Database Schema Changes
 
-Spark 6.0 allows you to choose the role that will be assigned to a user when inviting them to a team. In order to support this feature, you should run the following database migration within your Spark application. You may create the `add_role_to_invitiations` migration manually and paste the following code into the file:
+Spark 6.0 allows you to choose the role that will be assigned to a user when inviting them to a team. In order to support this feature, you should run the following database migration within your Spark application. You may create the `add_role_to_invitations` migration manually and paste the following code into the file:
 
     <?php
 
