@@ -80,7 +80,7 @@ Spark 6.0 allows you to choose the role that will be assigned to a user when inv
          */
         public function down()
         {
-            Schema::table('teams', function (Blueprint $table) {
+            Schema::table('invitations', function (Blueprint $table) {
                 $table->dropColumn('role');
             });
         }
