@@ -36,7 +36,11 @@ Laravel Spark offers a convenient installer that will create a new Laravel appli
 
 > **Note:** The Spark installer is only recommended for those on Mac or Linux systems. If you are using Windows, please install via Composer. Before using the Spark installer, make sure you have installed the [Laravel installer](https://laravel.com/docs/installation#installing-laravel).
 
-First, clone the `laravel/spark-installer` repository [from GitHub](https://github.com/laravel/spark-installer) into any location on your machine. Once you have cloned the installer, be sure checkout the 5.0 installer with `git checkout 5.0` and then to run the `composer install` command within the cloned directory so the installer's dependencies will be installed.
+First, clone the `laravel/spark-installer` repository [from GitHub](https://github.com/laravel/spark-installer) into any location on your machine:
+
+    git clone -b 5.0 https://github.com/laravel/spark-installer
+
+Then, run the `composer install` command within the cloned directory so the installer's dependencies will be installed.
 
 Next, make sure the `spark-installer` directory is added to your systems `$PATH` variable, so that your machine will be able to locate the `spark` executable when you issue Spark commands.
 
