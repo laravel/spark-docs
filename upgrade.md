@@ -125,7 +125,7 @@ Finally, since Spark 6 uses [Lodash](https://lodash.com/), you may remove the `u
 
 Bootstrap 4 is written in SASS instead of Less. So, create a new `sass` directory within your `resources/assets` directory. Next, add an `app.scss` file in the new `sass` directory with the following content:
 
-    @import "./../../../vendor/laravel/spark-aurelius/resources/assets/sass/spark";
+    @import "./../../../vendor/laravel/spark/resources/assets/sass/spark";
 
     // Or, if you've published the Spark source to your project root...
     @import "./spark/spark";
