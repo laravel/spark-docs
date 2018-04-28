@@ -32,7 +32,7 @@ If you installed your application without the `--team-billing` flag but still wa
         use CanJoinTeams;
     }
 
-After registration, your users will be able to create additional teams from their account dashboard; however, you can disable the creation of additional teams by adding the following to the `booted` method of your `SparkServiceProvicer`:
+After registration, your users will be able to create additional teams from their account dashboard; however, you can disable the creation of additional teams by adding the following to the `booted` method of your `SparkServiceProvider`:
 
     Spark::noAdditionalTeams();
 
