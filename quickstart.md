@@ -42,4 +42,4 @@ Of course, at this point, you may simply build your Laravel application however 
 
 ### Read The Documentation
 
-For more information on using Spark, check out the rest of this documentation, which includes information on [back-end customization](/docs/6.0/customization) and [front-end customization](/docs/4.0/client-customization), as well as documentation pages covering many other areas of Spark. **It's very important that you read through this documentation in its entirety.**
+For more information on using Spark, check out the rest of this documentation, which includes information on [back-end customization](/docs/6.0/customization) and [front-end customization](/docs/6.0/client-customization), as well as documentation pages covering many other areas of Spark. **It's very important that you read through this documentation in its entirety.**
