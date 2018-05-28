@@ -27,7 +27,7 @@ Once Spark is installed, make sure the NPM dependencies have been installed via 
 
 Once your Spark project has been created, take a look at the `App\Providers\SparkServiceProvider` class. The `booted` method of this class is used to define your application's subscription plans. By default, one free plan and one paid plan is defined. You should change the ID of the paid plan from `provider-id-1` to match the ID of one of your plans that is actually defined in Stripe or Braintree.
 
-> **Note:** Spark does not automatically define plans within Stripe / Braintee. You must define those manually on the provider of your choice.
+> **Note:** Spark does not automatically define plans within Stripe / Braintree. You must define those manually on the provider of your choice.
 
 By default, Spark is configured to require no credit-card up front and to grant new users a free trial period of 10 days. This configuration should work perfectly for the majority of applications. For more information on configuring billing plans, check out the [billing documentation](/docs/6.0/billing).
 
