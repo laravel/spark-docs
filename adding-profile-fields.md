@@ -75,7 +75,7 @@ This `@include` directive will load a new Blade template which contains our cust
 <a name="defining-the-javascript-component"></a>
 ## Defining The JavaScript Component
 
-Next, we will define the new `update-profile-details` Vue component which will manage our new panel and form. We can define this component at `/resources/assets/js/components/settings/profile/update-profile-details.js`:
+Next, we will define the new `update-profile-details` Vue component which will manage our new panel and form. We can define this component at `/resources/js/components/settings/profile/update-profile-details.js`:
 
     Vue.component('update-profile-details', {
         props: ['user'],
@@ -104,7 +104,7 @@ Next, we will define the new `update-profile-details` Vue component which will m
 
 Note that this component uses the `Spark.put` helper, which adds some convenient features on top of the `axios` library. The `Spark` HTTP helpers accept a form object and will automatically set the form's `busy` attribute to `true` when the form is submitted.
 
-When you define a new Vue component, you also need to instruct Spark to compile the component into your main `app.js` file. You can do this by adding a line to your `/resources/assets/js/components/bootstrap.js` file:
+When you define a new Vue component, you also need to instruct Spark to compile the component into your main `app.js` file. You can do this by adding a line to your `/resources/js/components/bootstrap.js` file:
 
     require('./home');
 
