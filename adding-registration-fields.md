@@ -35,7 +35,7 @@ Remember, you're free to edit any of the views in `/resources/views/vendor/spark
 <a name="extending-the-javascript"></a>
 ## Extending The JavaScript
 
-Since extending the registration form is a common use case, Spark makes it easy to add a field to the JavaScript object that models the registration form. In your `/resources/assets/js/app.js` file, adding the following lines of code just before the call to `new Vue`:
+Since extending the registration form is a common use case, Spark makes it easy to add a field to the JavaScript object that models the registration form. In your `/resources/js/app.js` file, adding the following lines of code just before the call to `new Vue`:
 
     Spark.forms.register = {
         age: ''
