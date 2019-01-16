@@ -86,7 +86,7 @@ You should also add the following dependency to your `composer.json` file's `req
 
 Next, you should add Cashier to your project. If you are using Stripe, you should use the `laravel/cashier` package. If you are using Braintree, you should use the `laravel/cashier-braintree` package:
 
-    "laravel/cashier": "~9.0"
+    "laravel/cashier": "~8.0"
 
     // or...
 
