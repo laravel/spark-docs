@@ -86,11 +86,11 @@ You should also add the following dependency to your `composer.json` file's `req
 
 Next, you should add Cashier to your project. If you are using Stripe, you should use the `laravel/cashier` package. If you are using Braintree, you should use the `laravel/cashier-braintree` package:
 
-    "laravel/cashier": "~7.0"
+    "laravel/cashier": "~8.0"
 
     // or...
 
-    "laravel/cashier-braintree": "~2.0"
+    "laravel/cashier-braintree": "~3.0"
 
 Next, run the `composer update` command. You may be prompted for a GitHub token in order to install the private Spark repository. Composer will provide a link where you can create this token. Once the dependencies are installed, add the following service providers to your `app.php` configuration file:
 
