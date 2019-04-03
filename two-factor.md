@@ -43,7 +43,7 @@ If you would like to implement your own two-factor authentication provider, you 
 
 You may also swap the interactions with a class and method rather than a Closure:
 
-    Spark::swap('EnableTwoFactorAuth', 'EnableTwoFactorAuthUsingGoogle@handle');
+    Spark::swap('EnableTwoFactorAuth@handle', 'EnableTwoFactorAuthUsingGoogle@handle');
 
 Within these methods, you do not need to worry about persisting the country code and phone number to your database. This will be handled automatically by Spark. Your customized provider methods only need to enable / disable two-factor authentication with the third-party provider of your choice.
 
