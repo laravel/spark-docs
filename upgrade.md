@@ -12,3 +12,9 @@ Spark 8.0 is a simple maintenance release to provide compatibility with Laravel 
 If you installed Spark via the `spark` CLI tool, you may run the `spark:update` Artisan command:
 
     php artisan spark:update --major
+
+### Upgrading Via Composer
+
+If you installed Spark via Composer, you may simply upgrade your dependency name and version in your `composer.json` file and run the `composer update` command. Of course, in order for your GitHub user to access the repository, you should first join this repository in the Spark dashboard:
+
+    "laravel/spark-aurelius": "~8.0"
