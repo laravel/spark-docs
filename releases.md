@@ -1,5 +1,6 @@
 # Release Notes
 
+- [8.0.0](#8.0.0)
 - [7.0.0](#7.0.0)
 - [6.0.0](#6.0.0)
 - [5.0.0](#5.0.0)
@@ -7,6 +8,13 @@
 - [3.0.0](#3.0.0)
 - [2.0.0](#2.0.0)
 - [1.0.0](#1.0.0)
+
+<a name="8.0.0"></a>
+## 8.0.0
+
+The 8.0 release of Spark provides Laravel 5.8 compatibility.
+
+Spark 8.0 is a simple maintenance release to provide compatibility with Laravel 5.8 and Cashier 9.0. As such, there are no Spark specific upgrade instructions. You should simply upgrade your application using the [Laravel 5.8 upgrade guide](https://laravel.com/docs/5.8/upgrade). In addition, ensure that your application's `composer.json` file is requiring Laravel Cashier `^9.0`.
 
 <a name="7.0.0"></a>
 ## 7.0.0
