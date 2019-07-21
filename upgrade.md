@@ -1,6 +1,7 @@
 # Upgrade Guide
 
 - [Upgrading To Spark 8.0](#upgrade-spark-8.0)
+- [Checking versions](#version-checks)
 
 <a name="upgrade-spark-8.0"></a>
 ## Upgrading To Spark 8.0
@@ -18,3 +19,13 @@ If you installed Spark via the `spark` CLI tool, you may run the `spark:update` 
 If you installed Spark via Composer, you may simply upgrade your dependency name and version in your `composer.json` file and run the `composer update` command. Of course, in order for your GitHub user to access the repository, you should first join this repository in the Spark dashboard:
 
     "laravel/spark-aurelius": "~8.0"
+
+<a name="version-checks"></a>
+## Checking versions
+
+The following version check commands are available:
+
+- Spark Installer `spark -v`
+- Laravel Spark `php artisan spark:version`
+- Laravel Installer `laravel -v`
+- Laravel Framework `php artisan -V`

@@ -6,6 +6,7 @@
     - [Installation Via Composer](#installation-via-composer)
     - [Linking The Storage Directory](#linking-the-storage-directory)
 - [Installation Types](#installation-types)
+- [Checking versions](#version-checks)
 
 <a name="requirements"></a>
 ## Requirements
@@ -125,3 +126,12 @@ The default `spark` command will generate a project that supports individual use
 
     spark new project-name --team-billing --braintree
 
+<a name="version-checks"></a>
+## Checking versions
+
+The following version check commands are available:
+
+- Spark Installer `spark -v`
+- Laravel Spark `php artisan spark:version`
+- Laravel Installer `laravel -v`
+- Laravel Framework `php artisan -V`
