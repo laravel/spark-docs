@@ -15,4 +15,4 @@ The announcement text supports Markdown, so feel free to use Markdown syntax wit
 <a name="announcement-events"></a>
 ## Announcement Events
 
-When an announcement is created, the `Laravel\Spark\Events\Kiosk\AnnouncementCreated` event is dispatched, allowing you to perform additional actions such as sending an announcement push notification, etc.
+When an announcement is created, the `Laravel\Spark\Events\AnnouncementCreated` event is dispatched, allowing you to perform additional actions such as sending an announcement push notification, etc.
