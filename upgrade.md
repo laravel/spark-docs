@@ -1,11 +1,11 @@
 # Upgrade Guide
 
-- [Upgrading To Spark 8.0](#upgrade-spark-8.0)
+- [Upgrading To Spark 9.0](#upgrade-spark-9.0)
 
-<a name="upgrade-spark-8.0"></a>
-## Upgrading To Spark 8.0
+<a name="upgrade-spark-9.0"></a>
+## Upgrading To Spark 9.0
 
-Spark 8.0 is a simple maintenance release to provide compatibility with Laravel 5.8 and Cashier 9.0. As such, there are no Spark specific upgrade instructions. You should simply upgrade your application using the [Laravel 5.8 upgrade guide](https://laravel.com/docs/5.8/upgrade). In addition, ensure that your application's `composer.json` file is requiring Laravel Cashier `^9.0`.
+Spark 9.0 provides compatibility with Laravel 6.0 and Cashier 10.0. Cashier 10 is shipped with support for [Strong Customer Authentication (SCA)](https://stripe.com/docs/strong-customer-authentication). 
 
 ### Upgrading Via Spark CLI
 
@@ -17,4 +17,117 @@ If you installed Spark via the `spark` CLI tool, you may run the `spark:update` 
 
 If you installed Spark via Composer, you may simply upgrade your dependency name and version in your `composer.json` file and run the `composer update` command. Of course, in order for your GitHub user to access the repository, you should first join this repository in the Spark dashboard:
 
-    "laravel/spark-aurelius": "~8.0"
+    "laravel/spark-aurelius": "~9.0"
+
+
+### Database Schema Changes
+
+Cashier 10.0 uses webhooks to update the subscription status. For this to work, you need to add a `stripe_status` to your subscription tables. You may create the `add_stripe_status_to_subscriptions` migration manually and paste the following code into the file:
+
+```
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddStripeStatusToSubscriptions extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('subscriptions', function (Blueprint $table) {
+			 $table->string('stripe_status')->nullable();
+        });
+        
+        Schema::table('team_subscriptions', function (Blueprint $table) {
+			 $table->string('stripe_status')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('subscriptions', function (Blueprint $table) {
+            $table->drop('stripe_status');
+        });
+        
+        Schema::table('team_subscriptions', function (Blueprint $table) {
+            $table->drop('stripe_status');
+        });
+    }
+}
+```
+
+### EventServiceProvider Changes
+
+In your `App\Providers\EventServiceProvider` remove the following listeners:
+
+- `UpdateOwnerSubscriptionQuantity`
+- `UpdateOwnerSubscriptionQuantity `
+- `UpdateTeamSubscriptionQuantity `
+- `TeamMemberRemoved`
+
+### The `Spark::useStripe()` method.
+
+Since Spark 9.0 only supports Stripe, this method was removed. You'll need to stop calling it in your `SparkServiceProvider`.
+
+### Updating Your `package.json` Dependencies
+
+In your `package.json` file update the `laravel-mix` dependency to the latest version:
+
+```
+"laravel-mix": "^4.0.7"
+```
+
+Additionally, add the following dependencies:
+
+```
+"dinero.js": "^1.6.0",
+"resolve-url-loader": "3.1.0",
+"sass": "^1.22.5",
+"sass-loader": "7.*",
+"sweetalert2": "^8.13.6",
+"vue-template-compiler": "^2.6.10"
+```
+
+And finally, remove the `sweetalert` dependency.
+
+### Removing calls to removed Braintree files
+
+Remove the following lines from the `/resources/js/spark-components/bootstrap.js` file:
+
+- `require('./auth/register-braintree');`
+- `require('./settings/subscription/subscribe-braintree');`
+- `require('./settings/payment-method-braintree');`
+- `require('./settings/payment-method/update-payment-method-braintree');`
+
+### Updating Language Files
+
+Add the following translation line to your language files:
+
+```
+"Please :linkOpen confirm your payment :linkClose to activate your subscription!": "Please :linkOpen confirm your payment :linkClose to activate your subscription!"
+```
+
+### Updating WebPack configurations
+
+Replace the following line:
+
+```
+.copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
+```
+
+With this:
+
+```
+copy('node_modules/sweetalert2/dist/sweetalert2.min.js', 'public/js/sweetalert.min.js')
+```

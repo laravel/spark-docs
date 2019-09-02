@@ -23,14 +23,19 @@
 <a name="provider-configuration"></a>
 ## Provider Configuration
 
-After installing Spark, your application's `.env` file will contain environment variables that need to be populated. If you are using Stripe, you will need to populate the `STRIPE_KEY` and `STRIPE_SECRET` environment variables. You may retrieve these values from your Stripe control panel.
-
-If you are using Braintree, you will need to populate the `BRAINTREE_ENV`, `BRAINTREE_MODEL`, `BRAINTREE_MERCHANT_ID`, `BRAINTREE_PUBLIC_KEY`, and `BRAINTREE_PRIVATE_KEY` variables.
+After installing Spark, your application's `.env` file will contain the `STRIPE_KEY` and `STRIPE_SECRET` environment variables that need to be populated. You may retrieve these values from your Stripe control panel.
 
 <a name="webhooks"></a>
 ### Webhooks
 
-In order to display a list of your customer's invoices, you must configure the appropriate webhooks on Stripe or Braintree. Stripe webhooks should be configured to point to the `/webhook/stripe` URI. The Braintree `subscription_canceled`, `subscription_charged_successfully`, and `subscription_expired` webhook events should be configured to point to the `/webhook/braintree` URI.
+Stripe webhooks should be configured to point to the `/webhook/stripe` URI. Here's the list of event types you need to configure:
+
+- customer.subscription.updated
+- customer.subscription.deleted
+- customer.updated
+- customer.deleted
+- invoice.payment_action_required
+- invoice.payment_succeeded
 
 <a name="configuring-billing-plans"></a>
 ## Configuring Billing Plans
@@ -73,7 +78,7 @@ If your application offers team plans instead of individual user plans, you shou
 
 When your application provides team billing, the `booted` method of your `SparkServiceProvider` should typically contain a configuration like the following:
 
-    Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
+    Spark::noCardUpFront()->teamTrialDays(10);
 
     Spark::freeTeamPlan()
         ->features([
@@ -107,10 +112,10 @@ Since it's common to limit the number of team members a given team may have for 
 By default, Spark is configured to allow users to register without providing their credit card. After registering, they may choose to fully subscribe to the application at any time before their trial period ends. The number of trial days granted to a user when they register is defined by the `trialDays` method that is called on the `Spark` instance in the `SparkServiceProvider`. Or, if you are using team billing, you should use the `teamTrialDays` method instead:
 
     // When using user billing...
-    Spark::useStripe()->noCardUpFront()->trialDays(10);
+    Spark::noCardUpFront()->trialDays(10);
 
     // When using team billing...
-    Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
+    Spark::noCardUpFront()->teamTrialDays(10);
 
 If a customer registers while Spark is configured in this way, they will be placed on a "generic trial", meaning they will not actually be subscribed to any of your plans. If you would like to know if a customer is on a "no card up front", generic trial, you may use the `onGenericTrial` method on the user (or team if using team billing) instance. This method may be used to limit access to certain features when a user is on a generic trial:
 

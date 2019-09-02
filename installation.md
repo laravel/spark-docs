@@ -13,8 +13,9 @@
 Laravel Spark has a few requirements you should be aware of before installing:
 
 - Composer
-- Laravel Framework 5.8+
+- Laravel Framework 6.0+
 - Laravel Mix
+- Laravel Cashier
 - Bootstrap 4 (SASS)
 - Node.js & NPM
 
@@ -82,15 +83,7 @@ Next, add the following repository to your `composer.json` file:
 
 You should also add the following dependency to your `composer.json` file's `require` section:
 
-    "laravel/spark-aurelius": "~8.0",
-
-Next, you should add Cashier to your project. If you are using Stripe, you should use the `laravel/cashier` package. If you are using Braintree, you should use the `laravel/cashier-braintree` package:
-
-    "laravel/cashier": "~9.0"
-
-    // or...
-
-    "laravel/cashier-braintree": "~3.0"
+    "laravel/spark-aurelius": "~9.0",
 
 Next, run the `composer update` command. You may be prompted for a GitHub token in order to install the private Spark repository. Composer will provide a link where you can create this token. Once the dependencies are installed, add the following service providers to your `app.php` configuration file:
 
@@ -117,11 +110,8 @@ Once Spark is installed, you should link the `public/storage` directory to your 
 <a name="installation-types"></a>
 ## Installation Types
 
-The default `spark` command will generate a project that supports individual user plans and Stripe for credit card processing. However, you may also create projects that use team billing or Braintree as your payment processor.
+The default `spark` command will generate a project that supports individual user plans. However, you may also create projects that use team billing.
 
-    spark new project-name --braintree
 
     spark new project-name --team-billing
-
-    spark new project-name --team-billing --braintree
 

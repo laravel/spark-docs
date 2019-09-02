@@ -12,7 +12,7 @@
 <a name="billing-providers"></a>
 ### Which billing providers does Spark support?
 
-Spark supports Stripe and Braintree.
+Spark only supports Stripe.
 
 <a name="billing-intervals"></a>
 ### Which billing intervals does Spark support?
