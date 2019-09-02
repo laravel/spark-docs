@@ -44,7 +44,7 @@ Stripe webhooks should be configured to point to the `/webhook/stripe` URI. Here
 
 All of your application's billing plans are defined in the `app/Providers/SparkServiceProvider` class. Of course, this service provider is automatically generated when you create a new Spark project. Within the service provider's `booted` method, you will find a sample plan already defined. The default Spark application defines a "no card up front" trial plan, which will allow new users to sign up for your application without providing their billing details during their initial registration.
 
-You may modify this plan and define additional plans as needed. The first argument given to the `plan` method is the displayable name of the plan while the second argument is the plan's ID on either Stripe or Braintree:
+You may modify this plan and define additional plans as needed. The first argument given to the `plan` method is the displayable name of the plan while the second argument is the plan's ID on Stripe:
 
     Spark::plan('Pro', 'monthly-pro')
             ->price(20)
@@ -210,7 +210,7 @@ To get started, your application should typically have **two** subscription plan
 <a name="charging-users-per-team"></a>
 ### Charging Users Per Team
 
-If your application uses teams, you may charge your users based on how many teams they manage. When a team is created or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
+If your application uses teams, you may charge your users based on how many teams they manage. When a team is created or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
 
     Spark::useStripe()->noCardUpFront()->trialDays(10);
 
@@ -225,7 +225,7 @@ If your application uses teams, you may charge your users based on how many team
 <a name="charging-teams-per-member"></a>
 ### Charging Teams Per Member
 
-If your application uses teams, you may charge your users based on how many users they add to a team. When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe or Braintree. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
+If your application uses teams, you may charge your users based on how many users they add to a team. When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
 
     Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
@@ -303,7 +303,7 @@ Laravel Cashier, which Spark uses to provide subscription billing, supports cust
 
 You may call this method from the `booted` method of your `App\Providers\SparkServiceProvider` class.
 
-> **Note:** The specified currency must be supported by Stripe or Braintree.
+> **Note:** The specified currency must be supported by Stripe.
 
 <a name="proration"></a>
 ## Proration
