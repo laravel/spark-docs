@@ -5,7 +5,9 @@
 <a name="upgrade-spark-9.0"></a>
 ## Upgrading To Spark 9.0
 
-Spark 9.0 provides compatibility with Laravel 6.0 and Cashier 10.0. Cashier 10 is shipped with support for [Strong Customer Authentication (SCA)](https://stripe.com/docs/strong-customer-authentication). 
+Spark 9.0 provides compatibility with Laravel 6.0 and Cashier 10.0. Cashier 10 includes support for European [Strong Customer Authentication (SCA)](https://stripe.com/docs/strong-customer-authentication) regulations.
+
+**Spark 9.0 drops support for the Braintree payment system.**
 
 ### Upgrading Via Spark CLI
 
@@ -15,14 +17,13 @@ If you installed Spark via the `spark` CLI tool, you may run the `spark:update` 
 
 ### Upgrading Via Composer
 
-If you installed Spark via Composer, you may simply upgrade your dependency name and version in your `composer.json` file and run the `composer update` command. Of course, in order for your GitHub user to access the repository, you should first join this repository in the Spark dashboard:
+If you installed Spark via Composer, you may simply update your dependency version in your `composer.json` file and run the `composer update` command. Of course, in order for your GitHub user to access the repository, you should first join this repository in the Spark dashboard:
 
     "laravel/spark-aurelius": "~9.0"
 
-
 ### Database Schema Changes
 
-Cashier 10.0 uses webhooks to update the subscription status. For this to work, you need to add a `stripe_status` to your subscription tables. You may create the `add_stripe_status_to_subscriptions` migration manually and paste the following code into the file:
+Cashier 10.0 uses webhooks to update subscription statuses for users of your application. For this to work, you need to add a `stripe_status` to your subscription tables. You may create the `add_stripe_status_to_subscriptions` migration manually and paste the following code into the file:
 
 ```
 <?php
@@ -43,7 +44,7 @@ class AddStripeStatusToSubscriptions extends Migration
         Schema::table('subscriptions', function (Blueprint $table) {
 			 $table->string('stripe_status')->nullable();
         });
-        
+
         Schema::table('team_subscriptions', function (Blueprint $table) {
 			 $table->string('stripe_status')->nullable();
         });
@@ -59,7 +60,7 @@ class AddStripeStatusToSubscriptions extends Migration
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->drop('stripe_status');
         });
-        
+
         Schema::table('team_subscriptions', function (Blueprint $table) {
             $table->drop('stripe_status');
         });
@@ -67,18 +68,26 @@ class AddStripeStatusToSubscriptions extends Migration
 }
 ```
 
-### EventServiceProvider Changes
+### Remove Unnecessary Event Listeners
 
-In your `App\Providers\EventServiceProvider` remove the following listeners:
+Remove the following listeners from your `App\Providers\EventServiceProvider` file:
 
 - `UpdateOwnerSubscriptionQuantity`
 - `UpdateOwnerSubscriptionQuantity `
 - `UpdateTeamSubscriptionQuantity `
 - `TeamMemberRemoved`
 
-### The `Spark::useStripe()` method.
+### Updating Your Language Files
 
-Since Spark 9.0 only supports Stripe, this method was removed. You'll need to stop calling it in your `SparkServiceProvider`.
+Add the following translation line to your language files:
+
+```
+"Please :linkOpen confirm your payment :linkClose to activate your subscription!": "Please :linkOpen confirm your payment :linkClose to activate your subscription!"
+```
+
+### The `Spark::useStripe()` Method
+
+Since Spark 9.0 only supports Stripe, this method was removed. You should remove any calls to this method from your `SparkServiceProvider`.
 
 ### Updating Your `package.json` Dependencies
 
@@ -99,9 +108,9 @@ Additionally, add the following dependencies:
 "vue-template-compiler": "^2.6.10"
 ```
 
-And finally, remove the `sweetalert` dependency.
+Finally, remove the `sweetalert` dependency.
 
-### Removing calls to removed Braintree files
+### Removing Calls To Removed Braintree Files
 
 Remove the following lines from the `/resources/js/spark-components/bootstrap.js` file:
 
@@ -110,15 +119,7 @@ Remove the following lines from the `/resources/js/spark-components/bootstrap.js
 - `require('./settings/payment-method-braintree');`
 - `require('./settings/payment-method/update-payment-method-braintree');`
 
-### Updating Language Files
-
-Add the following translation line to your language files:
-
-```
-"Please :linkOpen confirm your payment :linkClose to activate your subscription!": "Please :linkOpen confirm your payment :linkClose to activate your subscription!"
-```
-
-### Updating WebPack configurations
+### Webpack Configuration
 
 Replace the following line:
 
