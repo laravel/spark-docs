@@ -297,11 +297,7 @@ If you would like to define a coupon that should be applied to every new registr
 <a name="currency-customization"></a>
 ## Currency Customization
 
-Laravel Cashier, which Spark uses to provide subscription billing, supports customizing your application's billing currency. You may customize the currency by calling the `useCurrency` method on the Cashier instance. The `useCurrency` method accepts the currency abbreviation as its first argument and the currency symbol as its second:
-
-    Laravel\Cashier\Cashier::useCurrency('eur', '€');
-
-You may call this method from the `booted` method of your `App\Providers\SparkServiceProvider` class.
+Laravel Cashier, which Spark uses to provide subscription billing, supports customizing your application's billing currency. The default Cashier currency is United States Dollars (USD). You can change the default currency by setting the `CASHIER_CURRENCY` environment variable.
 
 > **Note:** The specified currency must be supported by Stripe.
 
