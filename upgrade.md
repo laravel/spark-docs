@@ -89,6 +89,10 @@ Add the following translation line to your language files:
 
 Since Spark 9.0 only supports Stripe, this method was removed. You should remove any calls to this method from your `SparkServiceProvider`.
 
+### Currency configuration changes
+
+Spark 9.0 follows the currency configuration of Cashier 10.0, for that the `Cashier::useCurrency()` and `Cashier::usesCurrencySymbol()` were removed.
+
 ### Updating Your `package.json` Dependencies
 
 In your `package.json` file update the `laravel-mix` dependency to the latest version:
