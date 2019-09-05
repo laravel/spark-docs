@@ -58,11 +58,11 @@ class AddStripeStatusToSubscriptions extends Migration
     public function down()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->drop('stripe_status');
+            $table->dropColumn('stripe_status');
         });
 
         Schema::table('team_subscriptions', function (Blueprint $table) {
-            $table->drop('stripe_status');
+            $table->dropColumn('stripe_status');
         });
     }
 }
@@ -79,7 +79,7 @@ Remove the following listeners from your `App\Providers\EventServiceProvider` fi
 
 ### Updating Your Language Files
 
-Add the following translation line to your language files:
+Add the following translation line to your language files. For example, in your `/resources/lang/en.json` file.
 
 ```
 "Please :linkOpen confirm your payment :linkClose to activate your subscription!": "Please :linkOpen confirm your payment :linkClose to activate your subscription!"
