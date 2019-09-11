@@ -77,6 +77,17 @@ Remove the following listeners from your `App\Providers\EventServiceProvider` fi
 - `UpdateTeamSubscriptionQuantity `
 - `TeamMemberRemoved`
 
+### Updating Your SparkServiceProvider
+
+If you're overriding the `register()` method of the `SparkServiceProvider` in your app, you'll need to call `parent::register()`.
+
+```
+public function register()
+{
+    parent::register();
+}
+```
+
 ### Updating Your Language Files
 
 Add the following translation line to your language files. For example, in your `/resources/lang/en.json` file.
