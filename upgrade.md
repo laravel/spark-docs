@@ -73,9 +73,7 @@ class AddStripeStatusToSubscriptions extends Migration
 Remove the following listeners from your `App\Providers\EventServiceProvider` file:
 
 - `UpdateOwnerSubscriptionQuantity`
-- `UpdateOwnerSubscriptionQuantity `
-- `UpdateTeamSubscriptionQuantity `
-- `TeamMemberRemoved`
+- `UpdateTeamSubscriptionQuantity`
 
 ### Updating Your SparkServiceProvider
 
