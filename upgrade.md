@@ -68,6 +68,11 @@ class AddStripeStatusToSubscriptions extends Migration
 }
 ```
 
+### Environment Variables Changes
+
+Replace `STRIPE_MODEL` with `CASHIER_MODEL` in your .env file.
+
+
 ### Remove Unnecessary Event Listeners
 
 Remove the following listeners from your `App\Providers\EventServiceProvider` file:
