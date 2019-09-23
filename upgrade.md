@@ -148,5 +148,5 @@ Replace the following line:
 With this:
 
 ```
-copy('node_modules/sweetalert2/dist/sweetalert2.min.js', 'public/js/sweetalert.min.js')
+.copy('node_modules/sweetalert2/dist/sweetalert2.min.js', 'public/js/sweetalert.min.js')
 ```
