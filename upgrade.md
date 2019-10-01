@@ -148,7 +148,7 @@ Replace the following line:
 With this:
 
 ```
-copy('node_modules/sweetalert2/dist/sweetalert2.min.js', 'public/js/sweetalert.min.js')
+.copy('node_modules/sweetalert2/dist/sweetalert2.min.js', 'public/js/sweetalert.min.js')
 ```
 
 Once you have made these changes, you can run npm install to install the new dependencies and then npm run dev to compile your assets.
