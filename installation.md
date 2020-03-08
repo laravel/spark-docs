@@ -16,6 +16,7 @@ Laravel Spark has a few requirements you should be aware of before installing:
 - Laravel Framework 6.0+
 - Laravel Mix
 - Laravel Cashier
+- Laravel UI
 - Bootstrap 4 (SASS)
 - Node.js & NPM
 
@@ -31,7 +32,7 @@ The [Vue.js](http://vuejs.org) JavaScript framework is utilized on the registrat
 
 #### Downloading The Installer
 
-Laravel Spark offers a convenient installer that will create a new Laravel application and install Spark in the directory of your choice. Before getting started, make sure you have the `laravel/installer` package globally installed using Composer. You should make sure your version of the installer is >= `2.0.0`:
+Laravel Spark offers a convenient installer that will create a new Laravel application and install Spark in the directory of your choice. Before getting started, make sure you have the `laravel/installer` package globally installed using Composer. You should make sure your version of the installer is >= `3.2.0`:
 
     composer global require laravel/installer
 
@@ -87,9 +88,10 @@ Next, add the following repository to your `composer.json` file:
         }
     ],
 
-You should also add the following dependency to your `composer.json` file's `require` section:
+You should also add the following dependencies to your `composer.json` file's `require` section:
 
     "laravel/spark-aurelius": "~9.0",
+    "laravel/ui": "^2.0",
 
 Next, run the `composer update` command. You may be prompted for a GitHub token in order to install the private Spark repository. Composer will provide a link where you can create this token. Once the dependencies are installed, add the following service providers to your `app.php` configuration file:
 
