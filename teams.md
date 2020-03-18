@@ -18,7 +18,7 @@ To use teams, initialize your Spark project using the `--team-billing` flag:
 
     spark new project-name --team-billing
 
-If you installed your application without the `--team-billing` flag but still want to enable teams later, you may simply add the `Laravel\Spark\CanJoinTeams` trait to your `User` model. In addition, you may wish to review the documentation on [team billing](/docs/7.0/billing#configuring-team-billing-plans):
+If you installed your application without the `--team-billing` flag but still want to enable teams later, you may simply add the `Laravel\Spark\CanJoinTeams` trait to your `User` model. In addition, you may wish to review the documentation on [team billing](/docs/9.0/billing#configuring-team-billing-plans):
 
     <?php
 
@@ -45,7 +45,7 @@ By default, Spark uses the "/teams/" segment in URIs to refer to teams. However,
 
 > Be sure to call this method in the `register` method of your service provider, as Spark will not function correctly if it is called in the `booted` method. Additionally, make sure you pass the plural, lowercase form of the word.
 
-To change the word used to refer to "teams" in views, you should update the `resources/lang/en/teams.php` [language file](/docs/7.0/localization).
+To change the word used to refer to "teams" in views, you should update the `resources/lang/en/teams.php` [language file](/docs/9.0/localization).
 
 <a name="accessing-the-users-teams"></a>
 ## Accessing The User's Teams
@@ -140,7 +140,7 @@ The `ownedTeams` method returns all of the user's owned teams:
 <a name="team-billing"></a>
 ## Team Billing
 
-Team billing allows your Spark applications to provide billing plans on a per-team basis, meaning users may subscribe to different billing plans for each team they own. For more information on configuring team billing, please refer to the [billing documentation](/docs/7.0/billing#configuring-team-billing-plans)
+Team billing allows your Spark applications to provide billing plans on a per-team basis, meaning users may subscribe to different billing plans for each team they own. For more information on configuring team billing, please refer to the [billing documentation](/docs/9.0/billing#configuring-team-billing-plans)
 
 <a name="using-teams-without-team-billing"></a>
 ## Using Teams Without Team Billing
