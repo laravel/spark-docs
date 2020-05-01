@@ -32,7 +32,7 @@ The [Vue.js](http://vuejs.org) JavaScript framework is utilized on the registrat
 
 #### Downloading The Installer
 
-Laravel Spark offers a convenient installer that will create a new Laravel application and install Spark in the directory of your choice. Before getting started, make sure you have the `laravel/installer` package globally installed using Composer. You should make sure your version of the installer is >= `3.2.0`:
+Laravel Spark offers a convenient installer that will create a new Laravel application and install Spark in the directory of your choice. Before getting started, make sure you have the `laravel/installer` package globally installed using Composer. You should make sure your version of the installer is >= `2.3.0`:
 
     composer global require laravel/installer
 
