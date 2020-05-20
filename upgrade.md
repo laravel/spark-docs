@@ -5,7 +5,7 @@
 <a name="upgrade-spark-9.0"></a>
 ## Upgrading To Spark 10.0
 
-Spark 10.0 provides compatibility with Cashier 11.0. Cashier 11 includes support for multi-plan subscriptions.
+Spark 10.0 provides compatibility with Cashier 11. Cashier 11 includes support for multi-plan subscriptions.
 
 ### Upgrading Via Spark CLI
 
