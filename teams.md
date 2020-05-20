@@ -45,7 +45,7 @@ By default, Spark uses the "/teams/" segment in URIs to refer to teams. However,
 
 > Be sure to call this method in the `register` method of your service provider, as Spark will not function correctly if it is called in the `booted` method. Additionally, make sure you pass the plural, lowercase form of the word.
 
-To change the word used to refer to "teams" in views, you should update the `resources/lang/en/teams.php` [language file](/docs/9.0/localization).
+To change the word used to refer to "teams" in views, you should update the `resources/lang/en/teams.php` [language file](/docs/10.0/localization).
 
 <a name="accessing-the-users-teams"></a>
 ## Accessing The User's Teams

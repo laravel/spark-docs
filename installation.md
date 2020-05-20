@@ -38,7 +38,7 @@ Laravel Spark offers a convenient installer that will create a new Laravel appli
 
 > **Note:** The Spark installer is only recommended for those on Mac or Linux systems. If you are using Windows, please install via Composer. Before using the Spark installer, make sure you have installed the [Laravel installer](https://laravel.com/docs/installation#installing-laravel).
 
-First, clone the `laravel/spark-installer` repository [from GitHub](https://github.com/laravel/spark-installer) into any location on your machine. 
+First, clone the `laravel/spark-installer` repository [from GitHub](https://github.com/laravel/spark-installer) into any location on your machine.
 
 ```
 git clone https://github.com/laravel/spark-installer.git
@@ -68,7 +68,7 @@ This command will create a new Laravel project in a directory matching the given
 
 > **Note:** Once the new Spark project has been created, you will need to migrate your new project's database using the `php artisan migrate` Artisan command. If you are not using Homestead, you will also need to update your `.env` file with your database credentials.
 
-Once Spark is installed, you are ready to [configure your application](/docs/9.0/billing).
+Once Spark is installed, you are ready to [configure your application](/docs/10.0/billing).
 
 <a name="installation-via-composer"></a>
 ### Installation Via Composer
@@ -90,7 +90,7 @@ Next, add the following repository to your `composer.json` file:
 
 You should also add the following dependencies to your `composer.json` file's `require` section:
 
-    "laravel/spark-aurelius": "~9.0",
+    "laravel/spark-aurelius": "~10.0",
     "laravel/ui": "^2.0",
 
 Next, run the `composer update` command. You may be prompted for a GitHub token in order to install the private Spark repository. Composer will provide a link where you can create this token. Once the dependencies are installed, add the following service providers to your `app.php` configuration file:

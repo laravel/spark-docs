@@ -2,6 +2,7 @@
 
 - [Support Policy](#support-policy)
 - [Releases](#releases)
+    - [10.0.0](#10.0.0)
     - [9.0.0](#9.0.0)
     - [8.0.0](#8.0.0)
     - [7.0.0](#7.0.0)
@@ -26,10 +27,15 @@ Only the latest major Spark release is maintained and will receive bug and secur
 <a name="releases"></a>
 ## Releases
 
+<a name="10.0.0"></a>
+## 10.0.0
+
+The 10.0 release of Spark provides Cashier 11.0 compatibility.
+
 <a name="9.0.0"></a>
 ## 9.0.0
 
-The 9.0 release of Spark provides Laravel 6.0 and Cashier 10.0 compatibility. In addition, Spark 9.0 switched to Laravel Mix 4.0 and SweetAlert2.
+The 9.0 release of Spark provides Laravel 6.x / 7.x and Cashier 10.0 compatibility. In addition, Spark 9.0 switched to Laravel Mix 4.0 and SweetAlert2.
 
 Starting Spark 9.0, support for the Braintree provider was dropped.
 
