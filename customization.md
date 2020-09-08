@@ -26,7 +26,7 @@ If you would like to customize the model names used by Spark from the `App` name
 
 #### Current User
 
-You may wish to customize how the current user is retrieved and sent to your front-end JavaScript application. For example, you may wish to load extra relationships on the `User` instance before it is returned. You may do so by swapping the `UserRepository@current` method within the `booted` method of your `SparkServiceProvider`:
+You may wish to customize how the current user is retrieved and sent to your front-end JavaScript application. For example, you may wish to load extra relationships on the `User` instance before it is returned. You may do so by swapping the `UserRepository@current` method within the `boot` method of your `SparkServiceProvider`:
 
     Spark::swap('UserRepository@current', function () {
         // Return the current user...
@@ -39,7 +39,7 @@ If you are using Vue, the currently authenticated user is available to your appl
 
 #### Finding Individual Teams
 
-The `Laravel\Spark\Contracts\Repositories\TeamRepository` interface contains several methods you may wish to customize. To customize how individual teams are retrieved from the database, you may swap the `find` method within the `booted` method of your `SparkServiceProvider`:
+The `Laravel\Spark\Contracts\Repositories\TeamRepository` interface contains several methods you may wish to customize. To customize how individual teams are retrieved from the database, you may swap the `find` method within the `boot` method of your `SparkServiceProvider`:
 
     Spark::swap('TeamRepository@find', function ($id) {
         // Return the team with the given ID...
@@ -49,7 +49,7 @@ If you are using Vue, the currently authenticated user's current team is availab
 
 #### Finding All Teams For A Given User
 
-To customize how all of the teams for a given user are retrieved, you may swap the `forUser` method of the `TeamRepository` within the `booted` method of your `SparkServiceProvider`:
+To customize how all of the teams for a given user are retrieved, you may swap the `forUser` method of the `TeamRepository` within the `boot` method of your `SparkServiceProvider`:
 
     Spark::swap('TeamRepository@forUser', function ($user) {
         // Return all of the given user's teams...

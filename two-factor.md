@@ -16,7 +16,7 @@ Before enabling two-factor authentication, you should populate the `AUTHY_SECRET
 <a name="usage"></a>
 ## Usage
 
-After configuring your `AUTHY_SECRET` environment variable, you should call the `useTwoFactorAuth` method from the `booted` method of your `SparkServiceProvider`:
+After configuring your `AUTHY_SECRET` environment variable, you should call the `useTwoFactorAuth` method from the `boot` method of your `SparkServiceProvider`:
 
     Spark::useTwoFactorAuth();
 
@@ -27,7 +27,7 @@ When two-factor authentication is initially enabled on an account, an emergency 
 <a name="customization"></a>
 ## Customization
 
-If you would like to implement your own two-factor authentication provider, you may do so by "swapping" the two-factor interactions using the `Spark::swap` method. You will need to swap the following interactions: `EnableTwoFactorAuth`, `DisableTwoFactorAuth`, and `VerifyTwoFactorAuthToken`. You may add these customizations in the `booted` method of your `SparkServiceProvider`:
+If you would like to implement your own two-factor authentication provider, you may do so by "swapping" the two-factor interactions using the `Spark::swap` method. You will need to swap the following interactions: `EnableTwoFactorAuth`, `DisableTwoFactorAuth`, and `VerifyTwoFactorAuthToken`. You may add these customizations in the `boot` method of your `SparkServiceProvider`:
 
     Spark::swap('EnableTwoFactorAuth', function ($user, $country, $phone) {
         //

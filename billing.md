@@ -42,7 +42,7 @@ Stripe webhooks should be configured to point to the `/webhook/stripe` URI. Here
 
 ### Configuring User Billing Plans
 
-All of your application's billing plans are defined in the `app/Providers/SparkServiceProvider` class. Of course, this service provider is automatically generated when you create a new Spark project. Within the service provider's `booted` method, you will find a sample plan already defined. The default Spark application defines a "no card up front" trial plan, which will allow new users to sign up for your application without providing their billing details during their initial registration.
+All of your application's billing plans are defined in the `app/Providers/SparkServiceProvider` class. Of course, this service provider is automatically generated when you create a new Spark project. Within the service provider's `boot` method, you will find a sample plan already defined. The default Spark application defines a "no card up front" trial plan, which will allow new users to sign up for your application without providing their billing details during their initial registration.
 
 You may modify this plan and define additional plans as needed. The first argument given to the `plan` method is the displayable name of the plan while the second argument is the plan's ID on Stripe:
 
@@ -76,7 +76,7 @@ If your application offers team plans instead of individual user plans, you shou
 
     spark new project-name --team-billing
 
-When your application provides team billing, the `booted` method of your `SparkServiceProvider` should typically contain a configuration like the following:
+When your application provides team billing, the `boot` method of your `SparkServiceProvider` should typically contain a configuration like the following:
 
     Spark::noCardUpFront()->teamTrialDays(10);
 
@@ -150,7 +150,7 @@ If you would like to gather credit card details up front but also offer trial pe
 
 > **Note:** This feature is only supported if your application is using Stripe for subscription billing.
 
-If you would like to collect your customer's billing addresses during registration and during payment method updates, you may call the `collectBillingAddress` method on the Spark instance in the `booted` method of your `SparkServiceProvider`:
+If you would like to collect your customer's billing addresses during registration and during payment method updates, you may call the `collectBillingAddress` method on the Spark instance in the `boot` method of your `SparkServiceProvider`:
 
     Spark::collectBillingAddress();
 
@@ -159,7 +159,7 @@ If you would like to collect your customer's billing addresses during registrati
 
 Sometimes you may wish to limit plans by a given resource. For example, perhaps your project management application's "Pro" plan only allows a user to create 20 projects, while your "Enterprise" plan allows users to create up to 50 projects. In this example, a user on the Enterprise plan could not downgrade to the Pro plan if they still have 40 projects attached to their account.
 
-Spark allows you to customize these rules using the `checkPlanEligibilityUsing` method which accepts a Closure as its single argument. This Closure receives the current user and the plan the user is attempting to subscribe to. It is up to you to either return `true` or `false` from this callback based on whether the user should be allowed to change to the given plan. You can call this method from the `booted` method of your application's `SparkServiceProvider`:
+Spark allows you to customize these rules using the `checkPlanEligibilityUsing` method which accepts a Closure as its single argument. This Closure receives the current user and the plan the user is attempting to subscribe to. It is up to you to either return `true` or `false` from this callback based on whether the user should be allowed to change to the given plan. You can call this method from the `boot` method of your application's `SparkServiceProvider`:
 
     Spark::checkPlanEligibilityUsing(function ($user, $plan) {
         if ($plan->name == 'pro' && count($user->todos) > 20) {
@@ -210,7 +210,7 @@ To get started, your application should typically have **two** subscription plan
 <a name="charging-users-per-team"></a>
 ### Charging Users Per Team
 
-If your application uses teams, you may charge your users based on how many teams they manage. When a team is created or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
+If your application uses teams, you may charge your users based on how many teams they manage. When a team is created or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe. To configure this style of billing, the `boot` method of your `SparkServiceProvider` should look like the following:
 
     Spark::useStripe()->noCardUpFront()->trialDays(10);
 
@@ -225,7 +225,7 @@ If your application uses teams, you may charge your users based on how many team
 <a name="charging-teams-per-member"></a>
 ### Charging Teams Per Member
 
-If your application uses teams, you may charge your users based on how many users they add to a team. When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe. To configure this style of billing, the `booted` method of your `SparkServiceProvider` should look like the following:
+If your application uses teams, you may charge your users based on how many users they add to a team. When a team member is added or removed from a team, Spark will automatically update the subscription's "quantity" on Stripe. To configure this style of billing, the `boot` method of your `SparkServiceProvider` should look like the following:
 
     Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
@@ -240,7 +240,7 @@ If your application uses teams, you may charge your users based on how many user
 <a name="custom-per-seat-targets"></a>
 ### Custom Per Seat Targets
 
-Next, let's take a look at at charging per a custom target. In this example, let's assume you are building project management software and you would like to charge your customers per project. First, you should call the `chargePerSeat` method within the `booted` method of the `SparkServiceProvider`:
+Next, let's take a look at at charging per a custom target. In this example, let's assume you are building project management software and you would like to charge your customers per project. First, you should call the `chargePerSeat` method within the `boot` method of the `SparkServiceProvider`:
 
     Spark::chargePerSeat('Projects', function ($user) {
         return $user->projects()->count();
@@ -290,7 +290,7 @@ If your application is using team billing, you may check if the current team is 
 <a name="site-wide-promotions"></a>
 ## Site Wide Promotions
 
-If you would like to define a coupon that should be applied to every new registration for your application, you may use the Spark `promotion` method. This allows you to run promotional discounts for holidays or other special occasions. However, the promotional discount may only be applied during new registrations. You may call the `promotion` method from the `booted` method of your `SparkServiceProvider`:
+If you would like to define a coupon that should be applied to every new registration for your application, you may use the Spark `promotion` method. This allows you to run promotional discounts for holidays or other special occasions. However, the promotional discount may only be applied during new registrations. You may call the `promotion` method from the `boot` method of your `SparkServiceProvider`:
 
     Spark::promotion('coupon-code');
 
@@ -304,7 +304,7 @@ Laravel Cashier, which Spark uses to provide subscription billing, supports cust
 <a name="proration"></a>
 ## Proration
 
-By default, Spark is configured to charge a prorated amount to the customer if a subscription was changed in the middle of a billing cycle. However, you can disable proration so that no changes are made to the subscription until the beginning of the next billing cycle. To disable proration, call the `noProrate` method in the `booted` method of your `SparkServiceProvider`:
+By default, Spark is configured to charge a prorated amount to the customer if a subscription was changed in the middle of a billing cycle. However, you can disable proration so that no changes are made to the subscription until the beginning of the next billing cycle. To disable proration, call the `noProrate` method in the `boot` method of your `SparkServiceProvider`:
 
     Spark::noProrate();
 

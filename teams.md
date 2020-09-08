@@ -32,7 +32,7 @@ If you installed your application without the `--team-billing` flag but still wa
         use CanJoinTeams;
     }
 
-After registration, your users will be able to create additional teams from their account dashboard; however, you can disable the creation of additional teams by adding the following to the `booted` method of your `SparkServiceProvider`:
+After registration, your users will be able to create additional teams from their account dashboard; however, you can disable the creation of additional teams by adding the following to the `boot` method of your `SparkServiceProvider`:
 
     Spark::noAdditionalTeams();
 
@@ -43,7 +43,7 @@ By default, Spark uses the "/teams/" segment in URIs to refer to teams. However,
 
     Spark::prefixTeamsAs('bands');
 
-> Be sure to call this method in the `register` method of your service provider, as Spark will not function correctly if it is called in the `booted` method. Additionally, make sure you pass the plural, lowercase form of the word.
+> Be sure to call this method in the `register` method of your service provider, as Spark will not function correctly if it is called in the `boot` method. Additionally, make sure you pass the plural, lowercase form of the word.
 
 To change the word used to refer to "teams" in views, you should update the `resources/lang/en/teams.php` [language file](/docs/10.0/localization).
 
@@ -99,7 +99,7 @@ However, by default, when a user does not belong to any teams, they will be redi
 <a name="accessing-teams-by-path"></a>
 ## Accessing Teams By Path
 
-Spark also supports disabling the "team switcher" located in the top-right navigation menu and allowing you to have full customization of determining which team a user is currently viewing. To enable this option, call the `Spark::identifyTeamsByPath()` option in the `booted` method of your `SparkServiceProvider`:
+Spark also supports disabling the "team switcher" located in the top-right navigation menu and allowing you to have full customization of determining which team a user is currently viewing. To enable this option, call the `Spark::identifyTeamsByPath()` option in the `boot` method of your `SparkServiceProvider`:
 
     Spark::identifyTeamsByPath();
 
@@ -112,7 +112,7 @@ Once this option has been enabled, the team creation screen will include a new f
 
 Spark allows you to define roles for your team's members. By default, Spark has two roles: `owner` and `member`. However, you may define additional roles which the owner of a team can then assign to users from the team membership screen.
 
-To define roles, call the `useRoles` method from the `booted` method of your `SparkServiceProvider`. The `useRoles` method accepts an array where the keys are the role "slugs" that will be stored in the database, while the values are the displayable name of the role:
+To define roles, call the `useRoles` method from the `boot` method of your `SparkServiceProvider`. The `useRoles` method accepts an array where the keys are the role "slugs" that will be stored in the database, while the values are the displayable name of the role:
 
     Spark::useRoles([
         'member' => 'Member',
