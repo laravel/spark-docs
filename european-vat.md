@@ -20,7 +20,7 @@ Before enabling European VAT collection, you will need to install the `mpociot/v
 
     composer require mpociot/vat-calculator
 
-You can enable collection of European VAT by calling the `collectEuropeanVat` method from the `booted` method of your application's `SparkServiceProvider`. The `collectEuropeanVat` method accepts the home country of your business as its only argument:
+You can enable collection of European VAT by calling the `collectEuropeanVat` method from the `boot` method of your application's `SparkServiceProvider`. The `collectEuropeanVat` method accepts the home country of your business as its only argument:
 
     Spark::collectEuropeanVat('GB');
 

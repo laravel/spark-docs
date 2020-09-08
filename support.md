@@ -24,7 +24,7 @@ To specify where these e-mails should be sent, you should set the `$sendSupportE
 
 If you would like to have more control over how support requests are delivered to your development team, you may swap the `handle` method of the `SendSupportEmail` interaction with your own custom implementation. This will allow you to deliver support requests to the help desk of your choice using a third party API, etc.
 
-To get started, use the `Spark::swap` method within the `booted` method of your `SparkServiceProvider`:
+To get started, use the `Spark::swap` method within the `boot` method of your `SparkServiceProvider`:
 
     Spark::swap('SendSupportEmail@handle', function (array $data) {
         // $data['from']

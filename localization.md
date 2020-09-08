@@ -21,7 +21,7 @@ If a file with the requested language is not found, Spark will use the default `
 <a name="right-to-left-theme"></a>
 ## Right-To-Left Theme
 
-If you would like your application to use a "right-to-left" theme, you should call the `useRightToLeftTheme` method in the `booted` method of your `SparkServiceProvider`:
+If you would like your application to use a "right-to-left" theme, you should call the `useRightToLeftTheme` method in the `boot` method of your `SparkServiceProvider`:
 
     Spark::useRightToLeftTheme();
 

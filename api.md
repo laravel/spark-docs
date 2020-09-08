@@ -28,7 +28,7 @@ Spark automatically generates a `routes/api.php` file to contain all of your API
 <a name="abilities"></a>
 ## Abilities
 
-If you would like to give users the ability to grant "abilities" to tokens and constrain the actions that a given token can perform, you may use the `tokensCan` method on the `Spark` configuration object. You should place this call within the `booted` method of your `SparkServiceProvider`:
+If you would like to give users the ability to grant "abilities" to tokens and constrain the actions that a given token can perform, you may use the `tokensCan` method on the `Spark` configuration object. You should place this call within the `boot` method of your `SparkServiceProvider`:
 
     Spark::tokensCan([
         'read-servers' => 'Read Servers',
