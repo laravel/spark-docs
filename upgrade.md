@@ -41,6 +41,12 @@ Rename the `booted()` method of the `SparkServiceProvider` to `boot()` and call 
             ]);
     }
 
+Next, if you would like to keep your model classes in the `App` namespace, you may use the `useUserModel` and `useTeamModel` methods in the `register` method of your `SparkServiceProvider`:
+
+    Spark::useUserModel('App\User');
+
+    Spark::useTeamModel('App\Team');
+
 ### Cashier Upgrade Guide
 
 After updating your Spark application, please review and make the necessary changes for Cashier 11.0 based on the [Cashier upgrade guide](https://github.com/laravel/cashier/blob/12.x/UPGRADE.md).
