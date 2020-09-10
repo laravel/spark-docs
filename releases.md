@@ -2,6 +2,8 @@
 
 - [Support Policy](#support-policy)
 - [Releases](#releases)
+    - [11.0.0](#1
+    1.0.0)
     - [10.0.0](#10.0.0)
     - [9.0.0](#9.0.0)
     - [8.0.0](#8.0.0)
@@ -23,9 +25,17 @@ Only the latest major Spark release is maintained and will receive bug and secur
 | 6.0 | February 6th, 2018 |
 | 7.0 | September 6th, 2018 |
 | 8.0 | February 26th, 2019 |
+| 9.0 | September 4th, 2019 |
+| 10.0 | May 19th, 2020 |
+| 11.0 | September 8th, 2020 |
 
 <a name="releases"></a>
 ## Releases
+
+<a name="11.0.0"></a>
+## 11.0.0
+
+The 11.0 release of Spark provides Laravel 8.x and Cashier 12.0 compatibility.
 
 <a name="10.0.0"></a>
 ## 10.0.0

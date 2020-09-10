@@ -49,6 +49,6 @@ Next, if you would like to keep your model classes in the `App` namespace, you m
 
 ### Cashier Upgrade Guide
 
-After updating your Spark application, please review and make the necessary changes for Cashier 11.0 based on the [Cashier upgrade guide](https://github.com/laravel/cashier/blob/12.x/UPGRADE.md).
+After updating your Spark application, please review and make the necessary changes for Cashier 12.0 based on the [Cashier upgrade guide](https://github.com/laravel/cashier/blob/12.x/UPGRADE.md).
 
 
