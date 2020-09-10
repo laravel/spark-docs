@@ -90,7 +90,7 @@ Next, add the following repository to your `composer.json` file:
 
 You should also add the following dependencies to your `composer.json` file's `require` section:
 
-    "laravel/spark-aurelius": "~10.0",
+    "laravel/spark-aurelius": "~11.0",
     "laravel/ui": "^2.0",
 
 Next, run the `composer update` command. You may be prompted for a GitHub token in order to install the private Spark repository. Composer will provide a link where you can create this token. Once the dependencies are installed, add the following service providers to your `app.php` configuration file:
