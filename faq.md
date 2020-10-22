@@ -32,12 +32,12 @@ Yes, you can have both user and team plans at the same time.
 <a name="limiting-resources"></a>
 ### Does Spark support limiting the resources for a given plan?
 
-Yes, you can limit [team plans](/docs/7.0/billing#configuring-team-billing-plans) by team members. You can also limit plans by [your own arbitrary conditions](/docs/7.0/billing#constraining-access-to-plans).
+Yes, you can limit [team plans](/docs/11.0/billing#configuring-team-billing-plans) by team members. You can also limit plans by [your own arbitrary conditions](/docs/11.0/billing#constraining-access-to-plans).
 
 <a name="vat"></a>
 ### Does Spark support collecting European VAT?
 
-Yes, Spark [supports collecting European VAT](/docs/7.0/european-vat).
+Yes, Spark [supports collecting European VAT](/docs/11.0/european-vat).
 
 <a name="existing"></a>
 ### Can Spark be integrated into an existing application?
