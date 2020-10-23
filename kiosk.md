@@ -9,7 +9,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-The Spark developer Kiosk is a special area of your Spark application that is only accessible to developers and provides unique, developer-only features such as [creating announcements](/docs/7.0/announcements), viewing application revenue, impersonating other users, and more.
+The Spark developer Kiosk is a special area of your Spark application that is only accessible to developers and provides unique, developer-only features such as [creating announcements](/docs/11.0/announcements), viewing application revenue, impersonating other users, and more.
 
 #### Developer Middleware
 
