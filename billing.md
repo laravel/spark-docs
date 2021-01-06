@@ -130,7 +130,7 @@ If a customer registers while Spark is configured in this way, they will be plac
 
 By default, Spark is configured to allow users to register without providing their credit card. After registering, they may choose to fully subscribe to the application at any time before their trial period ends.
 
-However, you may wish to choose to gather credit card details up front. To do so, remove the calls to `noCardUpFront` and `trialDays` / `teamTrialDays` from your `SparkServiceProvider`. This will instruct the registration view to gather the user's credit card details up front.
+However, you may wish to gather credit card details up front. To do so, remove the calls to `noCardUpFront` and `trialDays` / `teamTrialDays` from your `SparkServiceProvider`. This will instruct the registration view to gather the user's credit card details up front.
 
 If you would like to gather credit card details up front but also offer trial periods on your plans, you will need to define the `trialDays` on the plans themselves:
 
