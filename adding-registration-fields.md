@@ -69,6 +69,8 @@ If you do not want to pass a Closure, you may also pass a `Class@method` string 
 
 Next, let's call `createUsersWith` to make sure our new field is stored in the database:
 
+    use Illuminate\Support\Carbon;
+
     Spark::createUsersWith(function ($request) {
         $user = Spark::user();
 
@@ -89,7 +91,3 @@ Next, let's call `createUsersWith` to make sure our new field is stored in the d
 As was the case with validation, you may also pass a `Class@method` callback:
 
     Spark::createUsersWith('UserCreator@create');
-    
-Since we've utilized the Carbon class, we need to import it at the beginning of our `SparkServiceProvider`
-
-    use Carbon\Carbon;
