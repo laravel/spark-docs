@@ -89,3 +89,7 @@ Next, let's call `createUsersWith` to make sure our new field is stored in the d
 As was the case with validation, you may also pass a `Class@method` callback:
 
     Spark::createUsersWith('UserCreator@create');
+    
+Since we've utilized the Carbon class, we need to import it at the beginning of our `SparkServiceProvider`
+
+    use Carbon\Carbon;
