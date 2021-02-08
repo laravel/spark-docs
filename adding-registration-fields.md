@@ -69,6 +69,8 @@ If you do not want to pass a Closure, you may also pass a `Class@method` string 
 
 Next, let's call `createUsersWith` to make sure our new field is stored in the database:
 
+    use Illuminate\Support\Carbon;
+
     Spark::createUsersWith(function ($request) {
         $user = Spark::user();
 
