@@ -24,7 +24,7 @@ The "profile" tab of the settings dashboard contains several panels that allow t
             @include('spark::settings.profile.update-contact-information')
 
             <!-- Update Profile Details -->
-            @include('settings.profile.update-profile-details')
+            @include('spark::settings.profile.update-profile-details')
         </div>
     </spark-profile>
 
