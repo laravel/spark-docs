@@ -11,6 +11,14 @@ Spark utilizes the powerful [translation component shipped with Laravel](https:/
 
 You may easily support another language in your application by copying the `resources/lang/en.json` file into a new file named after the language you prefer (such as `sp.json`). You'll also need to copy the `resources/lang/en/teams.php` file, which contains team-related string translations, into a translation folder corresponding to your desired language (such as `resources/lang/sp/teams.php`).
 
+You can also use the [translation manager](https://github.com/andrey-helldar/laravel-lang-publisher), which includes the translation of all keys to 78 localizations:
+
+```bash
+php artisan lang:add de ro zh_CN lv
+
+php artisan lang:update
+```
+
 <a name="translating-terms-of-service"></a>
 ## Translating The Terms Of Service
 
