@@ -22,7 +22,7 @@ If you installed Spark via Composer, you may simply update your dependency versi
 
 ### Adding a tax_rates Table
 
-Add the following migration in your project and then run `php artsian migrate`:
+Add the following migration in your project and then run `php artisan migrate`:
 
     class CreateTaxRatesTable extends Migration
     {
