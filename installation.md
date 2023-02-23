@@ -9,10 +9,12 @@
 <a name="requirements"></a>
 ## Requirements
 
+> If you need support for Laravel v10 or higher, please switch to [the new Spark](https://spark.laravel.com).
+
 Laravel Spark has a few requirements you should be aware of before installing:
 
 - Composer
-- Laravel Framework 6.0+
+- Laravel Framework 8.0 or 9.0
 - Laravel Mix
 - Laravel Cashier
 - Laravel UI
@@ -69,4 +71,3 @@ The default `spark` command will generate a project that supports individual use
 
 
     spark new project-name --team-billing
-
