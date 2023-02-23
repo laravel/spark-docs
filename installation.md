@@ -9,7 +9,7 @@
 <a name="requirements"></a>
 ## Requirements
 
-> If you need support for Laravel v10 or higher, please switch to [the new Spark](https://spark.laravel.com).
+> If you need support for Laravel 10.x or higher, please upgrade to the [current generation of Spark](https://spark.laravel.com).
 
 Laravel Spark has a few requirements you should be aware of before installing:
 
