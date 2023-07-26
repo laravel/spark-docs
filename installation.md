@@ -14,7 +14,7 @@
 Laravel Spark has a few requirements you should be aware of before installing:
 
 - Composer
-- Laravel Framework 8.0 or 9.0
+- Laravel Framework 9.0
 - Laravel Mix
 - Laravel Cashier
 - Laravel UI
@@ -39,8 +39,8 @@ Create a new Laravel project using the [Laravel installer](https://laravel.com/d
 
 Next, add the following dependencies to your `composer.json` file's `require` section:
 
-    "laravel/spark-aurelius": "~11.0",
-    "laravel/ui": "^2.0",
+    "laravel/spark-aurelius": "~12.0",
+    "laravel/ui": "^3.0",
 
 Next, run the `composer update` command. You may be prompted for a GitHub token in order to install the private Spark repository. Composer will provide a link where you can create this token. Once the dependencies are installed, add the following service providers to your `app.php` configuration file:
 
@@ -68,6 +68,5 @@ Once Spark is installed, you should link the `public/storage` directory to your 
 ## Installation Types
 
 The default `spark` command will generate a project that supports individual user plans. However, you may also create projects that use team billing.
-
 
     spark new project-name --team-billing
